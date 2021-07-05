@@ -1,13 +1,259 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --primaryColor: brown;
+  --accentColor: #fefefe;
+  --darkColor: black;
+  --secondaryColor: yellow;
+  --maxMobileWidth: 512px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*{
+  transition: all 0.2s ease-in;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Verdana, sans-serif;
+  background: var(--accentColor);
+  color: var(--darkColor);
+  letter-spacing: -0.5px;
+}
+
+#root{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.btn {
+  background: var(--primaryColor);
+  color: var(--accentColor);
+
+}
+
+
+.App {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.MainLoader {
+  width: 100%;
+  height: 100%;
+  background: var(--accentColor);
+  position: fixed;
+  z-index: 1000;
+}
+
+
+/*---- MainLogin --------*/
+
+
+.MainLogin {
+  width: 100%;
+  height: 100%;
+  background-image: url(./bg/bg_1.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  padding: 0px;
+  margin: 0px;
+}
+
+
+.MainLogin .loginBox {
+  min-height: 100vh;
+  width: 40%;
+  background-color: var(--accentColor);
+  position: absolute;
+  right: 0;
+  box-shadow: 1px 2px 5px 6px rgba(0, 0, 0, 0.2);
+  height: auto;
+  padding: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.MainLogin form {
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 512px){
+  .MainLogin .loginBox {
+    min-height: 50vh;
+    width: 300px;
+    background-color: var(--accentColor);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+/*---- TopBar --------*/
+
+.TopBar {
+  width: 100%;
+  background: var(--primaryColor);
+  z-index: 900;
+  height: 70px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.8);
+  position: fixed;
+  background-image: url(./bg/bg_1.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: left;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.TopBar .container{
+  height: 100%;
+}
+
+.TopBar .d-flex{
+  height: 100%;
+}
+
+.TopBar .flex-row{
+  height: 100%;
+}
+
+.TopBar #closeMenuBtn {
+  display: none;
+  cursor: pointer;
+}
+
+.TopBar #openMenuBtn {
+  display: block;
+  cursor: pointer;
+}
+
+/*---- SideBar --------*/
+.SideBar {
+  width: 350px;
+  background: var(--primaryColor);
+  z-index: 800;
+  top: 70px;
+  left:0px;
+  bottom: 0px;
+  height: 100vh;
+  box-shadow: 3px 0px 6px rgba(0,0,0,0.8);
+  position: fixed;
+  background-image: url(./bg/bg_1.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: left;
+  padding: 0px;
+  margin: 0px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.SideBar::-webkit-scrollbar {
+  display: none;
+}
+
+.SideBar .cover {
+  width: !00%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0px;
+  margin: 0px;
+}
+
+.SideBar .menuItem{
+  color: var(--accentColor);
+  padding: 15px;
+  cursor: pointer;
+}
+
+.SideBar .menuItem:hover{
+  color: var(--secondaryColor);
+}
+
+.SideBar .selectedItem{
+  color: var(--secondaryColor);
+}
+
+.SideBar .menuItem h5{
+  font-size: 13px;
+}
+
+@media only screen and (max-width: 512px){
+  .SideBar {
+    width: 300px;
+  }
+}
+
+
+
+
+/*---- MainBody --------*/
+.MainBody {
+  z-index: 800;
+  top: 70px;
+  left: 350px;
+  bottom: 0px;
+  right: 0px;
+  position: fixed;
+  height: 100vh;
+  overflow-y:scroll;
+  padding: 0px;
+  margin: 0px;
+}
+
+@media only screen and (max-width: 512px){
+  .MainBody {
+    left: 300px;
+  }
+}
+
+
+/*------SideBar, MainBody Behavior ---*/
+.closedSideBar{
+  left: -360px;
+}
+
+.openedSideBar{
+  left:0px;
+}
+
+.closedMainBody{
+  left: 350px;
+}
+
+.openedMainBody {
+  left: 0px;
+}
+
+@media only screen and (max-width: 512px){
+  .closedSideBar{
+    left: -310px;
+  }
+
+  .openedSideBar{
+    left:0px;
+  }
+
+  .closedMainBody{
+    left: 300px;
+  }
+
+  .openedMainBody {
+    left: 0px;
+  }
 }
