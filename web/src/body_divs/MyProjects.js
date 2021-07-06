@@ -22,7 +22,7 @@ class MyProjects extends Component{
   renderAddProject(){
     return (
       <div className="MyProjects">
-        <h3 style={{ marginTop:"20px", marginBottom:"10px" }}>Add New Project</h3>
+        <h3 style={{ marginTop:"20px", marginBottom:"10px" }}>Add Project</h3>
 
         <div className="row">
           <div className="col-12 inDivNavBar">
@@ -35,7 +35,16 @@ class MyProjects extends Component{
         </div>
 
         <div className="row">
-          
+          <div className="col-sm-12 col-md-6">
+            <div className="form-group">
+              <label>Project Title</label>
+              <input className="form-control"/>
+            </div>
+            <div className="form-group">
+              <label>Project Category</label>
+              <select className="form-control"></select>
+            </div>
+          </div>
         </div>
       </div>
     );
