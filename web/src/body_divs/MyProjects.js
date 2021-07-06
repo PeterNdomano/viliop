@@ -35,14 +35,74 @@ class MyProjects extends Component{
         </div>
 
         <div className="row">
-          <div className="col-sm-12 col-md-6">
+          <div className="col-sm-12 col-md-6" style={{ marginTop: "20px"}}>
+            <h5 style={{ color:"var(--faintDark)", width: "100%", borderBottom: "1px solid var(--primaryColor)" }}>Project Details</h5>
             <div className="form-group">
-              <label>Project Title</label>
+              <label>Title</label>
               <input className="form-control"/>
             </div>
             <div className="form-group">
-              <label>Project Category</label>
-              <select className="form-control"></select>
+              <label>Privacy</label>
+              <select className="form-control">
+                <option value="Private">Private - It won't be visible in newsfeed & explore</option>
+                <option value="Public">Public - Will be visible in newsfeed & explore</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label>Category</label>
+              <select className="form-control">
+                <option value="Website">Website</option>
+                <option value="Mobile App">Mobile App</option>
+                <option value="Desktop App">Desktop App</option>
+                <option value="Multiplatform Software">Multiplatform Software</option>
+                <option value="Blockchain App">Blockchain App</option>
+                <option value="AI Model">AI Model</option>
+                <option value="Others">Others</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label>Specify Category</label>
+              <input className="form-control"/>
+            </div>
+            <div className="form-group">
+              <label>Short Description (200 characters)</label>
+              <textarea className="form-control"></textarea>
+            </div>
+            <div className="form-group">
+              <label>Project Start Date</label>
+              <input className="form-control"/>
+            </div>
+          </div>
+
+          <div className="col-sm-12 col-md-6" style={{ marginTop: "20px"}}>
+            <h5 style={{ color:"var(--faintDark)", width: "100%", borderBottom: "1px solid var(--primaryColor)" }}>Presentation files (Only Images or PDFs)</h5>
+            <div className="form-group">
+              <label>File #1</label>
+              <input className="form-control" type="file"/>
+            </div>
+            <div className="form-group">
+              <label>File #2</label>
+              <input className="form-control" type="file"/>
+            </div>
+            <div className="form-group">
+              <label>File #3</label>
+              <input className="form-control" type="file"/>
+            </div>
+          </div>
+
+          <div className="col-sm-12 col-md-12" style={{ marginTop: "20px"}}>
+            <h5 style={{ color:"var(--faintDark)", width: "100%", borderBottom: "1px solid var(--primaryColor)" }}>Tasks</h5>
+            <div className="form-group">
+              <label>File #1</label>
+              <input className="form-control" type="file"/>
+            </div>
+            <div className="form-group">
+              <label>File #2</label>
+              <input className="form-control" type="file"/>
+            </div>
+            <div className="form-group">
+              <label>File #3</label>
+              <input className="form-control" type="file"/>
             </div>
           </div>
         </div>
