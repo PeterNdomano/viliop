@@ -3,6 +3,7 @@ import logo from '../logo.svg';
 import MainLoader from './MainLoader';
 import MainLogin from './MainLogin';
 import MainBody from './MainBody';
+import MainIntro from './MainIntro';
 import SideBar from './SideBar';
 import TopBar from './TopBar';
 import $ from 'jquery';
@@ -25,7 +26,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    this.authCallback();
+    //this.authCallback();
   }
 
   showLoader = (show) => {
@@ -84,14 +85,24 @@ class App extends Component {
       </div>
     )
   }
+
+  renderIntro(){
+    return (
+      <div className="App">
+        <MainLoader show={this.state.showLoader}/>
+        <MainIntro showLoader={this.showLoader} authCallback={this.authCallback}/>
+      </div>
+    )
+  }
   render() {
+    return this.renderLogin();
     //console.log(this.state.role);
-    if(this.state.auth){
-      return this.renderMainBody();
-    }
-    else{
-      return this.renderLogin();
-    }
+    // if(this.state.auth){
+    //   return this.renderMainBody();
+    // }
+    // else{
+    //   return this.renderLogin();
+    // }
   }
 }
 
