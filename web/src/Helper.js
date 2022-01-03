@@ -1,1 +1,1 @@
-export const MAIN_URL = '/github_projects/kahawa-motors/api/';
+export const MAIN_URL = '/github_projects/viliop/api/';
