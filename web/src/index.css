@@ -10,12 +10,14 @@
   transition: all 0.2s ease-in;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&family=Roboto+Mono&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap');
+
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  font-family: Verdana, sans-serif;
+  font-family: 'Quicksand', sans-serif;
   background: var(--accentColor);
   color: var(--darkColor);
   letter-spacing: -0.5px;
@@ -73,21 +75,69 @@ html, body {
   right: 0;
   box-shadow: 1px 2px 5px 6px rgba(0, 0, 0, 0.2);
   height: auto;
+
+}
+
+
+.MainIntro .introBox .introText{
+  position: absolute;
+  top:50%;
+  width: 100%;
+  padding: 10px;
+  transform: translateY(-50%)
+}
+
+
+.MainIntro .logoBox {
+  min-height: 100vh;
+  width: 60%;
+  background-color: none;
+  position: absolute;
+  left: 0;
+  height: auto;
   padding: 10px;
   padding-top: 30px;
   padding-bottom: 30px;
 }
 
+.MainIntro .logoBox img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+}
+
 
 @media only screen and (max-width: 512px){
   .MainIntro .introBox {
-    min-height: 50vh;
-    width: 300px;
+    min-height: 60vh;
+    width: 100%;
     background-color: var(--accentColor);
+    position: absolute;
+    top: 30vh;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  .MainIntro .logoBox {
+    min-height: 30vh;
+    width: 300px;
+    background-color: none;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    height: auto;
+    padding: 10px;
+
+  }
+
+  .MainIntro .logoBox img {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 250px;
   }
 }
 

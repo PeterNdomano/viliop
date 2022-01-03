@@ -53,7 +53,7 @@ class MainLogin extends Component {
           }}>
             <h2>Welcome Back!</h2>
             <div className="form-group">
-              <label>Username</label>
+              <label>Email</label>
               <input className="form-control" type="text" required id="phone"/>
             </div>
             <div className="form-group">
@@ -66,6 +66,7 @@ class MainLogin extends Component {
             </div>
           </form>
         </div>
+        
       </div>
     );
   }

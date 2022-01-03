@@ -95,14 +95,7 @@ class App extends Component {
     )
   }
   render() {
-    return this.renderLogin();
-    //console.log(this.state.role);
-    // if(this.state.auth){
-    //   return this.renderMainBody();
-    // }
-    // else{
-    //   return this.renderLogin();
-    // }
+    return this.renderIntro();
   }
 }
 
