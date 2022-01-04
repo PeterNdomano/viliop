@@ -42,29 +42,54 @@ class App extends Component {
     });
   }
 
-  authCallback = () => {
-    //handle noisy auth check
-    this.showLoader(true);
-    $.post(MAIN_URL + 'auth.php', { }, (data, status) => {
-      this.showLoader(false);
-      //console.log(data);
+  authCallback = (noisy = true) => {
 
-      if(status === 'success'){
-        let response = JSON.parse(data);
-        if(response.status === 1){
-          this.setState({
-            auth: true,
-            role: response.role,
-          })
+    if(noisy){
+      //handle noisy auth check
+      this.showLoader(true);
+      $.post(MAIN_URL + 'auth.php', { }, (data, status) => {
+        this.showLoader(false);
+        //console.log(data);
+
+        if(status === 'success'){
+          let response = JSON.parse(data);
+          if(response.status === 1){
+            this.setState({
+              auth: true,
+              role: response.role,
+            })
+          }
+          else{
+            toast.message(response.msg);
+          }
         }
         else{
-          toast.message(response.msg);
+          toast.message('Connection error');
         }
-      }
-      else{
-        toast.message('Connection error');
-      }
-    });
+      });
+    }
+    else{
+      //just check auth without user noticing
+      this.showLoader(true);
+      $.post(MAIN_URL + 'auth.php', { }, (data, status) => {
+
+        if(status === 'success'){
+          let response = JSON.parse(data);
+          if(response.status === 1){
+            this.setState({
+              auth: true,
+              role: response.role,
+            })
+          }
+          else{
+            //toast.message(response.msg);
+          }
+        }
+        else{
+          //toast.message('Connection error');
+        }
+      });
+    }
   }
 
   requestSignIn = () => {
@@ -94,7 +119,7 @@ class App extends Component {
     return (
       <div className="App">
         <MainLoader show={this.state.showLoader}/>
-        <MainLogin showLoader={this.showLoader} authCallback={this.authCallback}/>
+        <MainLogin requestSignUpCallback={this.requestSignUp} showLoader={this.showLoader} authCallback={this.authCallback}/>
       </div>
     )
   }
@@ -103,7 +128,7 @@ class App extends Component {
     return (
       <div className="App">
         <MainLoader show={this.state.showLoader}/>
-        <MainRegister showLoader={this.showLoader} authCallback={this.authCallback}/>
+        <MainRegister requestSignInCallback={this.requestSignIn} showLoader={this.showLoader} authCallback={this.authCallback}/>
       </div>
     )
   }

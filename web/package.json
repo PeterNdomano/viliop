@@ -19,6 +19,7 @@
     "siiimple-toast": "^3.1.7",
     "web-vitals": "^2.1.2"
   },
+  "proxy": "http://localhost:80",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
