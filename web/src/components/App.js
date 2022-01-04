@@ -67,6 +67,18 @@ class App extends Component {
     });
   }
 
+  requestSignIn = () => {
+    this.setState({
+      signPageReq: 'signIn',
+    })
+  }
+
+  requestSignUp = () => {
+    this.setState({
+      signPageReq: 'signUp',
+    })
+  }
+
   renderMainBody(){
     return (
       <div className="App">
@@ -100,7 +112,7 @@ class App extends Component {
     return (
       <div className="App">
         <MainLoader show={this.state.showLoader}/>
-        <MainIntro showLoader={this.showLoader} authCallback={this.authCallback}/>
+        <MainIntro requestSignInCallback={this.requestSignIn} requestSignUpCallback={this.requestSignUp} showLoader={this.showLoader} authCallback={this.authCallback}/>
       </div>
     )
   }

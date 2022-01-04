@@ -50,9 +50,25 @@ class MainIntro extends Component {
                 width: "100%",
               }}
             >
-              <button className="btn"> Sign In <MdLogin/>  </button>
+              <button className="btn"
+                onClick = {
+                  () => {
+                    this.props.requestSignInCallback()
+                  }
+                }
+              >
+                Sign In <MdLogin/>
+              </button>
               &nbsp;&nbsp;
-              <button className="btn"> Sign Up <MdLogin/>  </button>
+              <button className="btn"
+                onClick = {
+                  () => {
+                    this.props.requestSignUpCallback()
+                  }
+                }
+              >
+                Sign Up <MdLogin/>
+              </button>
               <hr/>
 
             </div>
