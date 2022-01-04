@@ -7,8 +7,10 @@ import 'bootstrap';
 import 'popper.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'siiimple-toast/dist/style.css';
+import 'animate.css';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import './index.css';
+
 
 ReactDOM.render(
   <App />,

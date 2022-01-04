@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from '../logo.svg';
 import MainLoader from './MainLoader';
 import MainLogin from './MainLogin';
+import MainRegister from './MainRegister';
 import MainBody from './MainBody';
 import MainIntro from './MainIntro';
 import SideBar from './SideBar';
@@ -19,8 +20,8 @@ class App extends Component {
     this.state = {
       showLoader: false,
       auth: false,
-      role: null,
       navTo: 'new_client',
+      signPageReq: null,
     }
 
   }
@@ -86,6 +87,15 @@ class App extends Component {
     )
   }
 
+  renderRegister(){
+    return (
+      <div className="App">
+        <MainLoader show={this.state.showLoader}/>
+        <MainRegister showLoader={this.showLoader} authCallback={this.authCallback}/>
+      </div>
+    )
+  }
+
   renderIntro(){
     return (
       <div className="App">
@@ -95,7 +105,25 @@ class App extends Component {
     )
   }
   render() {
-    return this.renderIntro();
+    if(this.state.auth){
+      return this.renderMainBody();
+    }
+    else{
+      if(this.state.signPageReq === null){
+        return this.renderIntro();
+      }
+      else{
+        if(this.state.signPageReq === 'signIn'){
+          return this.renderLogin();
+        }
+        else if(this.state.signPageReq === 'signUp'){
+          return this.renderRegister();
+        }
+        else{
+          return this.renderIntro();
+        }
+      }
+    }
   }
 }
 

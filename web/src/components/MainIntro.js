@@ -25,6 +25,7 @@ class MainIntro extends Component {
               fontSize: "60px",
               fontWeight: "400",
               fontFamily: "Rubik",
+              color: "var(--primaryColor)",
             }}>Project Manager</span> <br/> For
             <span style={{
               fontFamily: "sans"
@@ -35,13 +36,58 @@ class MainIntro extends Component {
             <div
               style={{
                 width: "100%",
-                height: "2px",
-                backgroundColor: "var(--secondaryColor)",
+                height: "5px",
+                marginTop: "20px",
+                marginBottom: "20px",
+                backgroundColor: "var(--primaryColor)",
               }}
             >
             </div>
+
+            <div
+              className="text-left"
+              style={{
+                width: "100%",
+              }}
+            >
+              <button className="btn"> Sign In <MdLogin/>  </button>
+              &nbsp;&nbsp;
+              <button className="btn"> Sign Up <MdLogin/>  </button>
+              <hr/>
+
+            </div>
+
+            <div
+              className="text-left"
+              style={{
+                width: "100%",
+              }}
+            >
+              <h6>
+                Open Source & Completely Free <br/>
+              </h6>
+              <h6>
+                <button className="btn btn-sm">Fork</button>
+                &nbsp;Or&nbsp;
+                <button className="btn btn-sm">Star</button>
+                &nbsp;on Github
+              </h6>
+
+
+            </div>
           </div>
+          <h6
+            style={{
+              position: 'absolute',
+              bottom: '0px',
+              right: '10px',
+              fontSize: '14px',
+            }}
+          >
+            <a href="https://github.com/PeterNdomano">&copy;PeterNdomano</a>
+          </h6>
         </div>
+
       </div>
     );
   }
