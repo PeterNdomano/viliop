@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $email = htmlspecialchars($_POST['email']);
     $password = $_POST['password'];
 
-    $ffo = User::register($email, $password);
+    $ffo = User::login($email, $password);
     echo json_encode($ffo);
   }
   else{
