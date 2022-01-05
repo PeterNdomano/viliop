@@ -11,6 +11,13 @@ class TopBar extends Component {
     super(props);
   }
 
+  componentDidMount(){
+    //console.log($(window).width());
+    // if($(window).width() > 760){
+    //   this.openMenu()
+    // }
+  }
+
   openMenu(){
     $('#mainBody').removeClass('openedMainBody');
     $('#mainBody').addClass('closedMainBody');
@@ -40,7 +47,7 @@ class TopBar extends Component {
           <div className="d-flex flex-row">
             <div id="openMenuBtn" className="p-2 align-self-center"><MdMenu size={30} color="var(--accentColor)" onClick={ () => this.openMenu() }/></div>
             <div id="closeMenuBtn" className="p-2 align-self-center"><MdClose size={30} color="var(--accentColor)"  onClick={ () => this.closeMenu() }/></div>
-            <h3 className="align-self-center" style={{ paddingTop: "10px", fontSize: "25px", color: "var(--accentColor)"}}>Kahawa Motors</h3>
+            <h3 className="align-self-center" style={{ paddingTop: "10px", fontSize: "25px", color: "var(--accentColor)"}}>Viliop</h3>
           </div>
         </div>
       </div>

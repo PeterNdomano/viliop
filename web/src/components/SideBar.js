@@ -38,112 +38,112 @@ class SideBar extends Component {
             <div className="row">
               <div className="col-4 text-center menuItem"
                 onClick={ () => {
-                  this.props.navCallback('new_client');
+                  this.props.navCallback('my_projects');
                   this.closeMenu();
                 }}
               >
                 <MdLibraryAdd size={40}/>
-                <h5>New Client</h5>
+                <h5>My Projects</h5>
               </div>
 
               <div className="col-4 text-center menuItem"
                 onClick={ () => {
-                  this.props.navCallback('all_clients');
+                  this.props.navCallback('teams');
                   this.closeMenu();
                 }}
               >
                 <MdPeople size={40}/>
-                <h5>All Clients</h5>
+                <h5>Teams</h5>
               </div>
 
               <div className="col-4 text-center menuItem"
                 onClick={ () => {
-                  this.props.navCallback('accounts');
+                  this.props.navCallback('my_account');
                   this.closeMenu();
                 }}
               >
                 <MdAssignment size={40}/>
-                <h5>Accounts</h5>
+                <h5>My Account</h5>
               </div>
 
               <div className="col-4 text-center menuItem"
                 onClick={ () => {
-                  this.props.navCallback('parts_shop');
+                  this.props.navCallback('wiki');
                   this.closeMenu();
                 }}
               >
                 <MdCalendarViewMonth size={40}/>
-                <h5>Parts Shop</h5>
+                <h5>Wiki</h5>
               </div>
 
               <div className="col-4 text-center menuItem"
                 onClick={ () => {
-                  this.props.navCallback('debts');
+                  this.props.navCallback('messages');
                   this.closeMenu();
                 }}
               >
                 <MdVerticalSplit size={40}/>
-                <h5>Debts</h5>
+                <h5>Messages</h5>
               </div>
 
               <div className="col-4 text-center menuItem"
                 onClick={ () => {
-                  this.props.navCallback('expenses');
+                  this.props.navCallback('notifications');
                   this.closeMenu();
                 }}
               >
                 <MdTableView size={40}/>
-                <h5>Expenses</h5>
+                <h5>Notifications</h5>
               </div>
 
               <div className="col-4 text-center menuItem"
                 onClick={ () => {
-                  this.props.navCallback('ledgers');
+                  this.props.navCallback('explore');
                   this.closeMenu();
                 }}
               >
                 <MdDns size={40}/>
-                <h5>Ledgers</h5>
+                <h5>Explore</h5>
               </div>
 
               <div className="col-4 text-center menuItem"
                 onClick={ () => {
-                  this.props.navCallback('purchases');
+                  this.props.navCallback('jobs');
                   this.closeMenu();
                 }}
               >
                 <MdShoppingCart size={40}/>
-                <h5>Purchases</h5>
+                <h5>Jobs</h5>
               </div>
 
               <div className="col-4 text-center menuItem"
                 onClick={ () => {
-                  this.props.navCallback('settings');
+                  this.props.navCallback('contact');
                   this.closeMenu();
                 }}
               >
                 <MdAnalytics size={40}/>
-                <h5>Analysis</h5>
+                <h5>Contact us</h5>
               </div>
 
               <div className="col-4 text-center menuItem"
                 onClick={ () => {
-                  this.props.navCallback('settings');
+                  this.props.navCallback('donate');
                   this.closeMenu();
                 }}
               >
                 <MdSettings size={40}/>
-                <h5>Settings</h5>
+                <h5>Donate</h5>
               </div>
 
               <div className="col-4 text-center menuItem"
                 onClick={ () => {
-                  this.props.navCallback('settings');
+                  this.props.navCallback('logout');
                   this.closeMenu();
                 }}
               >
                 <MdLogout size={40}/>
-                <h5>Settings</h5>
+                <h5>Log Out</h5>
               </div>
             </div>
           </div>

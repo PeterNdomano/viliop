@@ -21,7 +21,7 @@ class App extends Component {
       showLoader: false,
       auth: false,
       accountStatus: 0,
-      navTo: 'new_client',
+      navTo: 'my_projects',
       signPageReq: null,
     }
 
