@@ -1,7 +1,7 @@
 <?php
 
-require_once '../conn.php';
-require_once '../functions.php';
+require_once './conn.php';
+require_once './functions.php';
 
 /**
  * Handles all user activities
@@ -16,10 +16,10 @@ class User
 
   public static function sendOtp($id){
     global $conn;
-    $userData = self::getUserData();
+    $userData = self::getUserData($id);
     if($userData !== false){
       $otp = rand(123456, 987654);
-      $otpExpiry = time() + (30 * 60) //expires after 30 mins
+      $otpExpiry = time() + (30 * 60); //expires after 30 mins
       $sql = $conn->prepare("UPDATE users SET otp = ?, otpExpiry = ? WHERE id = ?");
       $sql->bind_param('sss', $otp, $otpExpiry, $id);
       $sql->execute();
@@ -33,7 +33,8 @@ class User
     $sql = $conn->prepare("SELECT * FROM users WHERE id = ? OR email = ?");
     $sql->bind_param('ss', $id, $id);
     $sql->execute();
-    $row = mysqli_fetch_assoc($sql->result);
+    $result = $sql->get_result();
+    $row = mysqli_fetch_assoc($result);
     if(isset($row['id'])){
       if($row['id'] > 0){
         return $row;
@@ -121,6 +122,7 @@ class User
 
   public function getData(){
     $data = self::getUserData($this->id);
+    return $data;
   }
 
   public function verifyUser(){

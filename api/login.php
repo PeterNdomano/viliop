@@ -9,8 +9,18 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $email = htmlspecialchars($_POST['email']);
     $password = $_POST['password'];
 
-    $ffo = User::login($email, $password);
-    echo json_encode($ffo);
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+      $ffo = User::login($email, $password);
+      echo json_encode($ffo);
+    }
+    else{
+      echo json_encode(array(
+        'status' => 0,
+        'msg' => 'Invalid details',
+      ));
+    }
+
+
   }
   else{
     echo json_encode(array(

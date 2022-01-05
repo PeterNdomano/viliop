@@ -20,6 +20,7 @@ class App extends Component {
     this.state = {
       showLoader: false,
       auth: false,
+      accountStatus: 0,
       navTo: 'new_client',
       signPageReq: null,
     }
@@ -27,7 +28,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    //this.authCallback();
+    this.authCallback();
   }
 
   showLoader = (show) => {
@@ -50,13 +51,12 @@ class App extends Component {
       $.post(MAIN_URL + 'auth.php', { }, (data, status) => {
         this.showLoader(false);
         //console.log(data);
-
         if(status === 'success'){
           let response = JSON.parse(data);
           if(response.status === 1){
             this.setState({
               auth: true,
-              role: response.role,
+              accountStatus: response.accountStatus,
             })
           }
           else{
@@ -78,7 +78,7 @@ class App extends Component {
           if(response.status === 1){
             this.setState({
               auth: true,
-              role: response.role,
+              accountStatus: response.accountStatus,
             })
           }
           else{

@@ -25,6 +25,7 @@ class MainRegister extends Component {
           this.props.showLoader(true);
           $.post(MAIN_URL+'register.php', { email, password }, (data, status) => {
             this.props.showLoader(false);
+            //console.log(data);
             if(status === 'success'){
               let response = JSON.parse(data);
               if(response.status === 1){
