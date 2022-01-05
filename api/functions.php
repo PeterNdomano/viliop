@@ -8,6 +8,22 @@ function startSession(){
   }
 }
 
+function isPostFieldValid($key){
+  if(isset($_POST[$key])){
+    if(!empty(trim($_POST[$key]))){
+      return true;
+    }
+  }
+  return false;
+}
 
+function isGetFieldValid($key){
+  if(isset($_GET[$key])){
+    if(!empty(trim($_GET[$key]))){
+      return true;
+    }
+  }
+  return false;
+}
 
 ?>

@@ -170,6 +170,19 @@ class User
 
     return $ffo;
   }
+
+  public function auth(){
+    startSession();
+    if(isset($_SESSION['userId']) && isset($_SESSION['userToken'])){
+      $userData = self::getUserData(htmlspecialchars($_SESSION['userId']));
+      if($userData !== false){
+        if($_SESSION['userToken'] === $userData['token']){
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 }
 
 
