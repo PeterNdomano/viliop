@@ -15,7 +15,7 @@ class MainBody extends Component {
     return (
       <div className="MainBody openedMainBody" id="mainBody">
         <div className="container">
-          <MyProjects showLoader={this.props.showLoader}/>
+          <MyProjects showLoader={this.props.showLoader} navCallback={this.props.navCallback}/>
         </div>
       </div>
     );

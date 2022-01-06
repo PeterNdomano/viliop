@@ -26,4 +26,13 @@ function isGetFieldValid($key){
   return false;
 }
 
+function getSystemParams(){
+  global $conn;
+  $sql = $conn->prepare("SELECT * FROM systemParams WHERE id = 1");
+  $sql->execute();
+  $result = $sql->get_result();
+  $row = mysqli_fetch_assoc($result);
+  return $row;
+}
+
 ?>

@@ -2,7 +2,9 @@
   --primaryColor: brown;
   --accentColor: #fefefe;
   --darkColor: black;
-  --secondaryColor: yellow;
+  --faintDark: #595856;
+  --faintAccent: #f5f3f0;
+  --secondaryColor: #edc111;
   --maxMobileWidth: 512px;
 }
 
@@ -349,4 +351,74 @@ html, body {
   .openedMainBody {
     left: 0px;
   }
+}
+
+/*--------------- inDivNavBar ---------------*/
+.inDivNavBar{
+  color: var(--primaryColor);
+}
+
+.inDivNavBar .ind{
+  color: var(--secondaryColor);
+}
+
+.inDivNavBar .parent{
+  font-weight: 600 !important;
+}
+
+.inDivNavBar .item{
+  cursor: pointer;
+  font-weight: 200;
+}
+
+.inDivNavBar .item:hover{
+  color: var(--darkColor);
+}
+
+/*----------------MyProjects -----------------*/
+.MyProjects{
+  width: 100%;
+  padding:0;
+  margin: 0;
+}
+
+.MyProjects .projectsSubList{
+  width: 100%;
+  padding: 0px;
+}
+
+
+
+.MyProjects .projectsSubList .item{
+  width: 100%;
+  padding: 10px;
+  border-bottom: 2px solid var(--faintAccent);
+}
+
+.MyProjects .projectsSubList .item:hover{
+  background: var(--faintAccent);
+}
+
+.MyProjects .projectsSubList .menuBtns{
+  width: 100%;
+  padding-top: 2px;
+}
+
+.MyProjects .projectsSubList .menuBtns button{
+  background: none !important;
+  color: var(--primaryColor);
+  border: 1px solid var(--faintAccent);
+}
+
+.MyProjects .projectsSubList .menuBtns button:hover{
+  background: var(--secondaryColor) !important;
+  color: var(--darkColor);
+}
+
+.MyProjects .projectsSubList .item .title{
+  color: var(--faintDark);
+}
+
+.MyProjects .projectsSubList .item .category{
+  font-size: 12px;
 }
