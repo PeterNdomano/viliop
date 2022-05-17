@@ -1,17 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-      </header>
-    </div>
-  );
+export default class App {
+  constructor(props){
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Welcome dear user</h1>
+      </div>
+    )
+  }
 }
-
-export default App;
