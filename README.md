@@ -1,5 +1,4 @@
 # viliop
-Integrated Pentesting Environment
-Creared with NodeJS, Javascript, React and Electron
+Integrated Pentesting Environment powered by Javascript & Typescript
 
 Work in progress.......
