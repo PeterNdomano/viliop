@@ -1,9 +1,11 @@
 /* General Stylying */
 :root {
-  --primaryColor: blue;
-  --secondaryColor: yellow;
-  --darkColor: black;
-  --accentColor: gray;
+  --primaryColor: #0c0769; /* bluish */
+  --secondaryColor: #fefefe; /* whitish */
+  --darkColor: #0f0f0f; /* blackish */
+  --accentColor: #f78b07; /* yellowish or goldish */
+  --dangerColor: #d40f04; /* reddish */
+  --faintDark: #2b2b2b; /* Grayish */
 }
 
 body,
