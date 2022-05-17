@@ -14,5 +14,8 @@
     "pentesting"
   ],
   "author": "PeterNdomano",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^18.2.3"
+  }
 }
