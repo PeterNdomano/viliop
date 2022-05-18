@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { tellUser } from './Helper';
-import 'react-toastify/dist/ReactToastify.css';
+import TTab from './main-tabs/TTab';
+import PTab from './main-tabs/PTab';
+import CTab from './main-tabs/CTab';
 
 
 export default class App extends Component {
@@ -11,10 +13,11 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
         <ToastContainer/>
-
-        <h1 onClick={() => { tellUser('Hey there...') }}>Welcome dear user</h1>
+        <TTab/>
+        <PTab/>
+        <CTab/>
       </div>
     )
   }
