@@ -7,7 +7,7 @@ export default class PTab extends Component {
 
   render() {
     return (
-      <div className="PTab">
+      <div className="PTab" id="pTab">
 
       </div>
     )
