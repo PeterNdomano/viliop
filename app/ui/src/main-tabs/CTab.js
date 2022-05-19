@@ -8,7 +8,9 @@ export default class CTab extends Component {
   render() {
     return (
       <div className="CTab">
-
+       <h1>
+          hhhhhhh hhhhhhhhhhhhh ccccccccccccccccc bbbbbbbbbbbbb1 xxxxxxxxxxxxxxxx bbbbbbbbbbbbb vvvvvvvvv 
+       </h1>
       </div>
     )
   }

@@ -10,7 +10,7 @@
 
   /* Tab Dimensions */
   --tTabHeight: 60px;
-  --cTabHeight: 400px;
+  --cTabHeight: 250px;
   --pTabWidth: 300px;
 
   /* Z index */
@@ -67,11 +67,10 @@ html {
 /* CTab styling */
 .App .CTab {
   position: fixed;
-  width: 100%;
-  left: var(--pTabWidth);
-  right: 0;
-  bottom: 0;
-  background: red;
-  z-index: var(--highLevelZindex);
+  width: calc(100% - var(--pTabWidth));
+  height: var(--cTabHeight);
   border: 1px solid var(--faintDark);
+  z-index: var(--highLevelZindex);
+  left: var(--pTabWidth);
+  bottom: 0;
 }
