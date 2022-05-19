@@ -74,3 +74,15 @@ html {
   left: var(--pTabWidth);
   bottom: 0;
 }
+
+/* WTab styling */
+.App .WTab {
+  position: fixed;
+  width: calc(100% - var(--pTabWidth));
+  height: calc(100% - (var(--cTabHeight) + var(--tTabHeight)));
+  border: 1px solid var(--faintDark);
+  z-index: var(--highLevelZindex);
+  left: var(--pTabWidth);
+  top: var(--tTabHeight);
+  background: red;
+}

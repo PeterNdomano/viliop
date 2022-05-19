@@ -4,6 +4,7 @@ import { tellUser } from './Helper';
 import TTab from './main-tabs/TTab';
 import PTab from './main-tabs/PTab';
 import CTab from './main-tabs/CTab';
+import WTab from './main-tabs/WTab';
 
 
 export default class App extends Component {
@@ -17,6 +18,7 @@ export default class App extends Component {
         <ToastContainer/>
         <TTab/>
         <PTab/>
+        <WTab/>
         <CTab/>
       </div>
     )
