@@ -8,7 +8,7 @@ export default class WTab extends Component {
   render() {
     return (
       <div className="WTab" id="wTab">
-        <h2>asdfghjk sdfghj ertyui</h2>
+      
       </div>
     )
   }
