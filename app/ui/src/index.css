@@ -14,6 +14,7 @@
   --pTabWidth: 300px;
 
   /* Z index */
+  --ultraLevelZindex: 1200;
   --highestLevelZindex: 1100;
   --highLevelZindex: 1000;
   --midLevelZindex: 900;
@@ -51,7 +52,7 @@ html {
   top: 0;
   left: 0;
   right: 0;
-  z-index: var(--highLevelZindex);
+  z-index: var(--highestLevelZindex);
   background: var(--faintDark);
   overflow: hidden;
 }
@@ -66,10 +67,13 @@ html {
   height: calc(var(--tTabHeight) * 0.8);
 }
 
-.App .TTab .menuItem:hover,
-.App .TTab .menuItem[data-selected='true'] {
+.App .TTab .menuItem:hover {
   background: var(--darkColor);
   color: var(--secondaryColor);
+}
+
+.App .TTab .menuItemSelected {
+  color: var(--secondaryColor) !important;
 }
 
 .App .TTab .menuItem > .mIcon {
@@ -104,7 +108,7 @@ html {
   top: var(--tTabHeight);
   left: 0;
   bottom: 0;
-  z-index: var(--highLevelZindex);
+  z-index: var(--midLevelZindex);
   border-right: 1px solid var(--faintDark);
 }
 
@@ -114,7 +118,7 @@ html {
   width: calc(100% - var(--pTabWidth));
   height: var(--cTabHeight);
   border: 1px solid var(--faintDark);
-  z-index: var(--highLevelZindex);
+  z-index: var(--midLevelZindex);
   left: var(--pTabWidth);
   bottom: 0;
 }
@@ -125,17 +129,31 @@ html {
   width: calc(100% - var(--pTabWidth));
   height: calc(100% - (var(--cTabHeight) + var(--tTabHeight)));
   border: 1px solid var(--faintDark);
-  z-index: var(--highLevelZindex);
+  z-index: var(--midLevelZindex);
   left: var(--pTabWidth);
   top: var(--tTabHeight);
 }
 
 /* SECTION: WIDGETS */
 
+/* RPanel Styling */
+.RPanel{
+  z-index: var(--highLevelZindex);
+  width: 100vw;
+  height: 100vh;
+  padding-bottom: var(--tTabHeight);
+  position: fixed;
+  top: var(--tTabHeight);
+  left: 100vw;
+  bottom: 0;
+  background: var(--faintDark);
+  transition: left 0.4s ease;
+}
+
 /* ContextMenu Styling */
 .ContextMenu {
   position: fixed;
-  z-index: var(--highestLevelZindex);
+  z-index: var(--ultraLevelZindex);
   width: 200px;
   min-height: 200px;
   max-height: 300px;
@@ -147,7 +165,7 @@ html {
 /* ContextMenu Styling */
 .ToolbarMenu {
   position: fixed;
-  z-index: var(--highestLevelZindex);
+  z-index: var(--ultraLevelZindex);
   width: 300px;
   top: var(--tTabHeight);
   height: auto;

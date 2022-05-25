@@ -5,6 +5,7 @@ import TTab from './main-tabs/TTab';
 import PTab from './main-tabs/PTab';
 import CTab from './main-tabs/CTab';
 import WTab from './main-tabs/WTab';
+import RPanel from './panels/RPanel';
 import ContextMenu from './components/ContextMenu';
 import ToolbarMenu from './components/ToolbarMenu';
 
@@ -71,6 +72,10 @@ export default class App extends Component {
           navSubItem={this.state.navSubItem}
           toolbarMenuCallback={this.toolbarMenuCallback}
           contextMenuCallback={this.contextMenuCallback}
+        />
+        <RPanel
+          navItem={this.state.navItem}
+          navSubItem={this.state.navSubItem}
         />
         <PTab/>
         <WTab/>

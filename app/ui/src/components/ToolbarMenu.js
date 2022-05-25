@@ -51,7 +51,7 @@ export default class ToolbarMenu extends Component {
 
   handleOuterClicks = (e) => {
     if(this.props.show === true) {
-      let menu = document.getElementById('ToolbarMenu');
+      let menu = document.getElementById('toolbarMenu');
       if(menu){
         if(menu.contains(e.target)) {
           //activate the selected option or do nothing
@@ -76,18 +76,19 @@ export default class ToolbarMenu extends Component {
 
 
   render() {
+
     if(this.props.show === true && this.state.toolbarMenuKey.length > 0) {
       return (
         <div
           className="ToolbarMenu z-depth-2"
-          id="ToolbarMenu"
+          id="toolbarMenu"
           style={{ left: this.props.left }}>
           {this.optionsView}
         </div>
       )
     }
     else {
-      <div id="ToolbarMenu"></div>
+      <div id="toolbarMenu"></div>
     }
   }
 
