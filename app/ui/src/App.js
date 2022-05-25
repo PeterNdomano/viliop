@@ -5,18 +5,55 @@ import TTab from './main-tabs/TTab';
 import PTab from './main-tabs/PTab';
 import CTab from './main-tabs/CTab';
 import WTab from './main-tabs/WTab';
+import ContextMenu from './components/ContextMenu';
+import ToolbarMenu from './components/ToolbarMenu';
 
 
 export default class App extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      contextMenuShow: false,
+      contextMenuLeft: 0,
+      contextMenuTop: 0,
+      toolbarMenuShow: false,
+      toolbarMenuLeft: 0,
+    }
+  }
+
+  contextMenuCallback = (show, top = 0, left = 0) => {
+    this.setState({
+      contextMenuShow: show,
+      contextMenuTop: top,
+      contextMenuLeft: left
+    })
+  }
+
+  toolbarMenuCallback = (show, left = 0) => {
+    this.setState({
+      toolbarMenuShow: show,
+      toolbarMenuLeft: left
+    })
   }
 
   render() {
     return (
       <div className="App">
         <ToastContainer/>
-        <TTab/>
+        <ToolbarMenu
+          toolbarMenuCallback={this.toolbarMenuCallback}
+          show={this.state.toolbarMenuShow}
+          left={this.state.toolbarMenuLeft} />
+        <ContextMenu
+          contextMenuCallback={this.contextMenuCallback}
+          show={this.state.contextMenuShow}
+          top={this.state.contextMenuTop}
+          left={this.state.contextMenuLeft} />
+        <TTab
+          toolbarMenuActive={this.state.toolbarMenuShow}
+          toolbarMenuCallback={this.toolbarMenuCallback}
+          contextMenuCallback={this.contextMenuCallback}
+        />
         <PTab/>
         <WTab/>
         <CTab/>

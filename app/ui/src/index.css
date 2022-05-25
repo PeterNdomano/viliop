@@ -14,6 +14,7 @@
   --pTabWidth: 300px;
 
   /* Z index */
+  --highestLevelZindex: 1100;
   --highLevelZindex: 1000;
   --midLevelZindex: 900;
   --lowLevelZindex: 0;
@@ -127,4 +128,31 @@ html {
   z-index: var(--highLevelZindex);
   left: var(--pTabWidth);
   top: var(--tTabHeight);
+}
+
+/* SECTION: WIDGETS */
+
+/* ContextMenu Styling */
+.ContextMenu {
+  position: fixed;
+  z-index: var(--highestLevelZindex);
+  width: 200px;
+  min-height: 200px;
+  max-height: 300px;
+  background: red;
+  overflow: hidden;
+}
+
+
+/* ContextMenu Styling */
+.ToolbarMenu {
+  position: fixed;
+  z-index: var(--highestLevelZindex);
+  width: 200px;
+  top: var(--tTabHeight);
+  min-height: 200px;
+  max-height: 300px;
+  background: var(--faintDark);
+  overflow: hidden;
+  border: 1px solid var(--darkColor);
 }
