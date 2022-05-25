@@ -15,6 +15,11 @@ export function tellUser(msg){
 export function getProjectMenuOptions() {
   return ([
     {
+      id: 'current_project',
+      title: 'Project',
+      parent: 'project',
+    },
+    {
       id: 'new_project',
       title: 'New Project',
       parent: 'project',

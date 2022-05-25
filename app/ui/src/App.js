@@ -8,12 +8,14 @@ import WTab from './main-tabs/WTab';
 import RPanel from './panels/RPanel';
 import ContextMenu from './components/ContextMenu';
 import ToolbarMenu from './components/ToolbarMenu';
+import Viliop from './models/Viliop';
 
 
 export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      viliopReady: false,
       contextMenuShow: false,
       contextMenuLeft: 0,
       contextMenuTop: 0,
@@ -21,8 +23,28 @@ export default class App extends Component {
       toolbarMenuLeft: 0,
       toolbarMenuKey: "",
       navItem: "project",
-      navSubItem: null,
+      navSubItem: "new_project",
     }
+    this.viliop = new Viliop();
+  }
+
+  componentDidMount() {
+    (
+      async () => {
+        await this.viliop.init().then((viliopStatus) => {
+          if(viliopStatus === true) {
+            this.setState({
+              viliopReady: true
+            })
+          }
+          else {
+            //viliop could not start
+            //show error
+            console.log(viliopStatus);
+          }
+        })
+      }
+    )();
   }
 
   contextMenuCallback = (show, top = 0, left = 0) => {
@@ -52,35 +74,47 @@ export default class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        <ToastContainer/>
-        <ToolbarMenu
-          navCallback={this.navCallback}
-          toolbarMenuCallback={this.toolbarMenuCallback}
-          toolbarMenuKey={this.state.toolbarMenuKey}
-          show={this.state.toolbarMenuShow}
-          left={this.state.toolbarMenuLeft} />
-        <ContextMenu
-          contextMenuCallback={this.contextMenuCallback}
-          show={this.state.contextMenuShow}
-          top={this.state.contextMenuTop}
-          left={this.state.contextMenuLeft} />
-        <TTab
-          toolbarMenuActive={this.state.toolbarMenuShow}
-          navItem={this.state.navItem}
-          navSubItem={this.state.navSubItem}
-          toolbarMenuCallback={this.toolbarMenuCallback}
-          contextMenuCallback={this.contextMenuCallback}
-        />
-        <RPanel
-          navItem={this.state.navItem}
-          navSubItem={this.state.navSubItem}
-        />
-        <PTab/>
-        <WTab/>
-        <CTab/>
-      </div>
-    )
+    if(this.state.viliopReady === true) {
+      return (
+        <div className="App">
+          <ToastContainer/>
+          <ToolbarMenu
+            navCallback={this.navCallback}
+            toolbarMenuCallback={this.toolbarMenuCallback}
+            toolbarMenuKey={this.state.toolbarMenuKey}
+            show={this.state.toolbarMenuShow}
+            left={this.state.toolbarMenuLeft} />
+          <ContextMenu
+            contextMenuCallback={this.contextMenuCallback}
+            show={this.state.contextMenuShow}
+            top={this.state.contextMenuTop}
+            left={this.state.contextMenuLeft} />
+          <TTab
+            toolbarMenuActive={this.state.toolbarMenuShow}
+            navItem={this.state.navItem}
+            navSubItem={this.state.navSubItem}
+            toolbarMenuCallback={this.toolbarMenuCallback}
+            contextMenuCallback={this.contextMenuCallback}
+          />
+          <RPanel
+            viliop={this.viliop}
+            navItem={this.state.navItem}
+            navSubItem={this.state.navSubItem}
+          />
+          <PTab/>
+          <WTab/>
+          <CTab/>
+        </div>
+      )
+    }
+    else {
+      return (
+        <div>
+          <h1>Please wait.....</h1>
+          <h3>Viliop is starting.............</h3>
+        </div>
+      )
+    }
+
   }
 }

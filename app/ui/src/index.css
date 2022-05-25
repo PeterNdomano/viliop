@@ -148,6 +148,21 @@ html {
   bottom: 0;
   background: var(--faintDark);
   transition: left 0.4s ease;
+  overflow: hidden;
+}
+
+.RPanel > .container {
+  overflow-x: hidden;
+  word-wrap: break-word;
+  overflow-y: scroll;
+  height: calc(100% - 40px);
+  margin-top: 20px;
+  padding-top: var(--tTabHeight);
+  padding-bottom: var(--tTabHeight);
+}
+
+.RPanel .panelTitle {
+  font-size: 50px;
 }
 
 /* ContextMenu Styling */
