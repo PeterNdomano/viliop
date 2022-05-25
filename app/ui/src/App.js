@@ -18,6 +18,9 @@ export default class App extends Component {
       contextMenuTop: 0,
       toolbarMenuShow: false,
       toolbarMenuLeft: 0,
+      toolbarMenuKey: "",
+      navItem: "project",
+      navSubItem: null,
     }
   }
 
@@ -29,11 +32,22 @@ export default class App extends Component {
     })
   }
 
-  toolbarMenuCallback = (show, left = 0) => {
+  toolbarMenuCallback = (show, left = 0, key = "") => {
     this.setState({
       toolbarMenuShow: show,
-      toolbarMenuLeft: left
+      toolbarMenuLeft: left,
+      toolbarMenuKey: key,
     })
+  }
+
+  navCallback = (item, subItem) => {
+    this.toolbarMenuCallback(false);
+    this.setState({
+      navItem: item,
+      navSubItem: subItem,
+    })
+
+    //more nav fns to follow
   }
 
   render() {
@@ -41,7 +55,9 @@ export default class App extends Component {
       <div className="App">
         <ToastContainer/>
         <ToolbarMenu
+          navCallback={this.navCallback}
           toolbarMenuCallback={this.toolbarMenuCallback}
+          toolbarMenuKey={this.state.toolbarMenuKey}
           show={this.state.toolbarMenuShow}
           left={this.state.toolbarMenuLeft} />
         <ContextMenu
@@ -51,6 +67,8 @@ export default class App extends Component {
           left={this.state.contextMenuLeft} />
         <TTab
           toolbarMenuActive={this.state.toolbarMenuShow}
+          navItem={this.state.navItem}
+          navSubItem={this.state.navSubItem}
           toolbarMenuCallback={this.toolbarMenuCallback}
           contextMenuCallback={this.contextMenuCallback}
         />

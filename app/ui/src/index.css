@@ -148,11 +148,26 @@ html {
 .ToolbarMenu {
   position: fixed;
   z-index: var(--highestLevelZindex);
-  width: 200px;
+  width: 300px;
   top: var(--tTabHeight);
-  min-height: 200px;
+  height: auto;
   max-height: 300px;
   background: var(--faintDark);
   overflow: hidden;
   border: 1px solid var(--darkColor);
+  padding: 0px;
+}
+
+.ToolbarMenu .tbmItem {
+  font-size: 12px;
+  margin: 0px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.ToolbarMenu .tbmItem:hover {
+  background: var(--darkColor);
+  border: 1px solid var(--faintDark);
 }
