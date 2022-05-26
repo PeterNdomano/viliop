@@ -11,20 +11,20 @@ export default class RPanel extends Component {
   }
 
   componentDidMount() {
-    this.handleDisplay(this.props.navItem, this.props.navSubItem, this.props.viliop)
+    this.handleDisplay(this.props)
   }
 
   UNSAFE_componentWillReceiveProps(props) {
-    this.handleDisplay(props.navItem, props.navSubItem, props.viliop)
+    this.handleDisplay(props)
   }
 
-  handleDisplay = (navItem, navSubItem, viliop) => {
-    if(navItem === "project" && navSubItem === "current_project") {
+  handleDisplay = (props) => {
+    if(props.navItem === "project" && props.navSubItem === "current_project") {
       document.getElementById('rPanel').style.left = "100vw"
     }
     else {
       //get view
-      this.view = getRPanelView( navItem, navSubItem, viliop );
+      this.view = getRPanelView( props );
       this.setState((prevState) => {
         return {
           viewChange: !prevState.viewChange, //just to cause re-render

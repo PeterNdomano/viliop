@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { tellUser, sanitizePathString } from '../Helper';
+import { tellUser, sanitizePathString, getInlineLoader } from '../Helper';
 const path = window.require('path');
 const fs = window.require('fs');
 
@@ -10,6 +10,7 @@ export default class NewProject extends Component {
     this.state = {
       projectTitle: "Untitled",
       projectLocation: path.join(props.viliop.projectsFolder, "Untitled"),
+      loading: false,
     }
   }
 
@@ -23,20 +24,33 @@ export default class NewProject extends Component {
   }
 
   createProject = async (e) => {
-    e.preventDefault();
-    let title = this.state.projectTitle;
-    let location = this.state.projectLocation;
-    let type = ( document.getElementById('webPentest').checked === true ) ? "webPentest" : "mobilePentest";
-    if(title.trim().length > 0) {
-      if(!fs.existsSync(location)) {
-
+    if(!this.state.loading) {
+      e.preventDefault();
+      let title = this.state.projectTitle;
+      let location = this.state.projectLocation;
+      let type = ( document.getElementById('webPentest').checked === true ) ? "webPentest" : "mobilePentest";
+      if(title.trim().length > 0) {
+        if(!fs.existsSync(location)) {
+          this.setState({ loading: true })
+          await this.props.viliop.createNewProject({ title, location, type }).then((result) => {
+            if(result === true) {
+              this.setState({ loading: false })
+              this.props.navCallback("project", "current_project");
+              tellUser('New Project - '+title+' was created', "success");
+            }
+            else {
+              tellUser('Could not create project');
+              tellUser(result);
+            }
+          })
+        }
+        else {
+          tellUser("Project location already exists, try different project title")
+        }
       }
       else {
-        tellUser("Project location already exists, try different project title")
+        tellUser("Invalid project title");
       }
-    }
-    else {
-      tellUser("Invalid project title");
     }
   }
 
@@ -69,7 +83,7 @@ export default class NewProject extends Component {
               </div>
               <div className="form-group text-right">
                 <button className="btn btn-primary">
-                  Create New Project
+                  {(this.state.loading) ? getInlineLoader() : "Create New Project"}
                 </button>
               </div>
             </form>
@@ -77,6 +91,7 @@ export default class NewProject extends Component {
 
           <div className="col-md-6">
             <h3>Recent Projects</h3>
+
             <hr/>
             <div className="text-right">
               <button className="btn btn-primary">

@@ -64,12 +64,15 @@ export default class App extends Component {
   }
 
   navCallback = (item, subItem) => {
+    if(this.viliop.currentProject === null){
+      item = "project";
+      subItem = "new_project";
+    }
     this.toolbarMenuCallback(false);
     this.setState({
       navItem: item,
       navSubItem: subItem,
     })
-
     //more nav fns to follow
   }
 
@@ -102,10 +105,34 @@ export default class App extends Component {
             viliop={this.viliop}
             navItem={this.state.navItem}
             navSubItem={this.state.navSubItem}
+            toolbarMenuCallback={this.toolbarMenuCallback}
+            contextMenuCallback={this.contextMenuCallback}
+            navCallback={this.navCallback}
           />
-          <PTab/>
-          <WTab/>
-          <CTab/>
+          <PTab
+            viliop={this.viliop}
+            navItem={this.state.navItem}
+            navSubItem={this.state.navSubItem}
+            toolbarMenuCallback={this.toolbarMenuCallback}
+            contextMenuCallback={this.contextMenuCallback}
+            navCallback={this.navCallback}
+          />
+          <WTab
+            viliop={this.viliop}
+            navItem={this.state.navItem}
+            navSubItem={this.state.navSubItem}
+            toolbarMenuCallback={this.toolbarMenuCallback}
+            contextMenuCallback={this.contextMenuCallback}
+            navCallback={this.navCallback}
+          />
+          <CTab
+            viliop={this.viliop}
+            navItem={this.state.navItem}
+            navSubItem={this.state.navSubItem}
+            toolbarMenuCallback={this.toolbarMenuCallback}
+            contextMenuCallback={this.contextMenuCallback}
+            navCallback={this.navCallback}
+          />
         </div>
       )
     }

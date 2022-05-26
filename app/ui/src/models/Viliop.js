@@ -1,12 +1,14 @@
+import Project from './Project';
 const os = window.require('os');
 const fs = window.require('fs');
 const path = window.require('path');
+
 
 export default class Viliop {
 
   init = () => {
     //this initializes Viliop main processes and project
-    this.project = null;
+    this.currentProject = null;
     return new Promise( async (fulfilled, rejected) => {
       try {
         await this.createMainFolder().then(async (mainFolder) => {
@@ -89,7 +91,31 @@ export default class Viliop {
     })
   }
 
-  createNewProject = async () => {
-    //this create new project
+  createNewProject = async (options) => {
+    try {
+      let {
+        type,
+        location,
+        title,
+      } = options;
+      //create project folder
+      await fs.mkdirSync(location);
+
+      //create project config.json
+      let config = {
+        type,
+        title,
+        viliopVersion:"0.0.1",
+      }
+      let configFile = path.join(location, 'config.json');
+
+      await fs.writeFileSync(configFile, JSON.stringify( config, null, "\t" ));
+      let project = new Project(configFile);
+      this.currentProject = project;
+      return true;
+    }
+    catch ( err ) {
+      return err.message;
+    }
   }
 }

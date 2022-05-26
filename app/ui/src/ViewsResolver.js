@@ -1,11 +1,12 @@
 import React from 'react';
 import NewProject from './views/NewProject';
 
-export function getRPanelView (navItem, navSubItem, viliop) {
-  if(navItem === "project" && navSubItem === "new_project"){
+export function getRPanelView (props) {
+  if(props.navItem === "project" && props.navSubItem === "new_project"){
     return (
       <NewProject
-        viliop={viliop}
+        viliop={props.viliop}
+        navCallback={props.navCallback}
       />
     )
   }
