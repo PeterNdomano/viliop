@@ -56,3 +56,7 @@ export function getToolsMenuOptions() {
     },
   ])
 }
+
+export function sanitizePathString (string) {
+  return string;
+}

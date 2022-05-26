@@ -77,7 +77,9 @@ export default class App extends Component {
     if(this.state.viliopReady === true) {
       return (
         <div className="App">
-          <ToastContainer/>
+          <ToastContainer
+            theme="dark"
+          />
           <ToolbarMenu
             navCallback={this.navCallback}
             toolbarMenuCallback={this.toolbarMenuCallback}

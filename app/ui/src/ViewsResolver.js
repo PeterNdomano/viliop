@@ -12,7 +12,7 @@ export function getRPanelView (navItem, navSubItem, viliop) {
   else{
     return (
       <div className="container">
-        <h6>Error: no vieww specified</h6>
+        <h6>Error: no view specified</h6>
       </div>
     );
   }
