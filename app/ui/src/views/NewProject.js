@@ -34,7 +34,11 @@ export default class NewProject extends Component {
           this.setState({ loading: true })
           await this.props.viliop.createNewProject({ title, location, type }).then((result) => {
             if(result === true) {
-              this.setState({ loading: false })
+              this.setState({
+                projectTitle: "Untitled",
+                projectLocation: path.join(this.props.viliop.projectsFolder, "Untitled"),
+                loading: false,
+              })
               this.props.navCallback("project", "current_project");
               tellUser('New Project - '+title+' was created', "success");
             }
@@ -70,7 +74,7 @@ export default class NewProject extends Component {
                 </div>
                 <div className="col-6 form-check">
                   <input value="mobilePentest" className="form-check-input" type="radio" name="projectType" id="mobilePentest"/>
-                  <label className="form-check-label" htmlFor="mobilePentest" >Mobile Pentesting</label>
+                  <label className="form-check-label" htmlFor="mobilePentest" >Mobile App Pentesting</label>
                 </div>
               </div>
               <div className="form-group">

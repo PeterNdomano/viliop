@@ -110,6 +110,13 @@ html {
   bottom: 0;
   z-index: var(--midLevelZindex);
   border-right: 1px solid var(--faintDark);
+  word-wrap: break-word;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.App .PTab > .container {
+  padding-top: 20px;
 }
 
 /* CTab styling */
@@ -144,6 +151,14 @@ textarea {
 
 .btn-primary {
   background: var(--primaryColor) !important;
+}
+
+.vilMinTitle {
+  color: var(--accentColor);
+  font-size: 12px;
+}
+.vilMinHeading {
+  font-size: 14px;
 }
 
 /* RPanel Styling */

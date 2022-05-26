@@ -1,4 +1,6 @@
 import Project from './Project';
+import WebPentestGuide from './WebPentestGuide';
+import MobileAppPentestGuide from './MobileAppPentestGuide';
 const os = window.require('os');
 const fs = window.require('fs');
 const path = window.require('path');
@@ -109,9 +111,18 @@ export default class Viliop {
       }
       let configFile = path.join(location, 'config.json');
 
+      //write config file
       await fs.writeFileSync(configFile, JSON.stringify( config, null, "\t" ));
+
+      //create project instance
       let project = new Project(configFile);
       this.currentProject = project;
+
+      //create specific guide for this project
+      let guide = (type === "webPentest") ? new WebPentestGuide(project) : new MobileAppPentestGuide(project);
+      this.guide = guide;
+
+      //finish off
       return true;
     }
     catch ( err ) {
