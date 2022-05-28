@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import WebPentestMenu from '../components/WebPentestMenu';
-import MobileAppPentestMenu from '../components/MobileAppPentestMenu';
+import GuideMenu from '../components/GuideMenu';
 
 export default class PTab extends Component {
   constructor(props) {
@@ -22,15 +21,10 @@ export default class PTab extends Component {
                 {(this.props.viliop.currentProject.config.type === "webPentest") ? "Website Pentesting" : "Mobile App Pentesting"}
               </p>
             </div>
-            {
-              (this.props.viliop.currentProject.config.type === "webPentest") ?
-              <WebPentestMenu
-                viliop={this.props.viliop}
-                navCallback={this.props.navCallback}
-              />
-              :
-              <MobileAppPentestMenu/>
-            }
+            <GuideMenu
+              viliop={this.props.viliop}
+              navCallback={this.props.navCallback}
+            />
           </div>
         </div>
       )
