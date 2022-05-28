@@ -6,6 +6,11 @@ export default class GuideMenu extends Component {
     return (
       <div className="GuideMenu" id="guideMenu">
         <GuideMenuItem/>
+        <GuideMenuItem/>
+        <GuideMenuItem/>
+        <GuideMenuItem/>
+        <GuideMenuItem/>
+        <GuideMenuItem/>
       </div>
     )
   }
