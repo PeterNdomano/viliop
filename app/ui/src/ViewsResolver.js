@@ -18,3 +18,12 @@ export function getRPanelView (props) {
     );
   }
 }
+
+export function getWorkspaceView(props) {
+  return (
+    <NewProject
+      viliop={props.viliop}
+      navCallback={props.navCallback}
+    />
+  )
+}

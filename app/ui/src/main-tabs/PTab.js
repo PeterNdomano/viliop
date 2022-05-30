@@ -24,6 +24,8 @@ export default class PTab extends Component {
             <GuideMenu
               viliop={this.props.viliop}
               navCallback={this.props.navCallback}
+              workspaceViewId={this.props.workspaceViewId}
+              workspaceViewCallback={this.props.workspaceViewCallback}
             />
           </div>
         </div>

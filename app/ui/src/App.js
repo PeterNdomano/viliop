@@ -24,6 +24,7 @@ export default class App extends Component {
       toolbarMenuKey: "",
       navItem: "project",
       navSubItem: "new_project",
+      workspaceViewId: null,
     }
     this.viliop = new Viliop();
   }
@@ -76,6 +77,12 @@ export default class App extends Component {
     //more nav fns to follow
   }
 
+  workspaceViewCallback = (viewId) => {
+    this.setState({
+      workspaceViewId: viewId,
+    })
+  }
+
   render() {
     if(this.state.viliopReady === true) {
       return (
@@ -116,6 +123,8 @@ export default class App extends Component {
             toolbarMenuCallback={this.toolbarMenuCallback}
             contextMenuCallback={this.contextMenuCallback}
             navCallback={this.navCallback}
+            workspaceViewId={this.state.workspaceViewId}
+            workspaceViewCallback={this.workspaceViewCallback}
           />
           <WTab
             viliop={this.viliop}
@@ -124,6 +133,8 @@ export default class App extends Component {
             toolbarMenuCallback={this.toolbarMenuCallback}
             contextMenuCallback={this.contextMenuCallback}
             navCallback={this.navCallback}
+            workspaceViewId={this.state.workspaceViewId}
+            workspaceViewCallback={this.workspaceViewCallback}
           />
           <CTab
             viliop={this.viliop}
