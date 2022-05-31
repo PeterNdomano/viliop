@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ToastContainer } from 'react-toastify';
-import { tellUser } from './Helper';
+import { tellUser, setupConsole } from './Helper';
 import TTab from './main-tabs/TTab';
 import PTab from './main-tabs/PTab';
 import CTab from './main-tabs/CTab';
@@ -14,6 +14,7 @@ import Viliop from './models/Viliop';
 export default class App extends Component {
   constructor(props){
     super(props);
+
     this.state = {
       viliopReady: false,
       contextMenuShow: false,
@@ -36,6 +37,9 @@ export default class App extends Component {
           if(viliopStatus === true) {
             this.setState({
               viliopReady: true
+            }, () => {
+              setupConsole();
+              console.log("Welcome to Viliop");
             })
           }
           else {

@@ -96,3 +96,7 @@ export function getInlineLoader() {
     />
   );
 }
+
+export function setupConsole() {
+  //this will setup console window
+}
