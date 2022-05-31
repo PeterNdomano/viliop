@@ -10,6 +10,14 @@ export default class WTab extends Component {
     this.view = '';
   }
 
+  componentDidMount(){
+    this.handleDisplay(this.props);
+  }
+
+  UNSAFE_componentWillReceiveProps(props){
+    this.handleDisplay(props);
+  }
+
   handleDisplay = (props) => {
     this.view = getWorkspaceView(props);
     this.setState((prevState) => {
@@ -22,7 +30,7 @@ export default class WTab extends Component {
   render() {
     return (
       <div className="WTab" id="wTab">
-      {this.view}
+        {this.view}
       </div>
     )
   }

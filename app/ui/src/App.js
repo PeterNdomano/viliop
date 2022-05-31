@@ -24,7 +24,7 @@ export default class App extends Component {
       toolbarMenuKey: "",
       navItem: "project",
       navSubItem: "new_project",
-      workspaceViewId: null,
+      workspaceViewId: "ss",
     }
     this.viliop = new Viliop();
   }
@@ -84,6 +84,7 @@ export default class App extends Component {
   }
 
   render() {
+    //console.log("viewId:"+ this.state.workspaceViewId);
     if(this.state.viliopReady === true) {
       return (
         <div className="App">

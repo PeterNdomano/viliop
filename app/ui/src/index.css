@@ -178,7 +178,8 @@ textarea {
   padding: 10px;
   border-radius: 10px;
 }
-.GuideMenu > .GuideMenuItem:hover {
+.GuideMenu > .GuideMenuItem:hover,
+.GuideMenu > .GuideMenuItem[data-selected="true"] {
   background: var(--darkColor);
   border: 1px solid var(--faintDark);
 }

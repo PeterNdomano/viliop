@@ -20,10 +20,17 @@ export function getRPanelView (props) {
 }
 
 export function getWorkspaceView(props) {
-  return (
-    <NewProject
-      viliop={props.viliop}
-      navCallback={props.navCallback}
-    />
-  )
+  if(props.workspaceViewId === "google_hacking"){
+    return (
+      <NewProject
+        viliop={props.viliop}
+        navCallback={props.navCallback}
+      />
+    )
+  }
+  else{
+    return (
+      <h3>Select item</h3>
+    )
+  }
 }

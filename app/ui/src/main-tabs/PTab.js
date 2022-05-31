@@ -4,6 +4,17 @@ import GuideMenu from '../components/GuideMenu';
 export default class PTab extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      viewChanged: false,
+    }
+  }
+
+  UNSAFE_componentWillReceiveProps(props) {
+    this.setState((prevState) => {
+      return {
+        viewChanged: !prevState.viewChanged
+      }
+    })
   }
 
   render() {
