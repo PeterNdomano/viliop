@@ -1,5 +1,6 @@
 import React from 'react';
 import NewProject from './views/NewProject';
+import InfoGathering from './guide-views/InfoGathering';
 
 export function getRPanelView (props) {
   if(props.navItem === "project" && props.navSubItem === "new_project"){
@@ -20,11 +21,10 @@ export function getRPanelView (props) {
 }
 
 export function getWorkspaceView(props) {
-  if(props.workspaceViewId === "google_hacking"){
+  if(props.workspaceViewId === "info_gathering"){
     return (
-      <NewProject
-        viliop={props.viliop}
-        navCallback={props.navCallback}
+      <InfoGathering
+        params={props}
       />
     )
   }
