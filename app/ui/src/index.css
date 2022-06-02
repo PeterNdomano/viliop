@@ -284,3 +284,24 @@ textarea {
 .GuideView .mIntro {
   color: var(--dangerColor);
 }
+
+/* GuideSubItem */
+.GuideSubItem {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--faintDark);
+}
+
+.GuideSubItem > .mSubTitle {
+  width: 100%;
+  border-bottom: 1px solid var(--faintDark);
+  padding-bottom: 10px;
+}
+
+.GuideSubItem h6 {
+  font-size: 12px;
+}
+
+.GuideSubItem > .mBtnHolder {
+  margin-top: 20px;
+}
