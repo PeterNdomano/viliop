@@ -305,3 +305,8 @@ textarea {
 .GuideSubItem > .mBtnHolder {
   margin-top: 20px;
 }
+
+/* modal */
+.modal-content {
+  background: var(--faintDark);
+}

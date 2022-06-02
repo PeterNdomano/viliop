@@ -99,6 +99,9 @@ export default class App extends Component {
           view={view}
         />
       )
+      this.setState({
+        showModal: true,
+      })
     }
     else{
       this.modal = "";
@@ -142,6 +145,7 @@ export default class App extends Component {
             toolbarMenuCallback={this.toolbarMenuCallback}
             contextMenuCallback={this.contextMenuCallback}
             navCallback={this.navCallback}
+            modalCallback={this.modalCallback}
           />
           <PTab
             viliop={this.viliop}
@@ -152,6 +156,7 @@ export default class App extends Component {
             navCallback={this.navCallback}
             workspaceViewId={this.state.workspaceViewId}
             workspaceViewCallback={this.workspaceViewCallback}
+            modalCallback={this.modalCallback}
           />
           <WTab
             viliop={this.viliop}
@@ -162,6 +167,7 @@ export default class App extends Component {
             navCallback={this.navCallback}
             workspaceViewId={this.state.workspaceViewId}
             workspaceViewCallback={this.workspaceViewCallback}
+            modalCallback={this.modalCallback}
           />
           <CTab
             viliop={this.viliop}

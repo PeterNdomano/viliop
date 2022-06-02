@@ -48,7 +48,7 @@ export default class Modal extends Component {
                 <div className="modal-header">
                   <h5 style={{ color:"var(--accentColor)" }} className="modal-title font-bold" id="exampleModalLongTitle">{this.title}</h5>
                   <button id="modalCloser" type="button" className="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" style={{ color: "var(--darkColor)"}}><MdClose size={24} color="var(--darkColor)"/></span>
+                    <span aria-hidden="true" style={{ color: "var(--darkColor)"}}><MdClose size={24} color="var(--secondaryColor)"/></span>
                   </button>
                 </div>
                 <div className="modal-body">
