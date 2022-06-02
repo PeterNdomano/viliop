@@ -150,6 +150,16 @@ textarea {
   color: var(--accentColor) !important;
 }
 
+input:focus,
+textarea:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.text-accent {
+  color: var(--accentColor) !important;
+}
+
 .btn-primary {
   background: var(--primaryColor) !important;
 }
@@ -309,4 +319,5 @@ textarea {
 /* modal */
 .modal-content {
   background: var(--faintDark);
+  color: var(--secondaryColor);
 }
