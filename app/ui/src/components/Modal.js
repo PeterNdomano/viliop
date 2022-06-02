@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { MdClose } from 'react-icons/md';
+import $ from 'jquery';
 
 export default class Modal extends Component {
   constructor(props) {

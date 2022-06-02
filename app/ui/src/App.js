@@ -9,6 +9,7 @@ import RPanel from './panels/RPanel';
 import ContextMenu from './components/ContextMenu';
 import ToolbarMenu from './components/ToolbarMenu';
 import Viliop from './models/Viliop';
+import Modal from './components/Modal';
 
 
 export default class App extends Component {
@@ -26,8 +27,10 @@ export default class App extends Component {
       navItem: "project",
       navSubItem: "new_project",
       workspaceViewId: "ss",
+      showModal: false,
     }
     this.viliop = new Viliop();
+    this.modal = "";
   }
 
   componentDidMount() {
@@ -87,11 +90,30 @@ export default class App extends Component {
     })
   }
 
+  modalCallback = (show, title, view) => {
+    if(show === true){
+      this.modal = (
+        <Modal
+          show={true}
+          title={title}
+          view={view}
+        />
+      )
+    }
+    else{
+      this.modal = "";
+      this.setState({
+        showModal: false,
+      })
+    }
+  }
+
   render() {
     //console.log("viewId:"+ this.state.workspaceViewId);
     if(this.state.viliopReady === true) {
       return (
         <div className="App">
+          {this.modal}
           <ToastContainer
             theme="dark"
           />
