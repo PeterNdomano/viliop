@@ -44,7 +44,7 @@ export default class Modal extends Component {
           {/* modal */}
           <div className="modal fade" id="modal" tabIndex="-1" role="dialog" aria-labelledby="dialog" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
-              <div className="modal-content">
+              <div className="modal-content z-depth-1-half">
                 <div className="modal-header">
                   <h5 style={{ color:"var(--accentColor)" }} className="modal-title font-bold" id="exampleModalLongTitle">{this.title}</h5>
                   <button id="modalCloser" type="button" className="close" data-dismiss="modal" aria-label="Close">

@@ -108,6 +108,7 @@ export default class Viliop {
       let config = {
         type,
         title,
+        targetUrl,
         viliopVersion:"0.0.1",
       }
       let configFile = path.join(location, 'config.json');

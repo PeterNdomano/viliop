@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import NewProject from '../views/NewProject';
-import ManualScanSED from '../guide-view-helpers/ManualScanSED';
+import SEDReport from '../guide-view-helpers/SEDReport';
 import AutoScanSED from '../guide-view-helpers/AutoScanSED';
+import SEDGuidesHelp from '../guide-view-helpers/SEDGuidesHelp';
 
 
 export default class InfoGathering extends Component {
   constructor(props) {
     super(props);
+    this.project = props.params.viliop.currentProject;
+    this.viliop = props.params.viliop;
   }
 
   render() {
@@ -25,11 +28,13 @@ export default class InfoGathering extends Component {
             </div>
 
             {/* Sub Items */}
+
             <div className="col-md-12">
               <div className="GuideSubItem">
                 <h5 className="mSubTitle">Search Engine Discovery</h5>
                 <h6>
-                  Use search engines to discover sensitive information indexed from the Target Web App
+                  Use search engines to discover sensitive information indexed and/or leaked from {this.project.config.targetUrl}.
+                  You can use guides below and save your finding for reference and further extension of your work
                 </h6>
                 <div className="text-right mBtnHolder">
                   <button
@@ -37,13 +42,13 @@ export default class InfoGathering extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Automatic Search Engine  Reconnaissance",
-                        <AutoScanSED
+                        "Search Engine Reconnaissance Help & Guide",
+                        <SEDGuidesHelp
                           viliop={this.props.params.viliop}
                       />);
                     }}
                   >
-                    Automated scan
+                    Guides & Help
                   </button>
 
                   <button
@@ -51,17 +56,18 @@ export default class InfoGathering extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Manual Search Engine Reconnaissance",
-                        <ManualScanSED
+                        "Report on Search Engine Reconnaissance",
+                        <SEDReport
                           viliop={this.props.params.viliop}
                       />);
                     }}
                   >
-                    Manual Scan
+                    Report
                   </button>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>

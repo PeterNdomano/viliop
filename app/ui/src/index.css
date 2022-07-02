@@ -19,6 +19,7 @@
   --highLevelZindex: 1000;
   --midLevelZindex: 900;
   --lowLevelZindex: 0;
+  --defaultLineHeight: 30px;
 }
 
 
@@ -29,6 +30,7 @@ html {
   padding: 0px;
   color: var(--secondaryColor);
   background: var(--darkColor);
+  line-height: var(--defaultLineHeight);
 }
 
 #root {
@@ -55,6 +57,7 @@ html {
   z-index: var(--highestLevelZindex);
   background: var(--faintDark);
   overflow: hidden;
+  line-height: 25px;
 }
 
 .App .TTab .menuItem {
@@ -171,6 +174,27 @@ textarea:focus {
 .vilMinHeading {
   font-size: 14px;
 }
+
+.helpTitle {
+  color: var(--accentColor) !important;
+}
+
+.codeText {
+  color: var(--accentColor) !important;
+  background: var(--darkColor) !important;
+  padding: 5px !important;
+  margin-top: 5px !important;
+  border-radius: 5px;
+}
+
+.linkText {
+  color: blue !important;
+  background: var(--darkColor) !important;
+  padding: 5px !important;
+  margin-top: 5px !important;
+  border-radius: 5px;
+}
+
 
 /* GuideMenu Styling */
 .GuideMenu {
@@ -300,6 +324,7 @@ textarea:focus {
   width: 100%;
   padding: 10px;
   border: 1px solid var(--faintDark);
+  margin-bottom: 10px;
 }
 
 .GuideSubItem > .mSubTitle {
@@ -317,7 +342,20 @@ textarea:focus {
 }
 
 /* modal */
+.modal {
+
+}
+
 .modal-content {
   background: var(--faintDark);
   color: var(--secondaryColor);
+}
+
+.modal-header {
+  background: inherit; /* to be styled */
+}
+
+.modal-body {
+  max-height: calc( 100vh - (var(--tTabHeight) * 3)) !important;
+  overflow-y: auto;
 }

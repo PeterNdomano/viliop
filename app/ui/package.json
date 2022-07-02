@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
+    "@uiw/react-md-editor": "^3.14.4",
     "bootstrap": "^4.3.1",
     "jquery": "^3.6.0",
     "mdbreact": "^5.2.0",
