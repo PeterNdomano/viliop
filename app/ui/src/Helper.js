@@ -97,6 +97,10 @@ export function getInlineLoader() {
   );
 }
 
+export function sanitizeUrl( url ) {
+  return url;
+}
+
 export function setupConsole() {
   //this will setup console window
 }

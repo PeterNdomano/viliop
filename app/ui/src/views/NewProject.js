@@ -35,15 +35,17 @@ export default class NewProject extends Component {
     if(!this.state.loading) {
       e.preventDefault();
       let title = this.state.projectTitle;
+      let targetUrl = this.state.targetUrl;
       let location = this.state.projectLocation;
       let type = ( document.getElementById('webPentest').checked === true ) ? "webPentest" : "mobilePentest";
       if(title.trim().length > 0) {
         if(!fs.existsSync(location)) {
           this.setState({ loading: true })
-          await this.props.viliop.createNewProject({ title, location, type }).then((result) => {
+          await this.props.viliop.createNewProject({ title, targetUrl, location, type }).then((result) => {
             if(result === true) {
               this.setState({
                 projectTitle: "Untitled",
+                targetUrl: "",
                 projectLocation: path.join(this.props.viliop.projectsFolder, "Untitled"),
                 loading: false,
               })
@@ -90,7 +92,7 @@ export default class NewProject extends Component {
                 <input onChange={(e) => { this.handleTitle(e.target.value) }} value={this.state.projectTitle} id="projectTitle" className="form-control" />
               </div>
               <div className="form-group">
-                <label>Target Url</label>
+                <label>Target Domain or Sub-Domain (Eg <i>sitename.com</i>, no www or http prefixes)</label>
                 <input onChange={(e) => { this.handleUrl(e.target.value) }} value={this.state.targetUrl} id="targetUrl" className="form-control" />
               </div>
               <div className="form-group">

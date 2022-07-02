@@ -97,6 +97,7 @@ export default class Viliop {
     try {
       let {
         type,
+        targetUrl,
         location,
         title,
       } = options;
