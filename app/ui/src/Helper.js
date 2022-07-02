@@ -104,3 +104,7 @@ export function sanitizeUrl( url ) {
 export function setupConsole() {
   //this will setup console window
 }
+
+export function sanitizeMarkdown( markdown ){
+  return markdown;
+}

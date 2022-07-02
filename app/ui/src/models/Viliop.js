@@ -9,6 +9,7 @@ const path = window.require('path');
 export default class Viliop {
 
   init = () => {
+
     //this initializes Viliop main processes and project
     this.currentProject = null;
     return new Promise( async (fulfilled, rejected) => {
@@ -28,6 +29,7 @@ export default class Viliop {
         rejected(err);
       }
     })
+    
   }
 
   createMainFolder = () => {
@@ -103,6 +105,10 @@ export default class Viliop {
       } = options;
       //create project folder
       await fs.mkdirSync(location);
+
+      //create sub folders
+      await fs.mkdirSync( path.join( location, 'reports' ) ); //reports dir
+
 
       //create project config.json
       let config = {
