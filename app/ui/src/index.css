@@ -195,6 +195,14 @@ textarea:focus {
   border-radius: 5px;
 }
 
+button[data-name="fullscreen"] {
+  display: none; /* hiding MDEditor fullscreen btn */
+}
+
+.language-markdown {
+  color: var(--secondaryColor) !important; /* MDEditor color corrections */
+}
+
 
 /* GuideMenu Styling */
 .GuideMenu {

@@ -4,6 +4,8 @@
 
 import React, { useState } from 'react';
 import MDEditor from '@uiw/react-md-editor';
+import rehypeSanitize from "rehype-sanitize";
+
 
 export default function SEDReport() {
   const [ markdown, setMarkdown ] = useState("");
@@ -14,8 +16,12 @@ export default function SEDReport() {
           <MDEditor
             value={markdown}
             onChange={setMarkdown}
+            height={400}
+            autoFocus={true}
+            previewOptions={{
+              rehypePlugins: [[rehypeSanitize]],
+            }}
           />
-          <MDEditor.Markdown source={markdown} style={{ whiteSpace: 'pre-wrap' }} />
         </div>
       </div>
     </div>
