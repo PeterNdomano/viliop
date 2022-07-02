@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { tellUser, sanitizePathString, getInlineLoader } from '../Helper';
+import { tellUser, sanitizePathString, getInlineLoader, sanitizeUrl } from '../Helper';
 const path = window.require('path');
 const fs = window.require('fs');
 
@@ -9,17 +9,25 @@ export default class NewProject extends Component {
     super(props);
     this.state = {
       projectTitle: "Untitled",
+      targetUrl:"",
       projectLocation: path.join(props.viliop.projectsFolder, "Untitled"),
       loading: false,
     }
   }
 
-  handleTitle = (projectTitle) => {
+  handleTitle = ( projectTitle ) => {
     projectTitle = sanitizePathString(projectTitle);
     let projectLocation = path.join(this.props.viliop.projectsFolder, projectTitle);
     this.setState({
       projectTitle,
       projectLocation,
+    })
+  }
+
+  handleUrl = ( url ) => {
+    url = sanitizeUrl( url );
+    this.setState({
+      targetUrl: url,
     })
   }
 
@@ -80,6 +88,10 @@ export default class NewProject extends Component {
               <div className="form-group">
                 <label>Project Title</label>
                 <input onChange={(e) => { this.handleTitle(e.target.value) }} value={this.state.projectTitle} id="projectTitle" className="form-control" />
+              </div>
+              <div className="form-group">
+                <label>Target Url</label>
+                <input onChange={(e) => { this.handleUrl(e.target.value) }} value={this.state.targetUrl} id="targetUrl" className="form-control" />
               </div>
               <div className="form-group">
                 <label>Project's Folder Location</label>

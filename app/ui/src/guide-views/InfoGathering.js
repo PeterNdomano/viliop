@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NewProject from '../views/NewProject';
 import ManualScanSED from '../guide-view-helpers/ManualScanSED';
+import AutoScanSED from '../guide-view-helpers/AutoScanSED';
 
 
 export default class InfoGathering extends Component {
@@ -36,10 +37,9 @@ export default class InfoGathering extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Test",
-                        <NewProject
+                        "Automatic Search Engine  Reconnaissance",
+                        <AutoScanSED
                           viliop={this.props.params.viliop}
-                          navCallback={this.props.params.navCallback}
                       />);
                     }}
                   >
@@ -51,7 +51,7 @@ export default class InfoGathering extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Manual Search Engine Reconnaissance", 
+                        "Manual Search Engine Reconnaissance",
                         <ManualScanSED
                           viliop={this.props.params.viliop}
                       />);

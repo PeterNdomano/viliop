@@ -13,8 +13,10 @@ export default class AutoScanSED extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
-            <h1>Automatic SED Tools</h1>
+          <div className="col-md-6">
+            <h5>
+              Use Built-in scan tools to perform automatic search engine reconnaissance
+            </h5>
           </div>
         </div>
       </div>
