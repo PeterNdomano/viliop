@@ -4,11 +4,14 @@ import MobileAppPentestGuide from './MobileAppPentestGuide';
 const os = window.require('os');
 const fs = window.require('fs');
 const path = window.require('path');
+const { exec } = window.require('child_process');
 
 
 export default class Viliop {
 
   init = () => {
+    //setting tools folder
+    this.toolsFolder = "../../../../../viliop-tools";
 
     //this initializes Viliop main processes and project
     this.currentProject = null;
@@ -29,7 +32,7 @@ export default class Viliop {
         rejected(err);
       }
     })
-    
+
   }
 
   createMainFolder = () => {
@@ -136,5 +139,28 @@ export default class Viliop {
     catch ( err ) {
       return err.message;
     }
+  }
+
+  fwsScan = (url) => {
+
+    return new Promise( async (fulfilled, rejected) => {
+      try {
+        let toolFolder = path.join(this.toolsFolder, "FWS-Scanner");
+        exec("cd "+toolFolder, ( error, stdout, stderr ) => {
+          if(error){
+            rejected(error);
+          }
+          if(stderr){
+            rejected(stderr)
+          }
+
+          console.log(stdout);
+          rejected("No error")
+        });
+      }
+      catch (e) {
+        rejected(e)
+      }
+    })
   }
 }

@@ -114,7 +114,7 @@ html {
   z-index: var(--midLevelZindex);
   border-right: 1px solid var(--faintDark);
   word-wrap: break-word;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
@@ -259,7 +259,7 @@ button[data-name="fullscreen"] {
 .RPanel > .container {
   overflow-x: hidden;
   word-wrap: break-word;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: calc(100% - 40px);
   margin-top: 20px;
   padding-top: calc(var(--tTabHeight) * 0.5);
@@ -315,7 +315,7 @@ button[data-name="fullscreen"] {
 .GuideView {
   width: 100%;
   height: 100%;
-  overflow: scroll;
+  overflow: auto;
   padding-top: calc( var(--tTabHeight) * 0.5 );
 }
 
