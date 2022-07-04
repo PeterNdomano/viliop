@@ -118,20 +118,25 @@ export function processScanResult(result) {
   let scanOutputLine = -1;
   let scanData = null;
   result.forEach((item, i) => {
+    logData(item); //logging data
     if(item === "SCAN OUTPUT:"){
       scanOutputLine = i;
-      return;
     }
   });
 
   if(scanOutputLine >= 0){
     scanData = result.slice(scanOutputLine + 1);
   }
+  else{
+    scanData = ["Scanner Could not complete this task, check the log for more details"]
+  }
 
   let output = {
     consoleData: result,
     scanData,
   }
+
+  //then show data to the logger
 
   return output;
 

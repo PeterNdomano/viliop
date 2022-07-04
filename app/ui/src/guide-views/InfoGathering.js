@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import NewProject from '../views/NewProject';
 import SEDReport from '../guide-view-helpers/SEDReport';
 import SEDGuidesHelp from '../guide-view-helpers/SEDGuidesHelp';
 import FWSAutoScan from '../guide-view-helpers/FWSAutoScan';
+import FWSGuidesHelp from '../guide-view-helpers/FWSGuidesHelp';
 
 
 export default class InfoGathering extends Component {
@@ -95,8 +95,8 @@ export default class InfoGathering extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Search Engine Reconnaissance Help & Guide",
-                        <SEDGuidesHelp
+                        "Fingerprinting Web Server Help & Guide",
+                        <FWSGuidesHelp
                           viliop={this.props.params.viliop}
                       />);
                     }}
