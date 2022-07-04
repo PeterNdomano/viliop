@@ -4,14 +4,16 @@ import MobileAppPentestGuide from './MobileAppPentestGuide';
 const os = window.require('os');
 const fs = window.require('fs');
 const path = window.require('path');
-const { exec } = window.require('child_process');
+const { PythonShell } = window.require('python-shell');
 
 
 export default class Viliop {
 
   init = () => {
     //setting tools folder
-    this.toolsFolder = "../../../../../viliop-tools";
+    this.toolsFolder = "C:/xampp/htdocs/github_projects/viliop-tools";
+    //setting python path
+    this.pythonPath = "C:/Users/Ndomano/AppData/Local/Programs/Python/Python310/python.exe";
 
     //this initializes Viliop main processes and project
     this.currentProject = null;
@@ -142,21 +144,22 @@ export default class Viliop {
   }
 
   fwsScan = (url) => {
-
     return new Promise( async (fulfilled, rejected) => {
       try {
-        let toolFolder = path.join(this.toolsFolder, "FWS-Scanner");
-        exec("cd "+toolFolder, ( error, stdout, stderr ) => {
+        let toolPath = path.join(this.toolsFolder, "FWS-Scanner/main.py");
+        let scanOpts = {
+          mode: 'text',
+          pythonPath: this.pythonPath,
+          pythonOptions: ['-u'], // get print results in real-time
+          //scriptPath: toolPath,
+          args: ['-u http://'+url],
+        };
+        await PythonShell.run(toolPath, scanOpts, (error, result) => {
           if(error){
             rejected(error);
           }
-          if(stderr){
-            rejected(stderr)
-          }
-
-          console.log(stdout);
-          rejected("No error")
-        });
+          fulfilled(result);
+        })
       }
       catch (e) {
         rejected(e)

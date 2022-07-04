@@ -105,6 +105,34 @@ export function setupConsole() {
   //this will setup console window
 }
 
+export function logData(error) {
+  console.log(error);
+}
+
 export function sanitizeMarkdown( markdown ){
   return markdown;
+}
+
+export function processScanResult(result) {
+  //result is array
+  let scanOutputLine = -1;
+  let scanData = null;
+  result.forEach((item, i) => {
+    if(item === "SCAN OUTPUT:"){
+      scanOutputLine = i;
+      return;
+    }
+  });
+
+  if(scanOutputLine >= 0){
+    scanData = result.slice(scanOutputLine);
+  }
+
+  let output = {
+    consoleData: result,
+    scanData,
+  }
+
+  return output;
+
 }

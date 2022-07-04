@@ -3,7 +3,7 @@
   */
 
 import React, { useState } from 'react';
-import { getInlineLoader, tellUser } from '../Helper';
+import { getInlineLoader, tellUser, logData, processScanResult } from '../Helper';
 
 export default function FWSAutoScan(props) {
   let viliop = props.viliop;
@@ -13,12 +13,13 @@ export default function FWSAutoScan(props) {
   let startFWS = async () => {
     setLoading(true);
     await viliop.fwsScan(project.config.targetUrl).then((result) => {
-      console.log(result);
+      let output = processScanResult(result);
       setLoading(false);
       tellUser('Scan was finished', 'success');
     }, (error) => {
       //handle error
-      console.log(error);
+      tellUser("Scan Failed");
+      logData(error);
     })
   }
 

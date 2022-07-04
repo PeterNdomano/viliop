@@ -18,5 +18,10 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^18.2.3"
+  },
+  "dependencies": {
+    "cross-spawn": "^7.0.3",
+    "execa": "^6.1.0",
+    "python-shell": "^3.0.1"
   }
 }

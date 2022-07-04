@@ -1,7 +1,9 @@
 const { app, BrowserWindow } = require('electron');
+const { exec } = require('child_process');
 
 
 const createMainWindow = () => {
+
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
