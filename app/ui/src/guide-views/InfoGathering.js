@@ -5,6 +5,7 @@ import SEDGuidesHelp from '../guide-view-helpers/SEDGuidesHelp';
 import FWSAutoScan from '../guide-view-helpers/FWSAutoScan';
 import FWSGuidesHelp from '../guide-view-helpers/FWSGuidesHelp';
 import RWMGuidesHelp from '../guide-view-helpers/RWMGuidesHelp';
+import EAWGuidesHelp from '../guide-view-helpers/EAWGuidesHelp';
 
 
 export default class InfoGathering extends Component {
@@ -159,6 +160,88 @@ export default class InfoGathering extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-INFO-03"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Enumerate Applications on Webserver</h5>
+                <span className="wsId">WSTG-INFO-04</span><hr/>
+                <h6>
+                  Discover other applications and services running on Web Server
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Enumerate Applications on Webserver Help & Guide",
+                        <EAWGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Webserver Metafiles Review",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INFO-04"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Enumerate Applications on Webserver</h5>
+                <span className="wsId">WSTG-INFO-05</span><hr/>
+                <h6>
+                  Review Webpage Content for Information Leakage
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Review Webpage Content for Information Leakage Help & Guide",
+                        <EAWGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Review Webpage Content for Information Leakage",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INFO-05"
                       />);
                     }}
                   >
