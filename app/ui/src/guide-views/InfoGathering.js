@@ -4,6 +4,7 @@ import Reporter from '../guide-view-helpers/Reporter';
 import SEDGuidesHelp from '../guide-view-helpers/SEDGuidesHelp';
 import FWSAutoScan from '../guide-view-helpers/FWSAutoScan';
 import FWSGuidesHelp from '../guide-view-helpers/FWSGuidesHelp';
+import RWMGuidesHelp from '../guide-view-helpers/RWMGuidesHelp';
 
 
 export default class InfoGathering extends Component {
