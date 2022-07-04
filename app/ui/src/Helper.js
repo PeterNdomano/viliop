@@ -125,7 +125,7 @@ export function processScanResult(result) {
   });
 
   if(scanOutputLine >= 0){
-    scanData = result.slice(scanOutputLine);
+    scanData = result.slice(scanOutputLine + 1);
   }
 
   let output = {

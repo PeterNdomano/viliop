@@ -203,6 +203,9 @@ button[data-name="fullscreen"] {
   color: var(--secondaryColor) !important; /* MDEditor color corrections */
 }
 
+.scanOutput {
+  
+}
 
 
 /* GuideMenu Styling */
