@@ -4,7 +4,7 @@
 
 import React from 'react';
 
-export default function RWMGuidesHelp(props){
+export default function EAWGuidesHelp(props){
 
   let viliop = props.viliop;
   let project = viliop.currentProject;

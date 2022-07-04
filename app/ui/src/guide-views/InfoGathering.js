@@ -6,6 +6,7 @@ import FWSAutoScan from '../guide-view-helpers/FWSAutoScan';
 import FWSGuidesHelp from '../guide-view-helpers/FWSGuidesHelp';
 import RWMGuidesHelp from '../guide-view-helpers/RWMGuidesHelp';
 import EAWGuidesHelp from '../guide-view-helpers/EAWGuidesHelp';
+import RWCGuidesHelp from '../guide-view-helpers/RWCGuidesHelp';
 
 
 export default class InfoGathering extends Component {
@@ -212,10 +213,10 @@ export default class InfoGathering extends Component {
 
             <div className="col-md-12">
               <div className="GuideSubItem">
-                <h5 className="mSubTitle">Enumerate Applications on Webserver</h5>
+                <h5 className="mSubTitle">Review Webpage Content for Information Leakage</h5>
                 <span className="wsId">WSTG-INFO-05</span><hr/>
                 <h6>
-                  Review Webpage Content for Information Leakage
+                  Discover sensitive information from Webpage content
                 </h6>
                 <div className="text-right mBtnHolder">
 
@@ -225,7 +226,7 @@ export default class InfoGathering extends Component {
                       this.props.params.modalCallback(
                         true,
                         "Review Webpage Content for Information Leakage Help & Guide",
-                        <EAWGuidesHelp
+                        <RWCGuidesHelp
                           viliop={this.props.params.viliop}
                       />);
                     }}
