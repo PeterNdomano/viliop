@@ -187,6 +187,16 @@ textarea:focus {
   border-radius: 5px;
 }
 
+.wsId {
+  color: var(--accentColor) !important;
+  background: var(--darkColor) !important;
+  padding: 5px !important;
+  margin: 5px !important;
+  border-radius: 5px;
+  border: 1px solid var(--faintDark);
+  font-size: 12px;
+}
+
 .linkText {
   color: blue !important;
   background: var(--darkColor) !important;
@@ -204,7 +214,7 @@ button[data-name="fullscreen"] {
 }
 
 .scanOutput {
-  
+
 }
 
 

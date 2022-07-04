@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SEDReport from '../guide-view-helpers/SEDReport';
+import Reporter from '../guide-view-helpers/Reporter';
 import SEDGuidesHelp from '../guide-view-helpers/SEDGuidesHelp';
 import FWSAutoScan from '../guide-view-helpers/FWSAutoScan';
 import FWSGuidesHelp from '../guide-view-helpers/FWSGuidesHelp';
@@ -32,9 +33,9 @@ export default class InfoGathering extends Component {
             <div className="col-md-12">
               <div className="GuideSubItem">
                 <h5 className="mSubTitle">Search Engine Discovery</h5>
+                <span className="wsId">WSTG-INFO-01</span><hr/>
                 <h6>
                   Use search engines to discover sensitive information indexed and/or leaked from {this.project.config.targetUrl}.
-                  You can use guides below and save your finding for reference and further extension of your work
                 </h6>
                 <div className="text-right mBtnHolder">
                   <button
@@ -57,8 +58,9 @@ export default class InfoGathering extends Component {
                       this.props.params.modalCallback(
                         true,
                         "Report on Search Engine Reconnaissance",
-                        <SEDReport
+                        <Reporter
                           viliop={this.props.params.viliop}
+                          ID="WSTG-INFO-01"
                       />);
                     }}
                   >
@@ -71,6 +73,7 @@ export default class InfoGathering extends Component {
             <div className="col-md-12">
               <div className="GuideSubItem">
                 <h5 className="mSubTitle">Fingerprint Web Server</h5>
+                <span className="wsId">WSTG-INFO-02</span><hr/>
                 <h6>
                   Identify the type and version of web server that <span className="linkText">{this.project.config.targetUrl}</span>
                   is running on. This is necessary because there are known vulnerabilities for various Webserver software and versions
@@ -109,9 +112,10 @@ export default class InfoGathering extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Report on Search Engine Reconnaissance",
-                        <SEDReport
+                        "Report on Fingerprinting Web Server",
+                        <Reporter
                           viliop={this.props.params.viliop}
+                          ID="WSTG-INFO-02"
                       />);
                     }}
                   >
@@ -120,6 +124,49 @@ export default class InfoGathering extends Component {
                 </div>
               </div>
             </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Review Webserver Metafiles for Information Leakage</h5>
+                <span className="wsId">WSTG-INFO-03</span><hr/>
+                <h6>
+                  Test various metadata files for information leakage of the web application’s path(s), or
+                  functionality.
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Webserver Metafiles Review Help & Guide",
+                        <RWMGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Webserver Metafiles Review",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INFO-03"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
 
           </div>
         </div>
