@@ -252,6 +252,47 @@ export default class InfoGathering extends Component {
               </div>
             </div>
 
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Identify Application Entry Points</h5>
+                <span className="wsId">WSTG-INFO-06</span><hr/>
+                <h6>
+                  Discover various entry points to the target web app
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Identify Application Entry Points Help & Guide",
+                        <RWCGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Identification of Application Entry Points",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INFO-06"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
 
           </div>
         </div>
