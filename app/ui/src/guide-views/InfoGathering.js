@@ -9,6 +9,8 @@ import EAWGuidesHelp from '../guide-view-helpers/EAWGuidesHelp';
 import RWCGuidesHelp from '../guide-view-helpers/RWCGuidesHelp';
 import IAEPGuidesHelp from '../guide-view-helpers/IAEPGuidesHelp';
 import MEPGuidesHelp from '../guide-view-helpers/MEPGuidesHelp';
+import FWAFGuidesHelp from '../guide-view-helpers/FWAFGuidesHelp';
+import MAAGuidesHelp from '../guide-view-helpers/MAAGuidesHelp';
 
 
 export default class InfoGathering extends Component {
@@ -338,10 +340,10 @@ export default class InfoGathering extends Component {
 
             <div className="col-md-12">
               <div className="GuideSubItem">
-                <h5 className="mSubTitle">Fingerprint Web Application Framework</h5>
+                <h5 className="mSubTitle">Fingerprint Web Application and It's Framework</h5>
                 <span className="wsId">WSTG-INFO-08</span><hr/>
                 <h6>
-                  Discover the framework powering the target web app
+                  Discover the framework and technologies powering the target web app
                 </h6>
                 <div className="text-right mBtnHolder">
 
@@ -351,7 +353,7 @@ export default class InfoGathering extends Component {
                       this.props.params.modalCallback(
                         true,
                         "Fingerprinting Web Application Framework Help & Guide",
-                        <MEPGuidesHelp
+                        <FWAFGuidesHelp
                           viliop={this.props.params.viliop}
                       />);
                     }}
@@ -376,6 +378,48 @@ export default class InfoGathering extends Component {
                 </div>
               </div>
             </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Map Application Architecture</h5>
+                <span className="wsId">WSTG-INFO-10</span><hr/>
+                <h6>
+                  Generate a map of the application at hand based on the research conducted
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Mapping Application Architecture Help & Guide",
+                        <MAAGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Mapping Application Architecture",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INFO-10"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
