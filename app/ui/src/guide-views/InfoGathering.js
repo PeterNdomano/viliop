@@ -7,6 +7,8 @@ import FWSGuidesHelp from '../guide-view-helpers/FWSGuidesHelp';
 import RWMGuidesHelp from '../guide-view-helpers/RWMGuidesHelp';
 import EAWGuidesHelp from '../guide-view-helpers/EAWGuidesHelp';
 import RWCGuidesHelp from '../guide-view-helpers/RWCGuidesHelp';
+import IAEPGuidesHelp from '../guide-view-helpers/IAEPGuidesHelp';
+import MEPGuidesHelp from '../guide-view-helpers/MEPGuidesHelp';
 
 
 export default class InfoGathering extends Component {
@@ -267,7 +269,7 @@ export default class InfoGathering extends Component {
                       this.props.params.modalCallback(
                         true,
                         "Identify Application Entry Points Help & Guide",
-                        <RWCGuidesHelp
+                        <IAEPGuidesHelp
                           viliop={this.props.params.viliop}
                       />);
                     }}
@@ -293,7 +295,87 @@ export default class InfoGathering extends Component {
               </div>
             </div>
 
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Map Execution Paths Through Application</h5>
+                <span className="wsId">WSTG-INFO-07</span><hr/>
+                <h6>
+                  Understand the structure of the application
+                </h6>
+                <div className="text-right mBtnHolder">
 
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Mapping Execution Paths Help & Guide",
+                        <MEPGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Mapping Execution Paths",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INFO-07"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Fingerprint Web Application Framework</h5>
+                <span className="wsId">WSTG-INFO-08</span><hr/>
+                <h6>
+                  Discover the framework powering the target web app
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Fingerprinting Web Application Framework Help & Guide",
+                        <MEPGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Fingerprinting Web Application Framework",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INFO-08"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
