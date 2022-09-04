@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
 import TNICGuidesHelp from '../guide-view-helpers/TNICGuidesHelp';
-
+import TAPCGuidesHelp from '../guide-view-helpers/TAPCGuidesHelp';
 
 export default class CNDMTesting extends Component {
   constructor(props) {
@@ -69,8 +69,50 @@ export default class CNDMTesting extends Component {
                 </div>
               </div>
             </div>
-
             
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Test Application Platform Configuration</h5>
+                <span className="wsId">WSTG-CONF-02</span><hr/>
+                <h6>
+                  Review configuration of every single element that make up the architecture
+                  of <span className="linkText">{this.project.config.targetUrl}</span>
+                
+                </h6>
+                <div className="text-right mBtnHolder">
+                  
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Application Platform Configuration Testing Help & Guide",
+                        <TAPCGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Application Platform Configuration Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CONF-02"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
