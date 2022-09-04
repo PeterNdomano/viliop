@@ -15,9 +15,17 @@ export default function GuidesHelp(props){
       <div className="row">
         <div className="col-md-12">
           <h3 className="helpTitle">Intro:</h3>
-          Enumerating the application and its attack surface is a key precursor before any thorough testing can be undertaken,
-          as it allows the tester to identify likely areas of weakness. This section aims to help identify and map out areas within
-          the application that should be investigated once enumeration and mapping have been completed.
+          The intrinsic complexity of interconnected and heterogeneous web server infrastructure, which can include hundreds of
+          web applications, makes configuration management and review a fundamental step in testing and deploying every
+          single application. It takes only a single vulnerability to undermine the security of the entire infrastructure, and even
+          small and seemingly unimportant problems may evolve into severe risks for another application on the same server. In
+          order to address these problems, it is of utmost importance to perform an in-depth review of configuration and known
+          security issues, after having mapped the entire architecture.
+          <br/>
+          Proper configuration management of the web server infrastructure is very important in order to preserve the security of
+          the application itself. If elements such as the web server software, the back-end database servers, or the authentication
+          servers are not properly reviewed and secured, they might introduce undesired risks or introduce new vulnerabilities
+          that might compromise the application itself.
           <hr/>
         </div>
 
@@ -25,51 +33,35 @@ export default function GuidesHelp(props){
           <h3 className="helpTitle">Tips & How:</h3>
           <ul>
             <li>
-              Identify possible entry and injection points through request and response analysis
+              The different elements that make up the infrastructure need to be determined in order to understand how they
+              interact with a web application and how they affect its security
             </li>
             <li>
-              Understand how a normal user and browser would communicate with the web app
+              All the elements of the infrastructure need to be reviewed in order to make sure that they don’t contain any known
+              vulnerabilities.
             </li>
             <li>
-              Identify where GETs and POSTs are used
+              A review needs to be made of the administrative tools used to maintain all the different elements.
             </li>
             <li>
-              Identify all parameters used in a POST request (these are in the body of the request).
+              The authentication systems, need to reviewed in order to assure that they serve the needs of the application and
+              that they cannot be manipulated by external users to leverage access
             </li>
             <li>
-              Within the POST request, pay special attention to any hidden parameters. When a POST is sent all the form fields
-              (including hidden parameters) will be sent in the body of the HTTP message to the application. These typically
-              aren’t seen unless a proxy or view the HTML source code is used. In addition, the next page shown, its data, and
-              the level of access can all be different depending on the value of the hidden parameter(s)
+              A list of defined ports which are required for the application should be maintained and kept under change contro
             </li>
             <li>
-              Identify all parameters used in a GET request (i.e., URL), in particular the query string (usually after a ? mark)
+              Review the applications’ configurations set across the network and validate that they are not vulnerabl
             </li>
             <li>
-              Identify all the parameters of the query string. These usually are in a pair format, such as foo=bar . Also note that
-              many parameters can be in one query string such as separated by a & , \~ , : , or any other special character or
-              encoding.
+              Validate that used frameworks and systems are secure and not susceptible to known vulnerabilities due to
+              unmaintained software or default settings and credentials.
             </li>
             <li>
-              A special note when it comes to identifying multiple parameters in one string or within a POST request is that some
-              or all of the parameters will be needed to execute the attacks. The tester needs to identify all of the parameters
-              (even if encoded or encrypted) and identify which ones are processed by the application. Later sections of the
-              guide will identify how to test these parameters. At this point, just make sure each one of them is identified
+              Test against known server vulnerabilities
             </li>
             <li>
-              Also pay attention to any additional or custom type headers not typically seen (such as debug: false ).
-            </li>
-            <li>
-              Identify where new cookies are set ( Set-Cookie header), modified, or added to.
-            </li>
-            <li>
-              Identify where there are any redirects (3xx HTTP status code), 400 status codes, in particular 403 Forbidden, and
-              500 internal server errors during normal responses (i.e., unmodified requests).
-            </li>
-            <li>
-              Also note where any interesting headers are used. For example, Server: BIG-IP indicates that the site is load
-              balanced. Thus, if a site is load balanced and one server is incorrectly configured, then the tester might have to
-              make multiple requests to access the vulnerable server, depending on the type of load balan
+              Test for administrative tools and interfaces
             </li>
           </ul>
           <hr/>
@@ -77,7 +69,7 @@ export default function GuidesHelp(props){
 
         <div className="col-md-12">
           <h3 className="helpTitle">Tools:</h3>
-          OWASP Zed Attack Proxy (ZAP), Burp SUite, Fiddler
+          OWASP Zed Attack Proxy (ZAP), Burp Suite, Web Browsers
           <hr/>
         </div>
       </div>
