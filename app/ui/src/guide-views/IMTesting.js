@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
 import TRDGuidesHelp from '../guide-view-helpers/TRDGuidesHelp';
 import TURPGuidesHelp from '../guide-view-helpers/TURPGuidesHelp';
+import TAPPGuidesHelp from '../guide-view-helpers/TAPPGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -100,6 +101,48 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-IDNT-02"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Test Account Provisioning Process</h5>
+                <span className="wsId">WSTG-IDNT-03</span><hr/>
+                <h6>
+                  The provisioning of accounts presents an opportunity for an attacker to create a valid account without application of the
+                  proper identification and authorization process
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Account Provisioning Process Testing Help & Guide",
+                        <TAPPGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Account Provisioning Process Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-IDNT-03"
                       />);
                     }}
                   >
