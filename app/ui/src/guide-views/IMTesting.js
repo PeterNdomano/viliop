@@ -4,6 +4,7 @@ import TRDGuidesHelp from '../guide-view-helpers/TRDGuidesHelp';
 import TURPGuidesHelp from '../guide-view-helpers/TURPGuidesHelp';
 import TAPPGuidesHelp from '../guide-view-helpers/TAPPGuidesHelp';
 import TAEGUAGuidesHelp from '../guide-view-helpers/TAEGUAGuidesHelp';
+import TWUUPGuidesHelp from '../guide-view-helpers/TWUUPGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -186,6 +187,47 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-IDNT-04"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Weak or Unenforced Username Policy</h5>
+                <span className="wsId">WSTG-IDNT-05</span><hr/>
+                <h6>
+                  User account names are often highly structured and valid account names can easily be guessed.
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Weak or Unenforced Username Policy Testing Help & Guide",
+                        <TWUUPGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Weak or Unenforced Username Policy Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-IDNT-05"
                       />);
                     }}
                   >
