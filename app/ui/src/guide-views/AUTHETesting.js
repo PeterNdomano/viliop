@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
 import TCTECGuidesHelp from '../guide-view-helpers/TCTECGuidesHelp';
 import TDCGuidesHelp from '../guide-view-helpers/TDCGuidesHelp';
+import TWLOMGuidesHelp from '../guide-view-helpers/TWLOMGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -102,6 +103,48 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-ATHN-02"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Weak Lock Out Mechanism</h5>
+                <span className="wsId">WSTG-ATHN-03</span><hr/>
+                <h6>
+                  Account lockout mechanisms are used to mitigate brute force attacks. At this stage
+                  analyse those mechanisms and detect their weaknesses
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Weak Lock Out Mechanism Testing Help & Guide",
+                        <TWLOMGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Weak Lock Out Mechanism Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-ATHN-03"
                       />);
                     }}
                   >
