@@ -231,7 +231,7 @@ export default class CNDMTesting extends Component {
                         "Report on Vulnerable Remember Password Testing",
                         <Reporter
                           viliop={this.props.params.viliop}
-                          ID="WSTG-ATHN-04"
+                          ID="WSTG-ATHN-05"
                       />);
                     }}
                   >
