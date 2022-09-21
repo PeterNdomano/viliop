@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
-import TCTECGuidesHelp from '../guide-view-helpers/TCTECGuidesHelp';
-import TDCGuidesHelp from '../guide-view-helpers/TDCGuidesHelp';
-import TWLOMGuidesHelp from '../guide-view-helpers/TWLOMGuidesHelp';
-import TBASGuidesHelp from '../guide-view-helpers/TBASGuidesHelp';
-import TVRPGuidesHelp from '../guide-view-helpers/TVRPGuidesHelp';
-import TBCWGuidesHelp from '../guide-view-helpers/TBCWGuidesHelp';
-import TWPPGuidesHelp from '../guide-view-helpers/TWPPGuidesHelp';
-import TWSQAGuidesHelp from '../guide-view-helpers/TWSQAGuidesHelp';
-import TWPCRFGuidesHelp from '../guide-view-helpers/TWPCRFGuidesHelp';
-import TWAACGuidesHelp from '../guide-view-helpers/TWAACGuidesHelp';
+import TDTFIGuidesHelp from '../guide-view-helpers/TDTFIGuidesHelp';
+
 
 
 export default class CNDMTesting extends Component {
@@ -25,11 +17,11 @@ export default class CNDMTesting extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h3 className="mTitle">Authentication Testing</h3>
+              <h3 className="mTitle">Authorization Testing</h3>
             </div>
             <div className="col-md-12">
               <p className="mIntro">
-                Test Authentication mechanism(s) on <span className="linkText">{this.project.config.targetUrl}</span>
+                Test Authorization on <span className="linkText">{this.project.config.targetUrl}</span>
               </p>
             </div>
 
@@ -37,10 +29,10 @@ export default class CNDMTesting extends Component {
 
             <div className="col-md-12">
               <div className="GuideSubItem">
-                <h5 className="mSubTitle">Testing for Credentials Transported over an Encrypted Channel</h5>
-                <span className="wsId">WSTG-ATHN-01</span><hr/>
+                <h5 className="mSubTitle">Testing Directory Traversal File Include</h5>
+                <span className="wsId">WSTG-ATHZ-01</span><hr/>
                 <h6>
-                  Determine whether  this web app encrypts authentification data in transit.
+                  Identify injection points that pertain to path traversal.
                 </h6>
                 <div className="text-right mBtnHolder">
 
@@ -49,8 +41,8 @@ export default class CNDMTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Authentication Credentials Transport Channel Testing Help & Guide",
-                        <TCTECGuidesHelp
+                        "Directory Traversal File Include Testing Help & Guide",
+                        <TDTFIGuidesHelp
                           viliop={this.props.params.viliop}
                       />);
                     }}
@@ -63,10 +55,10 @@ export default class CNDMTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Report on Authentication Credentials Transport Channel Testing",
+                        "Report on Directory Traversal File Include Testing",
                         <Reporter
                           viliop={this.props.params.viliop}
-                          ID="WSTG-ATHN-01"
+                          ID="WSTG-ATHZ-01"
                       />);
                     }}
                   >
