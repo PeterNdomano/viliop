@@ -10,6 +10,7 @@ import THSTSGuidesHelp from '../guide-view-helpers/THSTSGuidesHelp';
 import TRCDPGuidesHelp from '../guide-view-helpers/TRCDPGuidesHelp';
 import TFPGuidesHelp from '../guide-view-helpers/TFPGuidesHelp';
 import TSTGuidesHelp from '../guide-view-helpers/TSTGuidesHelp';
+import TCSGuidesHelp from '../guide-view-helpers/TCSGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -448,6 +449,47 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-CONF-10"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Test Cloud Storage</h5>
+                <span className="wsId">WSTG-CONF-11</span><hr/>
+                <h6>
+                  Test for Improper access control and configuration for related Cloud Storage if available for this target
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Cloud Storage Testing Help & Guide",
+                        <TCSGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Cloud Storage Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CONF-11"
                       />);
                     }}
                   >
