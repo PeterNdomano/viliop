@@ -4,6 +4,7 @@ import InfoGathering from './guide-views/InfoGathering';
 import CNDMTesting from './guide-views/CNDMTesting';
 import IMTesting from './guide-views/IMTesting';
 import AUTHETesting from './guide-views/AUTHETesting';
+import AUTHOTesting from './guide-views/AUTHOTesting';
 
 export function getRPanelView (props) {
   if(props.navItem === "project" && props.navSubItem === "new_project"){
@@ -48,6 +49,13 @@ export function getWorkspaceView(props) {
   else if(props.workspaceViewId === "authentication_testing"){
     return (
       <AUTHETesting
+        params={props}
+      />
+    )
+  }
+  else if(props.workspaceViewId === "authorization_testing"){
+    return (
+      <AUTHOTesting
         params={props}
       />
     )
