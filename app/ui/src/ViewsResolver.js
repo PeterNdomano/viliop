@@ -29,7 +29,7 @@ export function getWorkspaceView(props) {
       />
     )
   }
-  else if(props.workspaceViewId === "cndm_testing"){
+  else if(props.workspaceViewId === "config_testing"){
     return (
       <CNDMTesting
         params={props}
