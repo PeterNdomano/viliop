@@ -3,6 +3,7 @@ import Reporter from '../guide-view-helpers/Reporter';
 import TRDGuidesHelp from '../guide-view-helpers/TRDGuidesHelp';
 import TURPGuidesHelp from '../guide-view-helpers/TURPGuidesHelp';
 import TAPPGuidesHelp from '../guide-view-helpers/TAPPGuidesHelp';
+import TAEGUAGuidesHelp from '../guide-view-helpers/TAEGUAGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -143,6 +144,48 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-IDNT-03"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Account Enumeration and Guessable User Account</h5>
+                <span className="wsId">WSTG-IDNT-04</span><hr/>
+                <h6>
+                  Test if it is possible to collect a set of valid usernames by interacting with the authentication
+                  mechanism of the application
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Account Enumeration and Guessable User Account Testing Help & Guide",
+                        <TAEGUAGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Account Enumeration and Guessable User Account Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-IDNT-04"
                       />);
                     }}
                   >
