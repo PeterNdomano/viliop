@@ -7,6 +7,7 @@ import ROBUFGuidesHelp from '../guide-view-helpers/ROBUFGuidesHelp';
 import EIAAIGuidesHelp from '../guide-view-helpers/EIAAIGuidesHelp';
 import THMGuidesHelp from '../guide-view-helpers/THMGuidesHelp';
 import THSTSGuidesHelp from '../guide-view-helpers/THSTSGuidesHelp';
+import TRCDPGuidesHelp from '../guide-view-helpers/TRCDPGuidesHelp';
 
 export default class CNDMTesting extends Component {
   constructor(props) {
@@ -319,6 +320,47 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-CONF-07"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Test RIA Cross Domain Policy</h5>
+                <span className="wsId">WSTG-CONF-08</span><hr/>
+                <h6>
+                  Cross Domain Policies Can be abused in number of ways when misconfigured.
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "RIA Cross Domain Policy Testing Help & Guide",
+                        <TRCDPGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on RIA Cross Domain Policy Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CONF-08"
                       />);
                     }}
                   >
