@@ -6,7 +6,7 @@ import TFEHGuidesHelp from '../guide-view-helpers/TFEHGuidesHelp';
 import ROBUFGuidesHelp from '../guide-view-helpers/ROBUFGuidesHelp';
 import EIAAIGuidesHelp from '../guide-view-helpers/EIAAIGuidesHelp';
 import THMGuidesHelp from '../guide-view-helpers/THMGuidesHelp';
-
+import THSTSGuidesHelp from '../guide-view-helpers/THSTSGuidesHelp';
 
 export default class CNDMTesting extends Component {
   constructor(props) {
@@ -286,6 +286,48 @@ export default class CNDMTesting extends Component {
                 </div>
               </div>
             </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Test HTTP Strict Transport Security</h5>
+                <span className="wsId">WSTG-CONF-07</span><hr/>
+                <h6>
+                  Determine if the web uses HTTP Strict Transport Security (HSTS) feature to enforce https on some domains
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "HTTP Strict Transport Security Testing Help & Guide",
+                        <THSTSGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on HTTP Strict Transport Security Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CONF-07"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
