@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
 import TDTFIGuidesHelp from '../guide-view-helpers/TDTFIGuidesHelp';
 import TFBASGuidesHelp from '../guide-view-helpers/TFBASGuidesHelp';
-
+import TPEGuidesHelp from '../guide-view-helpers/TPEGuidesHelp';
 
 export default class CNDMTesting extends Component {
   constructor(props) {
@@ -101,6 +101,49 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-ATHZ-02"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Privilege Escalation</h5>
+                <span className="wsId">WSTG-ATHZ-03</span><hr/>
+                <h6>
+                  During this phase, the tester should
+                  verify that it is not possible for a user to modify their privileges or roles inside the application in ways that could allow
+                  privilege escalation attacks.
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Privilege Escalation Testing Help & Guide",
+                        <TPEGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Privilege Escalation Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-ATHZ-03"
                       />);
                     }}
                   >
