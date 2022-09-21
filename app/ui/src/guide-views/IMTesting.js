@@ -1,16 +1,6 @@
 import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
-import TNICGuidesHelp from '../guide-view-helpers/TNICGuidesHelp';
-import TAPCGuidesHelp from '../guide-view-helpers/TAPCGuidesHelp';
-import TFEHGuidesHelp from '../guide-view-helpers/TFEHGuidesHelp';
-import ROBUFGuidesHelp from '../guide-view-helpers/ROBUFGuidesHelp';
-import EIAAIGuidesHelp from '../guide-view-helpers/EIAAIGuidesHelp';
-import THMGuidesHelp from '../guide-view-helpers/THMGuidesHelp';
-import THSTSGuidesHelp from '../guide-view-helpers/THSTSGuidesHelp';
-import TRCDPGuidesHelp from '../guide-view-helpers/TRCDPGuidesHelp';
-import TFPGuidesHelp from '../guide-view-helpers/TFPGuidesHelp';
-import TSTGuidesHelp from '../guide-view-helpers/TSTGuidesHelp';
-import TCSGuidesHelp from '../guide-view-helpers/TCSGuidesHelp';
+import TRDGuidesHelp from '../guide-view-helpers/TRDGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -30,7 +20,7 @@ export default class CNDMTesting extends Component {
             </div>
             <div className="col-md-12">
               <p className="mIntro">
-                Test how user identities are managed on this target
+                Test how user identities are managed on <span className="linkText">{this.project.config.targetUrl}</span>
               </p>
             </div>
 
@@ -41,9 +31,7 @@ export default class CNDMTesting extends Component {
                 <h5 className="mSubTitle">Test Role Definitions</h5>
                 <span className="wsId">WSTG-IDNT-01</span><hr/>
                 <h6>
-                  Review network configurations for applications, services, webservers and database servers
-                  related to <span className="linkText">{this.project.config.targetUrl}</span>
-
+                  Identify roles found on this target
                 </h6>
                 <div className="text-right mBtnHolder">
 
@@ -52,8 +40,8 @@ export default class CNDMTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Network Infrastructure Configuration Testing Help & Guide",
-                        <TNICGuidesHelp
+                        "Role Definitions Testing Help & Guide",
+                        <TRDGuidesHelp
                           viliop={this.props.params.viliop}
                       />);
                     }}
@@ -66,10 +54,10 @@ export default class CNDMTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Report on Network Infrastructure Configuration Testing",
+                        "Report on Role Definitions Testing",
                         <Reporter
                           viliop={this.props.params.viliop}
-                          ID="WSTG-CONF-01"
+                          ID="WSTG-IDNT-01"
                       />);
                     }}
                   >
