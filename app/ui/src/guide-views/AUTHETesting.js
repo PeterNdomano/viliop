@@ -5,6 +5,7 @@ import TDCGuidesHelp from '../guide-view-helpers/TDCGuidesHelp';
 import TWLOMGuidesHelp from '../guide-view-helpers/TWLOMGuidesHelp';
 import TBASGuidesHelp from '../guide-view-helpers/TBASGuidesHelp';
 import TVRPGuidesHelp from '../guide-view-helpers/TVRPGuidesHelp';
+import TBCWGuidesHelp from '../guide-view-helpers/TBCWGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -232,6 +233,47 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-ATHN-05"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Browser Cache Weaknesses</h5>
+                <span className="wsId">WSTG-ATHN-06</span><hr/>
+                <h6>
+                  Check that the application correctly instructs the browser to not retain sensitive data
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Browser Cache Weaknesses Testing Help & Guide",
+                        <TBCWGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Browser Cache Weaknesses Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-ATHN-06"
                       />);
                     }}
                   >
