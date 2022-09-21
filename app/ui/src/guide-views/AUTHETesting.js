@@ -8,6 +8,7 @@ import TVRPGuidesHelp from '../guide-view-helpers/TVRPGuidesHelp';
 import TBCWGuidesHelp from '../guide-view-helpers/TBCWGuidesHelp';
 import TWPPGuidesHelp from '../guide-view-helpers/TWPPGuidesHelp';
 import TWSQAGuidesHelp from '../guide-view-helpers/TWSQAGuidesHelp';
+import TWPCRFGuidesHelp from '../guide-view-helpers/TWPCRFGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -361,6 +362,47 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-ATHN-08"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Weak Password Change or Reset Functionalities</h5>
+                <span className="wsId">WSTG-ATHN-09</span><hr/>
+                <h6>
+                  Determine the resistance of the passwords reset functionality against guessing or bypassing.
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Weak Password Change or Reset Functionalities Testing Help & Guide",
+                        <TWPCRFGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Weak Password Change or Reset Functionalities",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-ATHN-09"
                       />);
                     }}
                   >
