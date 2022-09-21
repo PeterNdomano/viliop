@@ -7,6 +7,7 @@ import TBASGuidesHelp from '../guide-view-helpers/TBASGuidesHelp';
 import TVRPGuidesHelp from '../guide-view-helpers/TVRPGuidesHelp';
 import TBCWGuidesHelp from '../guide-view-helpers/TBCWGuidesHelp';
 import TWPPGuidesHelp from '../guide-view-helpers/TWPPGuidesHelp';
+import TWSQAGuidesHelp from '../guide-view-helpers/TWSQAGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -319,6 +320,47 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-ATHN-07"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Weak Security Question Answer</h5>
+                <span className="wsId">WSTG-ATHN-08</span><hr/>
+                <h6>
+                  Determine the complexity and how straight-forward the questions are then assess possible answers
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Weak Security Question Answer Testing Help & Guide",
+                        <TWSQAGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Weak Security Question Answer Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-ATHN-08"
                       />);
                     }}
                   >
