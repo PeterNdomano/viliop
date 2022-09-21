@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
 import TRDGuidesHelp from '../guide-view-helpers/TRDGuidesHelp';
+import TURPGuidesHelp from '../guide-view-helpers/TURPGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -67,6 +68,46 @@ export default class CNDMTesting extends Component {
               </div>
             </div>
 
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Test User Registration Process</h5>
+                <span className="wsId">WSTG-IDNT-02</span><hr/>
+                <h6>
+                  Test the whole user registration process and determine how roles are assgned to users during the process
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "User Registration Process Testing Help & Guide",
+                        <TURPGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on User Registration Process Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-IDNT-02"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
 
           </div>
         </div>
