@@ -5,6 +5,7 @@ import TAPCGuidesHelp from '../guide-view-helpers/TAPCGuidesHelp';
 import TFEHGuidesHelp from '../guide-view-helpers/TFEHGuidesHelp';
 import ROBUFGuidesHelp from '../guide-view-helpers/ROBUFGuidesHelp';
 import EIAAIGuidesHelp from '../guide-view-helpers/EIAAIGuidesHelp';
+import THMGuidesHelp from '../guide-view-helpers/THMGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -206,7 +207,7 @@ export default class CNDMTesting extends Component {
             <div className="col-md-12">
               <div className="GuideSubItem">
                 <h5 className="mSubTitle">Enumerate Infrastructure and Application Admin Interfaces</h5>
-                <span className="wsId">WSTG-CONF-04</span><hr/>
+                <span className="wsId">WSTG-CONF-05</span><hr/>
                 <h6>
                   Tests should be undertaken to reveal if and how Admin Interfaces
                   can be accessed by an unauthorized or standard user.
@@ -245,6 +246,46 @@ export default class CNDMTesting extends Component {
               </div>
             </div>
 
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Test HTTP Methods</h5>
+                <span className="wsId">WSTG-CONF-06</span><hr/>
+                <h6>
+                  Some of HTTP Methods can be used for nefarious purposes if the web server is misconfigured
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "HTTP Methods Testing Help & Guide",
+                        <THMGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on HTTP Methods Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CONF-06"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
