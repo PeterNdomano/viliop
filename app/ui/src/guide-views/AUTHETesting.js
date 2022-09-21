@@ -9,6 +9,7 @@ import TBCWGuidesHelp from '../guide-view-helpers/TBCWGuidesHelp';
 import TWPPGuidesHelp from '../guide-view-helpers/TWPPGuidesHelp';
 import TWSQAGuidesHelp from '../guide-view-helpers/TWSQAGuidesHelp';
 import TWPCRFGuidesHelp from '../guide-view-helpers/TWPCRFGuidesHelp';
+import TWAACGuidesHelp from '../guide-view-helpers/TWAACGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -399,10 +400,52 @@ export default class CNDMTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Report on Weak Password Change or Reset Functionalities",
+                        "Report on Weak Password Change or Reset Functionalities Testing",
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-ATHN-09"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Weaker Authentication in Alternative Channel</h5>
+                <span className="wsId">WSTG-ATHN-10</span><hr/>
+                <h6>
+                  Even if the primary authentication mechanisms do not include any vulnerabilities, it may be that vulnerabilities exist in
+                  alternative legitimate authentication user channels for the same user accounts
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Weaker Authentication in Alternative Channel Testing Help & Guide",
+                        <TWAACGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Weaker Authentication in Alternative Channel Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-ATHN-10"
                       />);
                     }}
                   >
