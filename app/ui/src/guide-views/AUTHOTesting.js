@@ -3,6 +3,8 @@ import Reporter from '../guide-view-helpers/Reporter';
 import TDTFIGuidesHelp from '../guide-view-helpers/TDTFIGuidesHelp';
 import TFBASGuidesHelp from '../guide-view-helpers/TFBASGuidesHelp';
 import TPEGuidesHelp from '../guide-view-helpers/TPEGuidesHelp';
+import TIDORGuidesHelp from '../guide-view-helpers/TIDORGuidesHelp';
+
 
 export default class CNDMTesting extends Component {
   constructor(props) {
@@ -153,6 +155,47 @@ export default class CNDMTesting extends Component {
               </div>
             </div>
 
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Insecure Direct Object References</h5>
+                <span className="wsId">WSTG-ATHZ-04</span><hr/>
+                <h6>
+                  Insecure Direct Object References (IDOR) occur when an application provides direct access to objects based on user-
+                  supplied input
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Insecure Direct Object References Testing Help & Guide",
+                        <TIDORGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Insecure Direct Object References Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-ATHZ-04"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
