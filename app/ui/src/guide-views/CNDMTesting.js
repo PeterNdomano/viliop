@@ -3,7 +3,7 @@ import Reporter from '../guide-view-helpers/Reporter';
 import TNICGuidesHelp from '../guide-view-helpers/TNICGuidesHelp';
 import TAPCGuidesHelp from '../guide-view-helpers/TAPCGuidesHelp';
 import TFEHGuidesHelp from '../guide-view-helpers/TFEHGuidesHelp';
-
+import ROBUFGuidesHelp from '../guide-view-helpers/ROBUFGuidesHelp';
 
 export default class CNDMTesting extends Component {
   constructor(props) {
@@ -149,6 +149,49 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-CONF-03"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Review Old Backup and Unreferenced Files for Sensitive Information</h5>
+                <span className="wsId">WSTG-CONF-04</span><hr/>
+                <h6>
+                  While most of the files within a web server are directly handled by the server itself, it isn’t uncommon to find
+                  unreferenced or forgotten files that can be used to obtain important information about the infrastructure or the
+                  credentials.
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Old Backup and Unreferenced Files Review Help & Guide",
+                        <ROBUFGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Old Backup and Unreferenced Files Review",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CONF-04"
                       />);
                     }}
                   >
