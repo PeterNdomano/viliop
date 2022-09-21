@@ -3,6 +3,8 @@ import Reporter from '../guide-view-helpers/Reporter';
 import TCTECGuidesHelp from '../guide-view-helpers/TCTECGuidesHelp';
 import TDCGuidesHelp from '../guide-view-helpers/TDCGuidesHelp';
 import TWLOMGuidesHelp from '../guide-view-helpers/TWLOMGuidesHelp';
+import TBASGuidesHelp from '../guide-view-helpers/TBASGuidesHelp';
+import TVRPGuidesHelp from '../guide-view-helpers/TVRPGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -145,6 +147,91 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-ATHN-03"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Bypassing Authentication Schema</h5>
+                <span className="wsId">WSTG-ATHN-04</span><hr/>
+                <h6>
+                  Testing the authentication schema means
+                  understanding how the authentication process works and using that information to circumvent the authentication
+                  mechanism
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Bypassing Authentication Schema Testing Help & Guide",
+                        <TBASGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Bypassing Authentication Schema Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-ATHN-04"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Vulnerable Remember Password</h5>
+                <span className="wsId">WSTG-ATHN-05</span><hr/>
+                <h6>
+                  Credentials are the most widely used authentication technology. Due to such a wide usage of username-password
+                  pairs, users are no longer able to properly handle their credentials across the multitude of used applications
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Vulnerable Remember Password Testing Help & Guide",
+                        <TVRPGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Vulnerable Remember Password Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-ATHN-04"
                       />);
                     }}
                   >
