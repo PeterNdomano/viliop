@@ -6,6 +6,7 @@ import TWLOMGuidesHelp from '../guide-view-helpers/TWLOMGuidesHelp';
 import TBASGuidesHelp from '../guide-view-helpers/TBASGuidesHelp';
 import TVRPGuidesHelp from '../guide-view-helpers/TVRPGuidesHelp';
 import TBCWGuidesHelp from '../guide-view-helpers/TBCWGuidesHelp';
+import TWPPGuidesHelp from '../guide-view-helpers/TWPPGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -274,6 +275,50 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-ATHN-06"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Weak Password Policy</h5>
+                <span className="wsId">WSTG-ATHN-07</span><hr/>
+                <h6>
+                  The password
+                  represents the keys to the kingdom, but is often subverted by users in the name of usability. In each of the recent high
+                  profile hacks that have revealed user credentials, it is lamented that most common passwords are still: 123456 ,
+                  password and qwerty
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Weak Password Policy Testing Help & Guide",
+                        <TWPPGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Weak Password Policy Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-ATHN-07"
                       />);
                     }}
                   >
