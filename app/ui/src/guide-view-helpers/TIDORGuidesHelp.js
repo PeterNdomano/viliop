@@ -40,7 +40,7 @@
 
           <div className="col-md-12">
             <h3 className="helpTitle">Tools:</h3>
-            Nikto, OWASP ZAP, W3af
+            Web Browsers
             <hr/>
           </div>
         </div>
