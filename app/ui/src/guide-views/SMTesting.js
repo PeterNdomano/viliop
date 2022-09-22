@@ -3,6 +3,7 @@ import Reporter from '../guide-view-helpers/Reporter';
 import TSMSGuidesHelp from '../guide-view-helpers/TSMSGuidesHelp';
 import TCAGuidesHelp from '../guide-view-helpers/TCAGuidesHelp';
 import TSFGuidesHelp from '../guide-view-helpers/TSFGuidesHelp';
+import TESVGuidesHelp from '../guide-view-helpers/TESVGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -145,6 +146,48 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-SESS-03"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Exposed Session Variables</h5>
+                <span className="wsId">WSTG-SESS-04</span><hr/>
+                <h6>
+                  The Session Tokens (Cookie, SessionID, Hidden Field), if exposed, will usually enable an attacker to impersonate a
+                  victim and access the application illegitimately
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Exposed Session Variables Testing Help & Guide",
+                        <TESVGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Exposed Session Variables Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-SESS-04"
                       />);
                     }}
                   >
