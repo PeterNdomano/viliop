@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
 import TSMSGuidesHelp from '../guide-view-helpers/TSMSGuidesHelp';
 import TCAGuidesHelp from '../guide-view-helpers/TCAGuidesHelp';
+import TSFGuidesHelp from '../guide-view-helpers/TSFGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -102,6 +103,48 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-SESS-02"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Session Fixation</h5>
+                <span className="wsId">WSTG-SESS-03</span><hr/>
+                <h6>
+                  In the generic exploit of session fixation vulnerabilities, an attacker can obtain a set of session cookies from the target
+                  website without first authenticating
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Session Fixation Testing Help & Guide",
+                        <TSFGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Session Fixation Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-SESS-03"
                       />);
                     }}
                   >
