@@ -8,6 +8,7 @@ import TCSRFGuidesHelp from '../guide-view-helpers/TCSRFGuidesHelp';
 import TLFGuidesHelp from '../guide-view-helpers/TLFGuidesHelp';
 import TSTMGuidesHelp from '../guide-view-helpers/TSTMGuidesHelp';
 import TSPGuidesHelp from '../guide-view-helpers/TSPGuidesHelp';
+import TSHGuidesHelp from '../guide-view-helpers/TSHGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -361,6 +362,48 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-SESS-08"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Session Hijacking</h5>
+                <span className="wsId">WSTG-SESS-09</span><hr/>
+                <h6>
+                  An attacker who gets access to user session cookies can impersonate them by presenting such cookies. This attack is
+                  known as session hijacking
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Session Hijacking Testing Help & Guide",
+                        <TSHGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Session Hijacking Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-SESS-09"
                       />);
                     }}
                   >
