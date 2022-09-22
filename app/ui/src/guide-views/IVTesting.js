@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
-import TSMSGuidesHelp from '../guide-view-helpers/TSMSGuidesHelp';
-import TCAGuidesHelp from '../guide-view-helpers/TCAGuidesHelp';
-import TSFGuidesHelp from '../guide-view-helpers/TSFGuidesHelp';
-import TESVGuidesHelp from '../guide-view-helpers/TESVGuidesHelp';
-import TCSRFGuidesHelp from '../guide-view-helpers/TCSRFGuidesHelp';
-import TLFGuidesHelp from '../guide-view-helpers/TLFGuidesHelp';
-import TSTMGuidesHelp from '../guide-view-helpers/TSTMGuidesHelp';
-import TSPGuidesHelp from '../guide-view-helpers/TSPGuidesHelp';
-import TSHGuidesHelp from '../guide-view-helpers/TSHGuidesHelp';
+import TRCSSGuidesHelp from '../guide-view-helpers/TRCSSGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -28,7 +20,7 @@ export default class CNDMTesting extends Component {
             </div>
             <div className="col-md-12">
               <p className="mIntro">
-                Test session management on <span className="linkText">{this.project.config.targetUrl}</span>
+                Test user input handling on <span className="linkText">{this.project.config.targetUrl}</span>
               </p>
             </div>
 
@@ -36,21 +28,21 @@ export default class CNDMTesting extends Component {
 
             <div className="col-md-12">
               <div className="GuideSubItem">
-                <h5 className="mSubTitle">Testing for Session Management Schema</h5>
-                <span className="wsId">WSTG-SESS-01</span><hr/>
+                <h5 className="mSubTitle">Testing for Reflected Cross Site Scripting</h5>
+                <span className="wsId">WSTG-INPV-01</span><hr/>
                 <h6>
-                  In this test, the tester wants to check that cookies and other session tokens are created in a secure and unpredictable
-                  way. An attacker who is able to predict and forge a weak cookie can easily hijack the sessions of legitimate users.
+                  Reflected Cross-site Scripting (XSS) occur when an attacker injects browser executable code within a single HTTP
+                  response. The injected attack is not stored within the application itself; it is non-persistent and only impacts users who
+                  open a maliciously crafted link or third-party web page.
                 </h6>
                 <div className="text-right mBtnHolder">
-
                   <button
                     className="btn btn-sm btn-success text-dark"
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Session Management Schema Testing Help & Guide",
-                        <TSMSGuidesHelp
+                        "Reflected Cross Site Scripting Testing Help & Guide",
+                        <TRCSSGuidesHelp
                           viliop={this.props.params.viliop}
                       />);
                     }}
@@ -63,10 +55,10 @@ export default class CNDMTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Report on Session Management Schema Testing",
+                        "Report on Reflected Cross Site Scripting Testing",
                         <Reporter
                           viliop={this.props.params.viliop}
-                          ID="WSTG-SESS-01"
+                          ID="WSTG-INPV-01"
                       />);
                     }}
                   >
