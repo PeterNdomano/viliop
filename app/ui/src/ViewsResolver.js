@@ -6,6 +6,7 @@ import IMTesting from './guide-views/IMTesting';
 import AUTHETesting from './guide-views/AUTHETesting';
 import AUTHOTesting from './guide-views/AUTHOTesting';
 import SMTesting from './guide-views/SMTesting';
+import IVTesting from './guide-views/IVTesting';
 
 export function getRPanelView (props) {
   if(props.navItem === "project" && props.navSubItem === "new_project"){
@@ -64,6 +65,13 @@ export function getWorkspaceView(props) {
   else if(props.workspaceViewId === "session_testing"){
     return (
       <SMTesting
+        params={props}
+      />
+    )
+  }
+  else if(props.workspaceViewId === "input_validation_testing"){
+    return (
+      <IVTesting
         params={props}
       />
     )
