@@ -6,6 +6,7 @@ import TSFGuidesHelp from '../guide-view-helpers/TSFGuidesHelp';
 import TESVGuidesHelp from '../guide-view-helpers/TESVGuidesHelp';
 import TCSRFGuidesHelp from '../guide-view-helpers/TCSRFGuidesHelp';
 import TLFGuidesHelp from '../guide-view-helpers/TLFGuidesHelp';
+import TSTMGuidesHelp from '../guide-view-helpers/TSTMGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -274,6 +275,49 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-SESS-06"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing Session Timeout</h5>
+                <span className="wsId">WSTG-SESS-07</span><hr/>
+                <h6>
+                  In this phase testers check that the application automatically logs out a user when that user has been idle for a certain
+                  amount of time, ensuring that it is not possible to “reuse” the same session and that no sensitive data remains stored in
+                  the browser cache
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Session Timeout Testing Help & Guide",
+                        <TSTMGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Session Timeout Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-SESS-07"
                       />);
                     }}
                   >
