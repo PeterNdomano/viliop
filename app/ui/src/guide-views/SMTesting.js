@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
 import TSMSGuidesHelp from '../guide-view-helpers/TSMSGuidesHelp';
+import TCAGuidesHelp from '../guide-view-helpers/TCAGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -70,11 +71,11 @@ export default class CNDMTesting extends Component {
 
             <div className="col-md-12">
               <div className="GuideSubItem">
-                <h5 className="mSubTitle">Testing for Session Management Schema</h5>
+                <h5 className="mSubTitle">Testing for Cookies Attributes</h5>
                 <span className="wsId">WSTG-SESS-02</span><hr/>
                 <h6>
-                  In this test, the tester wants to check that cookies and other session tokens are created in a secure and unpredictable
-                  way. An attacker who is able to predict and forge a weak cookie can easily hijack the sessions of legitimate users.
+                  Web Cookies (herein referred to as cookies) are often a key attack vector for malicious users (typically targeting other
+                  users) and the application should always take due diligence to protect cookies
                 </h6>
                 <div className="text-right mBtnHolder">
 
@@ -83,8 +84,8 @@ export default class CNDMTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Session Management Schema Testing Help & Guide",
-                        <TSMSGuidesHelp
+                        "Cookies Attributes Testing Help & Guide",
+                        <TCAGuidesHelp
                           viliop={this.props.params.viliop}
                       />);
                     }}
@@ -97,7 +98,7 @@ export default class CNDMTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Report on Session Management Schema Testing",
+                        "Report on Cookies Attributes Testing",
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-SESS-02"
