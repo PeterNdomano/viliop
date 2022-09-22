@@ -5,6 +5,7 @@ import TCAGuidesHelp from '../guide-view-helpers/TCAGuidesHelp';
 import TSFGuidesHelp from '../guide-view-helpers/TSFGuidesHelp';
 import TESVGuidesHelp from '../guide-view-helpers/TESVGuidesHelp';
 import TCSRFGuidesHelp from '../guide-view-helpers/TCSRFGuidesHelp';
+import TLFGuidesHelp from '../guide-view-helpers/TLFGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -231,6 +232,48 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-SESS-05"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Logout Functionality</h5>
+                <span className="wsId">WSTG-SESS-06</span><hr/>
+                <h6>
+                  Session termination is an important part of the session lifecycle. Reducing to a minimum the lifetime of the session
+                  tokens decreases the likelihood of a successful session hijacking attack
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Logout Functionality Testing Help & Guide",
+                        <TLFGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Logout Functionality Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-SESS-06"
                       />);
                     }}
                   >
