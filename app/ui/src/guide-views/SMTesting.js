@@ -7,6 +7,7 @@ import TESVGuidesHelp from '../guide-view-helpers/TESVGuidesHelp';
 import TCSRFGuidesHelp from '../guide-view-helpers/TCSRFGuidesHelp';
 import TLFGuidesHelp from '../guide-view-helpers/TLFGuidesHelp';
 import TSTMGuidesHelp from '../guide-view-helpers/TSTMGuidesHelp';
+import TSPGuidesHelp from '../guide-view-helpers/TSPGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -318,6 +319,48 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-SESS-07"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Session Puzzling</h5>
+                <span className="wsId">WSTG-SESS-08</span><hr/>
+                <h6>
+                  Session Variable Overloading (also known as Session Puzzling) is an application level vulnerability which can enable
+                  an attacker to perform a variety of malicious actions, including Bypass efficient authentication enforcement mechanisms, and impersonate legitimate users.
+                </h6>
+                <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Session Puzzling Testing Help & Guide",
+                        <TSPGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Session Puzzling Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-SESS-08"
                       />);
                     }}
                   >
