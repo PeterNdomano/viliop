@@ -9,6 +9,8 @@ import TLIGuidesHelp from '../guide-view-helpers/TLIGuidesHelp';
 import TXIGuidesHelp from '../guide-view-helpers/TXIGuidesHelp';
 import TSSSIGuidesHelp from '../guide-view-helpers/TSSSIGuidesHelp';
 import TXPIGuidesHelp from '../guide-view-helpers/TXPIGuidesHelp';
+import TISIGuidesHelp from '../guide-view-helpers/TISIGuidesHelp';
+
 
 export default class CNDMTesting extends Component {
   constructor(props) {
@@ -397,6 +399,48 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-INPV-09"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for IMAP SMTP Injection</h5>
+                <span className="wsId">WSTG-INPV-10</span><hr/>
+                <h6>
+                  This threat affects all applications that communicate with mail servers (IMAP/SMTP), generally webmail applications.
+                  The aim of this test is to verify the capacity to inject arbitrary IMAP/SMTP commands into the mail servers, due to input
+                  data not being properly sanitized.
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "IMAP SMTP Injection Testing Help & Guide",
+                        <TISIGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on IMAP SMTP Injection Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-10"
                       />);
                     }}
                   >
