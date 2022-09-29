@@ -10,6 +10,7 @@ import TXIGuidesHelp from '../guide-view-helpers/TXIGuidesHelp';
 import TSSSIGuidesHelp from '../guide-view-helpers/TSSSIGuidesHelp';
 import TXPIGuidesHelp from '../guide-view-helpers/TXPIGuidesHelp';
 import TISIGuidesHelp from '../guide-view-helpers/TISIGuidesHelp';
+import TCIGuidesHelp from '../guide-view-helpers/TCIGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -450,6 +451,46 @@ export default class CNDMTesting extends Component {
               </div>
             </div>
 
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Code Injection (Local & Remote File Inclusion)</h5>
+                <span className="wsId">WSTG-INPV-11</span><hr/>
+                <h6>
+                  Tester should check if it is possible to enter code as input on a web page and have it
+                  executed by the web server. Test must test for both Local and Remote File Inclusion that may lead to execution of those files
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Code Injection Testing Help & Guide",
+                        <TCIGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Code Injection Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-11"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
 
           </div>
         </div>
