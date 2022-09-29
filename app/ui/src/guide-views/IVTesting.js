@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
 import TRCSSGuidesHelp from '../guide-view-helpers/TRCSSGuidesHelp';
+import TSCSSGuidesHelp from '../guide-view-helpers/TSCSSGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -59,6 +60,47 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-INPV-01"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Stored Cross Site Scripting</h5>
+                <span className="wsId">WSTG-INPV-02</span><hr/>
+                <h6>
+                  Stored Cross-site Scripting (XSS) is the most dangerous type of Cross Site Scripting. Web applications that allow users
+                  to store data are potentially exposed to this type of attack.
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Stored Cross Site Scripting Testing Help & Guide",
+                        <TSCSSGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Stored Cross Site Scripting Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-02"
                       />);
                     }}
                   >
