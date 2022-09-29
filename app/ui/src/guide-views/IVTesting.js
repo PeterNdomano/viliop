@@ -14,6 +14,7 @@ import TCIGuidesHelp from '../guide-view-helpers/TCIGuidesHelp';
 import TCOIGuidesHelp from '../guide-view-helpers/TCOIGuidesHelp';
 import TFSIGuidesHelp from '../guide-view-helpers/TFSIGuidesHelp';
 import TIVGuidesHelp from '../guide-view-helpers/TIVGuidesHelp';
+import THSSGuidesHelp from '../guide-view-helpers/THSSGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -610,6 +611,46 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-INPV-14"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for HTTP Splitting Smuggling</h5>
+                <span className="wsId">WSTG-INPV-15</span><hr/>
+                <h6>
+                  Assess if the Web App is vulnerable to HTTP splitting and smuggling
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "HTTP Splitting Smuggling Testing Help & Guide",
+                        <THSSGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on HTTP Splitting Smuggling Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-15"
                       />);
                     }}
                   >
