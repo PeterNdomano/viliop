@@ -11,6 +11,7 @@ import TSSSIGuidesHelp from '../guide-view-helpers/TSSSIGuidesHelp';
 import TXPIGuidesHelp from '../guide-view-helpers/TXPIGuidesHelp';
 import TISIGuidesHelp from '../guide-view-helpers/TISIGuidesHelp';
 import TCIGuidesHelp from '../guide-view-helpers/TCIGuidesHelp';
+import TCOIGuidesHelp from '../guide-view-helpers/TCOIGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -483,6 +484,46 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-INPV-11"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Command Injection</h5>
+                <span className="wsId">WSTG-INPV-12</span><hr/>
+                <h6>
+                  The tester will try to inject an OS command through an HTTP request to the application
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Command Injection Testing Help & Guide",
+                        <TCOIGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Command Injection Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-12"
                       />);
                     }}
                   >
