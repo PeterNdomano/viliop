@@ -12,6 +12,7 @@ import TXPIGuidesHelp from '../guide-view-helpers/TXPIGuidesHelp';
 import TISIGuidesHelp from '../guide-view-helpers/TISIGuidesHelp';
 import TCIGuidesHelp from '../guide-view-helpers/TCIGuidesHelp';
 import TCOIGuidesHelp from '../guide-view-helpers/TCOIGuidesHelp';
+import TFSIGuidesHelp from '../guide-view-helpers/TFSIGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -524,6 +525,48 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-INPV-12"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Format String Injection</h5>
+                <span className="wsId">WSTG-INPV-13</span><hr/>
+                <h6>
+                  A format string is a null-terminated character sequence that also contains conversion specifiers interpreted or
+                  converted at runtime. If server-side code concatenates a user’s input with a format string, an attacker can append
+                  additional conversion specifiers to cause a runtime error, information disclosure, or buffer overflow.
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Format String Injection Testing Help & Guide",
+                        <TFSIGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Format String Injection Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-13"
                       />);
                     }}
                   >
