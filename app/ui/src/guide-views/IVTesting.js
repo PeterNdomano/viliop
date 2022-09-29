@@ -16,6 +16,7 @@ import TFSIGuidesHelp from '../guide-view-helpers/TFSIGuidesHelp';
 import TIVGuidesHelp from '../guide-view-helpers/TIVGuidesHelp';
 import THSSGuidesHelp from '../guide-view-helpers/THSSGuidesHelp';
 import THIRGuidesHelp from '../guide-view-helpers/THIRGuidesHelp';
+import THHIGuidesHelp from '../guide-view-helpers/THHIGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -693,6 +694,46 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-INPV-16"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Host Header Injection</h5>
+                <span className="wsId">WSTG-INPV-17</span><hr/>
+                <h6>
+                  Assess if the Host header is being parsed dynamically in the application.
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Host Header Injection Testing Help & Guide",
+                        <THHIGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Host Header Injection Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-17"
                       />);
                     }}
                   >
