@@ -3,7 +3,7 @@ import Reporter from '../guide-view-helpers/Reporter';
 import TRCSSGuidesHelp from '../guide-view-helpers/TRCSSGuidesHelp';
 import TSCSSGuidesHelp from '../guide-view-helpers/TSCSSGuidesHelp';
 import THMGuidesHelp from '../guide-view-helpers/THMGuidesHelp';
-
+import THPPGuidesHelp from '../guide-view-helpers/THPPGuidesHelp';
 
 export default class CNDMTesting extends Component {
   constructor(props) {
@@ -143,6 +143,47 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-INPV-03"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for HTTP Parameter Pollution</h5>
+                <span className="wsId">WSTG-INPV-04</span><hr/>
+                <h6>
+                  HTTP Parameter Pollution tests the applications response to receiving multiple HTTP parameters with the same name;
+                  for example, if the parameter username is included in the GET or POST parameters twice
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "HTTP Parameter Pollution Testing Help & Guide",
+                        <THPPGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on HTTP Parameter Pollution Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-04"
                       />);
                     }}
                   >
