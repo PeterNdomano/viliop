@@ -13,6 +13,7 @@ import TISIGuidesHelp from '../guide-view-helpers/TISIGuidesHelp';
 import TCIGuidesHelp from '../guide-view-helpers/TCIGuidesHelp';
 import TCOIGuidesHelp from '../guide-view-helpers/TCOIGuidesHelp';
 import TFSIGuidesHelp from '../guide-view-helpers/TFSIGuidesHelp';
+import TIVGuidesHelp from '../guide-view-helpers/TIVGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -567,6 +568,48 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-INPV-13"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Incubated Vulnerability</h5>
+                <span className="wsId">WSTG-INPV-14</span><hr/>
+                <h6>
+                  Also often referred to as persistent attacks, incubated testing is a complex testing method that needs more than one
+                  data validation vulnerability to work. Incubated vulnerabilities are typically used to conduct “watering hole” attacks
+                  against users of legitimate web applications.
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Incubated Vulnerability Testing Help & Guide",
+                        <TIVGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Incubated Vulnerability Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-14"
                       />);
                     }}
                   >
