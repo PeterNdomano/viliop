@@ -8,6 +8,7 @@ import TSIGuidesHelp from '../guide-view-helpers/TSIGuidesHelp';
 import TLIGuidesHelp from '../guide-view-helpers/TLIGuidesHelp';
 import TXIGuidesHelp from '../guide-view-helpers/TXIGuidesHelp';
 import TSSSIGuidesHelp from '../guide-view-helpers/TSSSIGuidesHelp';
+import TXPIGuidesHelp from '../guide-view-helpers/TXPIGuidesHelp';
 
 export default class CNDMTesting extends Component {
   constructor(props) {
@@ -362,6 +363,49 @@ export default class CNDMTesting extends Component {
                 </div>
               </div>
             </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for XPath Injection</h5>
+                <span className="wsId">WSTG-INPV-09</span><hr/>
+                <h6>
+                  XPath is a language that has been designed and developed primarily to address parts of an XML document. In XPath
+                  injection testing, we test if it is possible to inject XPath syntax into a request interpreted by the application, allowing an
+                  attacker to execute user-controlled XPath queries.
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "XPath Injection Testing Help & Guide",
+                        <TXPIGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on XPath Injection Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-09"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
 
           </div>
         </div>
