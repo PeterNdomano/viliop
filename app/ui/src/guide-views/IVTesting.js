@@ -5,6 +5,8 @@ import TSCSSGuidesHelp from '../guide-view-helpers/TSCSSGuidesHelp';
 import THMGuidesHelp from '../guide-view-helpers/THMGuidesHelp';
 import THPPGuidesHelp from '../guide-view-helpers/THPPGuidesHelp';
 import TSIGuidesHelp from '../guide-view-helpers/TSIGuidesHelp';
+import TLIGuidesHelp from '../guide-view-helpers/TLIGuidesHelp';
+
 
 export default class CNDMTesting extends Component {
   constructor(props) {
@@ -237,11 +239,12 @@ export default class CNDMTesting extends Component {
 
             <div className="col-md-12">
               <div className="GuideSubItem">
-                <h5 className="mSubTitle">Testing for SQL Injection</h5>
-                <span className="wsId">WSTG-INPV-05</span><hr/>
+                <h5 className="mSubTitle">Testing for LDAP Injection</h5>
+                <span className="wsId">WSTG-INPV-06</span><hr/>
                 <h6>
-                  SQL injection testing checks if it is possible to inject data into the application so that it executes a user-controlled SQL
-                  query in the database.
+                  The Lightweight Directory Access Protocol (LDAP) is used to store information about users, hosts, and many other
+                  objects. LDAP injection is a server-side attack, which could allow sensitive information about users and hosts
+                  represented in an LDAP structure to be disclosed, modified, or inserted.
                 </h6>
                 <div className="text-right mBtnHolder">
                   <button
@@ -249,8 +252,8 @@ export default class CNDMTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "SQL Injection Testing Help & Guide",
-                        <TSIGuidesHelp
+                        "LDAP Injection Testing Help & Guide",
+                        <TLIGuidesHelp
                           viliop={this.props.params.viliop}
                       />);
                     }}
@@ -263,10 +266,10 @@ export default class CNDMTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Report on SQL Injection Testing",
+                        "Report on LDAP Injection Testing",
                         <Reporter
                           viliop={this.props.params.viliop}
-                          ID="WSTG-INPV-05"
+                          ID="WSTG-INPV-06"
                       />);
                     }}
                   >
@@ -276,7 +279,7 @@ export default class CNDMTesting extends Component {
               </div>
             </div>
 
-            
+
           </div>
         </div>
       </div>
