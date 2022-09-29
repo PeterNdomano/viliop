@@ -4,6 +4,7 @@ import TRCSSGuidesHelp from '../guide-view-helpers/TRCSSGuidesHelp';
 import TSCSSGuidesHelp from '../guide-view-helpers/TSCSSGuidesHelp';
 import THMGuidesHelp from '../guide-view-helpers/THMGuidesHelp';
 import THPPGuidesHelp from '../guide-view-helpers/THPPGuidesHelp';
+import TSIGuidesHelp from '../guide-view-helpers/TSIGuidesHelp';
 
 export default class CNDMTesting extends Component {
   constructor(props) {
@@ -193,7 +194,89 @@ export default class CNDMTesting extends Component {
               </div>
             </div>
 
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for SQL Injection</h5>
+                <span className="wsId">WSTG-INPV-05</span><hr/>
+                <h6>
+                  SQL injection testing checks if it is possible to inject data into the application so that it executes a user-controlled SQL
+                  query in the database.
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "SQL Injection Testing Help & Guide",
+                        <TSIGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
 
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on SQL Injection Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-05"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for SQL Injection</h5>
+                <span className="wsId">WSTG-INPV-05</span><hr/>
+                <h6>
+                  SQL injection testing checks if it is possible to inject data into the application so that it executes a user-controlled SQL
+                  query in the database.
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "SQL Injection Testing Help & Guide",
+                        <TSIGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on SQL Injection Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-05"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            
           </div>
         </div>
       </div>
