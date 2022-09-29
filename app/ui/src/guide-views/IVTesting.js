@@ -6,7 +6,7 @@ import THMGuidesHelp from '../guide-view-helpers/THMGuidesHelp';
 import THPPGuidesHelp from '../guide-view-helpers/THPPGuidesHelp';
 import TSIGuidesHelp from '../guide-view-helpers/TSIGuidesHelp';
 import TLIGuidesHelp from '../guide-view-helpers/TLIGuidesHelp';
-
+import TXIGuidesHelp from '../guide-view-helpers/TXIGuidesHelp';
 
 export default class CNDMTesting extends Component {
   constructor(props) {
@@ -279,6 +279,46 @@ export default class CNDMTesting extends Component {
               </div>
             </div>
 
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for XML Injection</h5>
+                <span className="wsId">WSTG-INPV-07</span><hr/>
+                <h6>
+                  XML Injection testing is when a tester tries to inject an XML doc to the application. If the XML parser fails to contextually
+                  validate data, then the test will yield a positive result
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "XML Injection Testing Help & Guide",
+                        <TXIGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on XML Injection Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-07"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
 
           </div>
         </div>
