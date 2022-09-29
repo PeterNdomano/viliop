@@ -15,6 +15,7 @@ import TCOIGuidesHelp from '../guide-view-helpers/TCOIGuidesHelp';
 import TFSIGuidesHelp from '../guide-view-helpers/TFSIGuidesHelp';
 import TIVGuidesHelp from '../guide-view-helpers/TIVGuidesHelp';
 import THSSGuidesHelp from '../guide-view-helpers/THSSGuidesHelp';
+import THIRGuidesHelp from '../guide-view-helpers/THIRGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -651,6 +652,47 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-INPV-15"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for HTTP Incoming Requests</h5>
+                <span className="wsId">WSTG-INPV-16</span><hr/>
+                <h6>
+                  Tester should monitor all incoming/outgoing HTTP requests on both client-side or server-side. The
+                  purpose of this testing is to verify if there is unnecessary or suspicious HTTP request sending in the background
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "HTTP Incoming Requests Testing Help & Guide",
+                        <THIRGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on HTTP Incoming Requests Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-16"
                       />);
                     }}
                   >
