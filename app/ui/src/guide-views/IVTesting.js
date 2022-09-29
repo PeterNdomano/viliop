@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
 import TRCSSGuidesHelp from '../guide-view-helpers/TRCSSGuidesHelp';
 import TSCSSGuidesHelp from '../guide-view-helpers/TSCSSGuidesHelp';
+import THMGuidesHelp from '../guide-view-helpers/THMGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -101,6 +102,47 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-INPV-02"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for HTTP Verb Tampering</h5>
+                <span className="wsId">WSTG-INPV-03</span><hr/>
+                <h6>
+                  HTTP allows several other (and somewhat less known)
+                  methods. Some of these can be used for nefarious purposes if the web server is misconfigured
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "HTTP Verb Tampering Testing Help & Guide",
+                        <THMGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on HTTP Verb Tampering Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-03"
                       />);
                     }}
                   >
