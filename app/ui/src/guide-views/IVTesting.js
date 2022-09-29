@@ -17,6 +17,7 @@ import TIVGuidesHelp from '../guide-view-helpers/TIVGuidesHelp';
 import THSSGuidesHelp from '../guide-view-helpers/THSSGuidesHelp';
 import THIRGuidesHelp from '../guide-view-helpers/THIRGuidesHelp';
 import THHIGuidesHelp from '../guide-view-helpers/THHIGuidesHelp';
+import TSSTIGuidesHelp from '../guide-view-helpers/TSSTIGuidesHelp';
 
 
 export default class CNDMTesting extends Component {
@@ -734,6 +735,48 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-INPV-17"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Server-side Template Injection</h5>
+                <span className="wsId">WSTG-INPV-18</span><hr/>
+                <h6>
+                  Web applications commonly use server-side templating technologies (Jinja2, Twig, FreeMaker, etc.) to generate
+                  dynamic HTML responses. Server-side Template Injection vulnerabilities (SSTI) occur when user input is embedded in
+                  a template in an unsafe manner and results in remote code execution on the server.
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Server-side Template Injection Testing Help & Guide",
+                        <TSSTIGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Server-side Template Injection Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-18"
                       />);
                     }}
                   >
