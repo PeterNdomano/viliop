@@ -7,6 +7,7 @@ import THPPGuidesHelp from '../guide-view-helpers/THPPGuidesHelp';
 import TSIGuidesHelp from '../guide-view-helpers/TSIGuidesHelp';
 import TLIGuidesHelp from '../guide-view-helpers/TLIGuidesHelp';
 import TXIGuidesHelp from '../guide-view-helpers/TXIGuidesHelp';
+import TSSSIGuidesHelp from '../guide-view-helpers/TSSSIGuidesHelp';
 
 export default class CNDMTesting extends Component {
   constructor(props) {
@@ -311,6 +312,48 @@ export default class CNDMTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-INPV-07"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for SSI Injection</h5>
+                <span className="wsId">WSTG-INPV-08</span><hr/>
+                <h6>
+                  Web servers usually give developers the ability to add small pieces of dynamic code inside static HTML pages, without
+                  having to deal with full-fledged server-side or client-side languages. This feature is provided by Server-Side
+                  Includes(SSI).
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "SSI Injection Testing Help & Guide",
+                        <TSSSIGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on SSI Injection Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-INPV-08"
                       />);
                     }}
                   >
