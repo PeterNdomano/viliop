@@ -4,6 +4,8 @@ import Reporter from '../guide-view-helpers/Reporter';
 import TWTLGuidesHelp from '../guide-view-helpers/TWTLGuidesHelp';
 import TPOGuidesHelp from '../guide-view-helpers/TPOGuidesHelp';
 import TSISUCGuidesHelp from '../guide-view-helpers/TSISUCGuidesHelp';
+import TWEGuidesHelp from '../guide-view-helpers/TWEGuidesHelp';
+
 
 export default class EHTesting extends Component {
   constructor(props) {
@@ -141,6 +143,47 @@ export default class EHTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-CRYP-03"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Weak Encryption</h5>
+                <span className="wsId">WSTG-CRYP-04</span><hr/>
+                <h6>
+                  Incorrect uses of encryption algorithms may result in sensitive data exposure, key leakage, broken authentication,
+                  insecure session, and spoofing attacks
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Weak Encryption Testing Help & Guide",
+                        <TWEGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Weak Encryption Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CRYP-04"
                       />);
                     }}
                   >
