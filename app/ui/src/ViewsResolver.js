@@ -9,6 +9,7 @@ import SMTesting from './guide-views/SMTesting';
 import IVTesting from './guide-views/IVTesting';
 import EHTesting from './guide-views/EHTesting';
 import WCTesting from './guide-views/WCTesting';
+import BLTesting from './guide-views/BLTesting';
 
 export function getRPanelView (props) {
   if(props.navItem === "project" && props.navSubItem === "new_project"){
@@ -88,6 +89,13 @@ export function getWorkspaceView(props) {
   else if(props.workspaceViewId === "cryptography_testing"){
     return (
       <WCTesting
+        params={props}
+      />
+    )
+  }
+  else if(props.workspaceViewId === "business_logic_testing"){
+    return (
+      <BLTesting
         params={props}
       />
     )

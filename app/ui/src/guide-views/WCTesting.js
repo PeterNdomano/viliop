@@ -7,7 +7,7 @@ import TSISUCGuidesHelp from '../guide-view-helpers/TSISUCGuidesHelp';
 import TWEGuidesHelp from '../guide-view-helpers/TWEGuidesHelp';
 
 
-export default class EHTesting extends Component {
+export default class WCTesting extends Component {
   constructor(props) {
     super(props);
     this.project = props.params.viliop.currentProject;
