@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
 
-import TIEHGuidesHelp from '../guide-view-helpers/TIEHGuidesHelp';
+import TFSTGuidesHelp from '../guide-view-helpers/TFSTGuidesHelp';
 
 
 export default class EHTesting extends Component {
@@ -58,6 +58,46 @@ export default class EHTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-ERRH-01"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Stack Traces</h5>
+                <span className="wsId">WSTG-ERRH-02</span><hr/>
+                <h6>
+                  Stack traces show how where the error was generated in the process lifecycle.
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Stack Traces Testing Help & Guide",
+                        <TFSTGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Stack Traces Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-ERRH-02"
                       />);
                     }}
                   >
