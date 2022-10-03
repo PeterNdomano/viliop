@@ -7,6 +7,8 @@ import TICGuidesHelp from '../guide-view-helpers/TICGuidesHelp';
 import TPTGuidesHelp from '../guide-view-helpers/TPTGuidesHelp';
 import TNTFGuidesHelp from '../guide-view-helpers/TNTFGuidesHelp';
 import TCWGuidesHelp from '../guide-view-helpers/TCWGuidesHelp';
+import TDAAMGuidesHelp from '../guide-view-helpers/TDAAMGuidesHelp';
+import TUUFTGuidesHelp from '../guide-view-helpers/TUUFTGuidesHelp';
 
 
 export default class BLTesting extends Component {
@@ -286,11 +288,11 @@ export default class BLTesting extends Component {
 
             <div className="col-md-12">
               <div className="GuideSubItem">
-                <h5 className="mSubTitle">Testing for the Circumvention of Work Flows</h5>
-                <span className="wsId">WSTG-BUSL-06</span><hr/>
+                <h5 className="mSubTitle">Test Defenses Against Application Misuse</h5>
+                <span className="wsId">WSTG-BUSL-07</span><hr/>
                 <h6>
-                  Workflow vulnerabilities involve any type of vulnerability that allows the attacker to misuse an application/system in a
-                  way that will allow them to circumvent (not follow) the designed/intended workflow.
+                  The misuse and invalid use of of valid functionality can identify attacks attempting to enumerate the web application,
+                  identify weaknesses, and exploit vulnerabilities
                 </h6>
                 <div className="text-right mBtnHolder">
                   <button
@@ -298,8 +300,8 @@ export default class BLTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Work flows Circumvention Testing Help & Guide",
-                        <TCWGuidesHelp
+                        "Defenses Against Application Misuse Testing Help & Guide",
+                        <TDAAMGuidesHelp
                           viliop={this.props.params.viliop}
                       />);
                     }}
@@ -312,10 +314,50 @@ export default class BLTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Report on Work flows Circumvention Testing",
+                        "Report on Defenses Against Application Misuse Testing",
                         <Reporter
                           viliop={this.props.params.viliop}
-                          ID="WSTG-BUSL-06"
+                          ID="WSTG-BUSL-07"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Test Upload of Unexpected File Types</h5>
+                <span className="wsId">WSTG-BUSL-08</span><hr/>
+                <h6>
+                  Check if the unwelcomed file types are rejected and handled safely.
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Uploading of Unexpected File Types",
+                        <TUUFTGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Uploading of Unexpected File Types",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-BUSL-08"
                       />);
                     }}
                   >
