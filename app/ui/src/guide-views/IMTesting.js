@@ -7,7 +7,7 @@ import TAEGUAGuidesHelp from '../guide-view-helpers/TAEGUAGuidesHelp';
 import TWUUPGuidesHelp from '../guide-view-helpers/TWUUPGuidesHelp';
 
 
-export default class CNDMTesting extends Component {
+export default class IMTesting extends Component {
   constructor(props) {
     super(props);
     this.project = props.params.viliop.currentProject;

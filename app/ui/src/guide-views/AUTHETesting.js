@@ -12,7 +12,7 @@ import TWPCRFGuidesHelp from '../guide-view-helpers/TWPCRFGuidesHelp';
 import TWAACGuidesHelp from '../guide-view-helpers/TWAACGuidesHelp';
 
 
-export default class CNDMTesting extends Component {
+export default class AUTHETesting extends Component {
   constructor(props) {
     super(props);
     this.project = props.params.viliop.currentProject;

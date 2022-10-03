@@ -21,7 +21,7 @@ import TSSTIGuidesHelp from '../guide-view-helpers/TSSTIGuidesHelp';
 import TSSRFGuidesHelp from '../guide-view-helpers/TSSRFGuidesHelp';
 
 
-export default class CNDMTesting extends Component {
+export default class IVTesting extends Component {
   constructor(props) {
     super(props);
     this.project = props.params.viliop.currentProject;

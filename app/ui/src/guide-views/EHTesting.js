@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
 
-import TSSRFGuidesHelp from '../guide-view-helpers/TSSRFGuidesHelp';
+import TIEHGuidesHelp from '../guide-view-helpers/TIEHGuidesHelp';
 
 
-export default class CNDMTesting extends Component {
+export default class EHTesting extends Component {
   constructor(props) {
     super(props);
     this.project = props.params.viliop.currentProject;
@@ -17,11 +17,11 @@ export default class CNDMTesting extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h3 className="mTitle">Input Validation Testing</h3>
+              <h3 className="mTitle">Testing for Error Handling</h3>
             </div>
             <div className="col-md-12">
               <p className="mIntro">
-                Test user input handling on <span className="linkText">{this.project.config.targetUrl}</span>
+                Check if Application's error handling mechanisms reveal sensitive information
               </p>
             </div>
 
@@ -29,10 +29,10 @@ export default class CNDMTesting extends Component {
 
             <div className="col-md-12">
               <div className="GuideSubItem">
-                <h5 className="mSubTitle">Testing for Server-Side Request Forgery</h5>
-                <span className="wsId">WSTG-INPV-19</span><hr/>
+                <h5 className="mSubTitle">Testing for Improper Error Handling</h5>
+                <span className="wsId">WSTG-ERRH-01</span><hr/>
                 <h6>
-                  Identify SSRF injection points
+                  Improper error handling can help the attackers figure out how internal APIs work.
                 </h6>
                 <div className="text-right mBtnHolder">
                   <button
@@ -40,8 +40,8 @@ export default class CNDMTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Server-Side Request Forgery Testing Help & Guide",
-                        <TSSRFGuidesHelp
+                        "Improper Error Handling Testing Help & Guide",
+                        <TIEHGuidesHelp
                           viliop={this.props.params.viliop}
                       />);
                     }}
@@ -54,10 +54,10 @@ export default class CNDMTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Report on Server-Side Request Forgery Testing",
+                        "Report on Improper Error Handling Testing",
                         <Reporter
                           viliop={this.props.params.viliop}
-                          ID="WSTG-INPV-19"
+                          ID="WSTG-ERRH-01"
                       />);
                     }}
                   >

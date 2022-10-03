@@ -6,7 +6,7 @@ import TPEGuidesHelp from '../guide-view-helpers/TPEGuidesHelp';
 import TIDORGuidesHelp from '../guide-view-helpers/TIDORGuidesHelp';
 
 
-export default class CNDMTesting extends Component {
+export default class AUTHOTesting extends Component {
   constructor(props) {
     super(props);
     this.project = props.params.viliop.currentProject;
