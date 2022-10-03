@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
 
 import TBLDVGuidesHelp from '../guide-view-helpers/TBLDVGuidesHelp';
+import TAFRGuidesHelp from '../guide-view-helpers/TAFRGuidesHelp';
 
 
 export default class BLTesting extends Component {
@@ -71,6 +72,91 @@ export default class BLTesting extends Component {
               </div>
             </div>
 
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Test Ability to Forge Requests</h5>
+                <span className="wsId">WSTG-BUSL-02</span><hr/>
+                <h6>
+                  Forging requests is a method that attackers use to circumvent the front end GUI application to directly submit
+                  information for back end processing. The goal of the attacker is to send HTTP POST/GET requests through an
+                  intercepting proxy with data values that is not supported, guarded against or expected by the applications business
+                  logic
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Ability to Forge Requests Testing Help & Guide",
+                        <TAFRGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Ability to Forge Requests Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-BUSL-02"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Test Ability to Forge Requests</h5>
+                <span className="wsId">WSTG-BUSL-02</span><hr/>
+                <h6>
+                  Forging requests is a method that attackers use to circumvent the front end GUI application to directly submit
+                  information for back end processing. The goal of the attacker is to send HTTP POST/GET requests through an
+                  intercepting proxy with data values that is not supported, guarded against or expected by the applications business
+                  logic
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Ability to Forge Requests Testing Help & Guide",
+                        <TAFRGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Ability to Forge Requests Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-BUSL-02"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
 
 
           </div>
