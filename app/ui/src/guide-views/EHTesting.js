@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
 
 import TFSTGuidesHelp from '../guide-view-helpers/TFSTGuidesHelp';
+import TIEHGuidesHelp from '../guide-view-helpers/TIEHGuidesHelp';
 
 
 export default class EHTesting extends Component {
