@@ -4,6 +4,7 @@ import Reporter from '../guide-view-helpers/Reporter';
 import TBLDVGuidesHelp from '../guide-view-helpers/TBLDVGuidesHelp';
 import TAFRGuidesHelp from '../guide-view-helpers/TAFRGuidesHelp';
 import TICGuidesHelp from '../guide-view-helpers/TICGuidesHelp';
+import TPTGuidesHelp from '../guide-view-helpers/TPTGuidesHelp';
 
 
 export default class BLTesting extends Component {
@@ -148,6 +149,48 @@ export default class BLTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-BUSL-03"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Test for Process Timing</h5>
+                <span className="wsId">WSTG-BUSL-04</span><hr/>
+                <h6>
+                  It is possible that attackers can gather information on an application by monitoring the time it takes to complete a task or
+                  give a respond. Additionally, attackers may be able to manipulate and break designed business process flows by
+                  simply keeping active sessions open and not submitting their transactions in the “expected” time frame
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Process Timing Testing Help & Guide",
+                        <TPTGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Process Timing Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-BUSL-04"
                       />);
                     }}
                   >
