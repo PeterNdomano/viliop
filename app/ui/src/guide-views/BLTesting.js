@@ -9,6 +9,7 @@ import TNTFGuidesHelp from '../guide-view-helpers/TNTFGuidesHelp';
 import TCWGuidesHelp from '../guide-view-helpers/TCWGuidesHelp';
 import TDAAMGuidesHelp from '../guide-view-helpers/TDAAMGuidesHelp';
 import TUUFTGuidesHelp from '../guide-view-helpers/TUUFTGuidesHelp';
+import TUMFGuidesHelp from '../guide-view-helpers/TUMFGuidesHelp';
 
 
 export default class BLTesting extends Component {
@@ -358,6 +359,46 @@ export default class BLTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-BUSL-08"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Test Upload of Malicious Files</h5>
+                <span className="wsId">WSTG-BUSL-09</span><hr/>
+                <h6>
+                  Try to upload the malicious files to the application and determine whether it is accepted and processed.
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Malicious Files Upload Testing Guides & Help",
+                        <TUMFGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Malicious Files Upload Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-BUSL-09"
                       />);
                     }}
                   >
