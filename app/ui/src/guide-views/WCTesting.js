@@ -3,7 +3,7 @@ import Reporter from '../guide-view-helpers/Reporter';
 
 import TWTLGuidesHelp from '../guide-view-helpers/TWTLGuidesHelp';
 import TPOGuidesHelp from '../guide-view-helpers/TPOGuidesHelp';
-
+import TSISUCGuidesHelp from '../guide-view-helpers/TSISUCGuidesHelp';
 
 export default class EHTesting extends Component {
   constructor(props) {
@@ -100,6 +100,47 @@ export default class EHTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-CRYP-02"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Sensitive Information Sent via Unencrypted Channels</h5>
+                <span className="wsId">WSTG-CRYP-03</span><hr/>
+                <h6>
+                  Sensitive data must be protected when it is transmitted through the network. If data is transmitted over HTTPS or
+                  encrypted in another way the protection mechanism must not have limitations or vulnerabilities
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Sensitive Information Transfer via Unencrypted Channels Testing Help & Guide",
+                        <TSISUCGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Sensitive Information Transfer via Unencrypted Channels Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CRYP-03"
                       />);
                     }}
                   >
