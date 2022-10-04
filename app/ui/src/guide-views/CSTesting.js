@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
 
-import TWTLGuidesHelp from '../guide-view-helpers/TWTLGuidesHelp';
-import TPOGuidesHelp from '../guide-view-helpers/TPOGuidesHelp';
-import TSISUCGuidesHelp from '../guide-view-helpers/TSISUCGuidesHelp';
-import TWEGuidesHelp from '../guide-view-helpers/TWEGuidesHelp';
-
+import TDBCSSGuidesHelp from '../guide-view-helpers/TDBCSSGuidesHelp';
 
 export default class WCTesting extends Component {
   constructor(props) {
@@ -24,7 +20,7 @@ export default class WCTesting extends Component {
             </div>
             <div className="col-md-12">
               <p className="mIntro">
-                Analyze cryptography mechanisms used in components of this app
+                Test the front-end of this web app for vulnerabilities
               </p>
             </div>
 
@@ -32,10 +28,12 @@ export default class WCTesting extends Component {
 
             <div className="col-md-12">
               <div className="GuideSubItem">
-                <h5 className="mSubTitle">Testing for Weak Transport Layer Security</h5>
-                <span className="wsId">WSTG-CRYP-01</span><hr/>
+                <h5 className="mSubTitle">Testing for DOM-Based Cross Site Scripting</h5>
+                <span className="wsId">WSTG-CLNT-01</span><hr/>
                 <h6>
-                  Analyze Transport Layer Security for this Web App.
+                  DOM-based cross-site scripting is the de-facto name for XSS bugs that are the result of active browser-side content on
+                  a page, typically JavaScript, obtaining user input through a source and using it in a sink, leading to the execution of
+                  injected code.
                 </h6>
                 <div className="text-right mBtnHolder">
                   <button
@@ -43,8 +41,8 @@ export default class WCTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Transport Layer Security Testing Help & Guide",
-                        <TWTLGuidesHelp
+                        "DOM-Based Cross Site Scripting Testing Help & Guide",
+                        <TDBCSSGuidesHelp
                           viliop={this.props.params.viliop}
                       />);
                     }}
@@ -57,10 +55,10 @@ export default class WCTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Report on Transport Layer Security Testing",
+                        "Report on DOM-Based Cross Site Scripting Testing",
                         <Reporter
                           viliop={this.props.params.viliop}
-                          ID="WSTG-CRYP-01"
+                          ID="WSTG-CLNT-01"
                       />);
                     }}
                   >
