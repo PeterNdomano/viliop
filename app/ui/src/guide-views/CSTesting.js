@@ -10,6 +10,7 @@ import TCRMGuidesHelp from '../guide-view-helpers/TCRMGuidesHelp';
 import TCORSGuidesHelp from '../guide-view-helpers/TCORSGuidesHelp';
 import TCSFGuidesHelp from '../guide-view-helpers/TCSFGuidesHelp';
 import TCLKGuidesHelp from '../guide-view-helpers/TCLKGuidesHelp';
+import TWBSGuidesHelp from '../guide-view-helpers/TWBSGuidesHelp';
 
 
 export default class WCTesting extends Component {
@@ -299,7 +300,7 @@ export default class WCTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Cross Origin Resource Sharing Help & Guide",
+                        "Cross Origin Resource Sharing Testing Help & Guide",
                         <TCORSGuidesHelp
                           viliop={this.props.params.viliop}
                       />);
@@ -341,7 +342,7 @@ export default class WCTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Cross Site Flashing Help & Guide",
+                        "Cross Site Flashing Testing Help & Guide",
                         <TCSFGuidesHelp
                           viliop={this.props.params.viliop}
                       />);
@@ -382,7 +383,7 @@ export default class WCTesting extends Component {
                     onClick={() => {
                       this.props.params.modalCallback(
                         true,
-                        "Clickjacking Help & Guide",
+                        "Clickjacking Testing Help & Guide",
                         <TCLKGuidesHelp
                           viliop={this.props.params.viliop}
                       />);
@@ -400,6 +401,46 @@ export default class WCTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-CLNT-09"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing WebSockets</h5>
+                <span className="wsId">WSTG-CLNT-10</span><hr/>
+                <h6>
+                  Identify the usage of WebSockets and Assess its implementation by using the same tests on normal HTTP channels
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "WebSockets Testing Help & Guide",
+                        <TWBSGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on WebSockets Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CLNT-10"
                       />);
                     }}
                   >
