@@ -13,6 +13,7 @@ import TCLKGuidesHelp from '../guide-view-helpers/TCLKGuidesHelp';
 import TWBSGuidesHelp from '../guide-view-helpers/TWBSGuidesHelp';
 import TWMGGuidesHelp from '../guide-view-helpers/TWMGGuidesHelp';
 import TBSTGuidesHelp from '../guide-view-helpers/TBSTGuidesHelp';
+import TCSSIGuidesHelp from '../guide-view-helpers/TCSSIGuidesHelp';
 
 
 export default class WCTesting extends Component {
@@ -524,6 +525,47 @@ export default class WCTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-CLNT-12"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Cross Site Script Inclusion</h5>
+                <span className="wsId">WSTG-CLNT-13</span><hr/>
+                <h6>
+                  Cross Site Script Inclusion (XSSI) vulnerability allows sensitive data leakage across-origin or cross-domain
+                  boundaries
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Cross Site Script Inclusion Testing Help & Guide",
+                        <TCSSIGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Cross Site Script Inclusion Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CLNT-13"
                       />);
                     }}
                   >
