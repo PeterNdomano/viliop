@@ -6,6 +6,7 @@ import TJEGuidesHelp from '../guide-view-helpers/TJEGuidesHelp';
 import THIGuidesHelp from '../guide-view-helpers/THIGuidesHelp';
 import TCURLGuidesHelp from '../guide-view-helpers/TCURLGuidesHelp';
 import TFCIGuidesHelp from '../guide-view-helpers/TFCIGuidesHelp';
+import TCRMGuidesHelp from '../guide-view-helpers/TCRMGuidesHelp';
 
 
 export default class WCTesting extends Component {
@@ -231,6 +232,48 @@ export default class WCTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-CLNT-05"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Client-side Resource Manipulation</h5>
+                <span className="wsId">WSTG-CLNT-06</span><hr/>
+                <h6>
+                  A client-side resource manipulation vulnerability is an input validation flaw. It occurs when an application accepts user-
+                  controlled input that specifies the path of a resource such as the source of an iframe, JavaScript, applet, or the handler
+                  of an XMLHttpRequest
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Client-side Resource Manipulation Testing Help & Guide",
+                        <TCRMGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Client-side Resource Manipulation Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CLNT-06"
                       />);
                     }}
                   >
