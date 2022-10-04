@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Reporter from '../guide-view-helpers/Reporter';
 
 import TDBCSSGuidesHelp from '../guide-view-helpers/TDBCSSGuidesHelp';
+import TJEGuidesHelp from '../guide-view-helpers/TJEGuidesHelp';
+
 
 export default class WCTesting extends Component {
   constructor(props) {
@@ -16,7 +18,7 @@ export default class WCTesting extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h3 className="mTitle">Testing for Weak Cryptography</h3>
+              <h3 className="mTitle">Client-Side Testing</h3>
             </div>
             <div className="col-md-12">
               <p className="mIntro">
@@ -68,6 +70,46 @@ export default class WCTesting extends Component {
               </div>
             </div>
 
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for JavaScript Execution</h5>
+                <span className="wsId">WSTG-CLNT-02</span><hr/>
+                <h6>
+                  A JavaScript injection vulnerability is a subtype of cross site scripting (XSS) that involves the ability to inject arbitrary
+                  JavaScript code that is executed by the application inside the victim’s browser
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "JavaScript Execution Testing Help & Guide",
+                        <TJEGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on JavaScript Execution Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CLNT-02"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
 
 
           </div>
