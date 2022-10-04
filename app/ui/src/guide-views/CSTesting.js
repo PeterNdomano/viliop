@@ -7,6 +7,7 @@ import THIGuidesHelp from '../guide-view-helpers/THIGuidesHelp';
 import TCURLGuidesHelp from '../guide-view-helpers/TCURLGuidesHelp';
 import TFCIGuidesHelp from '../guide-view-helpers/TFCIGuidesHelp';
 import TCRMGuidesHelp from '../guide-view-helpers/TCRMGuidesHelp';
+import TCORSGuidesHelp from '../guide-view-helpers/TCORSGuidesHelp';
 
 
 export default class WCTesting extends Component {
@@ -274,6 +275,46 @@ export default class WCTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-CLNT-06"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing Cross Origin Resource Sharing</h5>
+                <span className="wsId">WSTG-CLNT-07</span><hr/>
+                <h6>
+                  Identify endpoints that implement CORS
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Cross Origin Resource Sharing Help & Guide",
+                        <TCORSGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Cross Origin Resource Sharing Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CLNT-07"
                       />);
                     }}
                   >
