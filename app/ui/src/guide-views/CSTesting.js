@@ -12,6 +12,7 @@ import TCSFGuidesHelp from '../guide-view-helpers/TCSFGuidesHelp';
 import TCLKGuidesHelp from '../guide-view-helpers/TCLKGuidesHelp';
 import TWBSGuidesHelp from '../guide-view-helpers/TWBSGuidesHelp';
 import TWMGGuidesHelp from '../guide-view-helpers/TWMGGuidesHelp';
+import TBSTGuidesHelp from '../guide-view-helpers/TBSTGuidesHelp';
 
 
 export default class WCTesting extends Component {
@@ -483,6 +484,46 @@ export default class WCTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-CLNT-11"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing Browser Storage</h5>
+                <span className="wsId">WSTG-CLNT-12</span><hr/>
+                <h6>
+                  Determine whether the website is storing sensitive data in client-side storage.
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Browser Storage Testing Help & Guide",
+                        <TBSTGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Browser Storage Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CLNT-12"
                       />);
                     }}
                   >
