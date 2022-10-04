@@ -8,6 +8,7 @@ import TCURLGuidesHelp from '../guide-view-helpers/TCURLGuidesHelp';
 import TFCIGuidesHelp from '../guide-view-helpers/TFCIGuidesHelp';
 import TCRMGuidesHelp from '../guide-view-helpers/TCRMGuidesHelp';
 import TCORSGuidesHelp from '../guide-view-helpers/TCORSGuidesHelp';
+import TCSFGuidesHelp from '../guide-view-helpers/TCSFGuidesHelp';
 
 
 export default class WCTesting extends Component {
@@ -315,6 +316,48 @@ export default class WCTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-CLNT-07"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Cross Site Flashing</h5>
+                <span className="wsId">WSTG-CLNT-08</span><hr/>
+                <h6>
+                  ActionScript, like every other language, has some implementation patterns which could lead to security issues. In
+                  particular, since Flash applications are often embedded in browsers, vulnerabilities like DOM-based Cross Site
+                  Scripting (DOM XSS) could be present in flawed Flash applications
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Cross Site Flashing Help & Guide",
+                        <TCSFGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Cross Site Flashing Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CLNT-08"
                       />);
                     }}
                   >
