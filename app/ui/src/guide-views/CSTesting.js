@@ -9,6 +9,7 @@ import TFCIGuidesHelp from '../guide-view-helpers/TFCIGuidesHelp';
 import TCRMGuidesHelp from '../guide-view-helpers/TCRMGuidesHelp';
 import TCORSGuidesHelp from '../guide-view-helpers/TCORSGuidesHelp';
 import TCSFGuidesHelp from '../guide-view-helpers/TCSFGuidesHelp';
+import TCLKGuidesHelp from '../guide-view-helpers/TCLKGuidesHelp';
 
 
 export default class WCTesting extends Component {
@@ -358,6 +359,47 @@ export default class WCTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-CLNT-08"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Clickjacking</h5>
+                <span className="wsId">WSTG-CLNT-09</span><hr/>
+                <h6>
+                  Clickjacking, a subset of UI redressing, is a malicious technique whereby a web user is deceived into interacting (in
+                  most cases by clicking) with something other than what the user believes they are interacting with
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Clickjacking Help & Guide",
+                        <TCLKGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Clickjacking Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CLNT-09"
                       />);
                     }}
                   >
