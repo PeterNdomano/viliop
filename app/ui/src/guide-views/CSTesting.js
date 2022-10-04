@@ -5,6 +5,7 @@ import TDBCSSGuidesHelp from '../guide-view-helpers/TDBCSSGuidesHelp';
 import TJEGuidesHelp from '../guide-view-helpers/TJEGuidesHelp';
 import THIGuidesHelp from '../guide-view-helpers/THIGuidesHelp';
 import TCURLGuidesHelp from '../guide-view-helpers/TCURLGuidesHelp';
+import TFCIGuidesHelp from '../guide-view-helpers/TFCIGuidesHelp';
 
 
 export default class WCTesting extends Component {
@@ -188,6 +189,48 @@ export default class WCTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-CLNT-04"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for CSS Injection</h5>
+                <span className="wsId">WSTG-CLNT-05</span><hr/>
+                <h6>
+                  A CSS Injection vulnerability involves the ability to inject arbitrary CSS code in the context of a trusted web site which is
+                  rendered inside a victim’s browser. The impact of this type of vulnerability varies based on the supplied CSS payload. It
+                  may lead to cross site scripting or data exfiltration.
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "CSS Injection Testing Help & Guide",
+                        <TFCIGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on CSS Injection Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CLNT-05"
                       />);
                     }}
                   >
