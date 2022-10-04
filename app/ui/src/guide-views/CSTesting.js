@@ -4,6 +4,7 @@ import Reporter from '../guide-view-helpers/Reporter';
 import TDBCSSGuidesHelp from '../guide-view-helpers/TDBCSSGuidesHelp';
 import TJEGuidesHelp from '../guide-view-helpers/TJEGuidesHelp';
 import THIGuidesHelp from '../guide-view-helpers/THIGuidesHelp';
+import TCURLGuidesHelp from '../guide-view-helpers/TCURLGuidesHelp';
 
 
 export default class WCTesting extends Component {
@@ -144,6 +145,49 @@ export default class WCTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-CLNT-03"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for Client-side URL Redirect</h5>
+                <span className="wsId">WSTG-CLNT-04</span><hr/>
+                <h6>
+                  Also known as open redirection. It is an input
+                  validation flaw that exists when an application accepts user-controlled input that specifies a link which leads to an
+                  external URL that could be malicious. This kind of vulnerability could be used to accomplish a phishing attack or
+                  redirect a victim to an infection page.
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Client-side URL Redirect Testing Help & Guide",
+                        <TCURLGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on Client-side URL Redirect Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CLNT-04"
                       />);
                     }}
                   >
