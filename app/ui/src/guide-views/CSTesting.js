@@ -3,6 +3,7 @@ import Reporter from '../guide-view-helpers/Reporter';
 
 import TDBCSSGuidesHelp from '../guide-view-helpers/TDBCSSGuidesHelp';
 import TJEGuidesHelp from '../guide-view-helpers/TJEGuidesHelp';
+import THIGuidesHelp from '../guide-view-helpers/THIGuidesHelp';
 
 
 export default class WCTesting extends Component {
@@ -102,6 +103,47 @@ export default class WCTesting extends Component {
                         <Reporter
                           viliop={this.props.params.viliop}
                           ID="WSTG-CLNT-02"
+                      />);
+                    }}
+                  >
+                    Report
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <div className="GuideSubItem">
+                <h5 className="mSubTitle">Testing for HTML Injection</h5>
+                <span className="wsId">WSTG-CLNT-03</span><hr/>
+                <h6>
+                  HTML injection is a type of injection vulnerability that occurs when a user is able to control an input point and is able to
+                  inject arbitrary HTML code into a vulnerable web page
+                </h6>
+                <div className="text-right mBtnHolder">
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "HTML Injection Testing Help & Guide",
+                        <THIGuidesHelp
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    Guides & Help
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Report on HTML Injection Testing",
+                        <Reporter
+                          viliop={this.props.params.viliop}
+                          ID="WSTG-CLNT-03"
                       />);
                     }}
                   >
