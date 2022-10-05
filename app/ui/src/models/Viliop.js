@@ -158,6 +158,7 @@ export default class Viliop {
           if(error){
             rejected(error);
           }
+          console.log(result);
           fulfilled(result);
         })
       }

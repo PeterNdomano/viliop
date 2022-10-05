@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import { TailSpin } from 'react-loader-spinner';
+import $ from 'jquery';
 
 export function tellUser(msg, id = "warning"){
   if(id === "success"){
@@ -103,6 +104,19 @@ export function sanitizeUrl( url ) {
 
 export function setupConsole() {
   //this will setup console window
+  if(typeof console != "undefined") {
+    if(typeof console.log != 'undefined') {
+      console.vlog = console.log;
+    }
+    else {
+      console.vlog = () => {};
+    }
+
+    console.log = (msg) => {
+      console.vlog(msg);
+      $('#cTab').append('<h6 class="text-danger">'+msg+'</h6>');
+    }
+  }
 }
 
 export function logData(error) {

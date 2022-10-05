@@ -10,7 +10,7 @@
 
   /* Tab Dimensions */
   --tTabHeight: 80px;
-  --cTabHeight: 150px;
+  --cTabHeight: 200px;
   --pTabWidth: 350px;
 
   /* Z index */
@@ -132,6 +132,7 @@ html {
   z-index: var(--midLevelZindex);
   left: var(--pTabWidth);
   bottom: 0;
+  background: var(--faintDark);
 }
 
 /* WTab styling */
