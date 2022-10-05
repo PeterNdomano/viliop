@@ -42,7 +42,7 @@ export default class App extends Component {
               viliopReady: true
             }, () => {
               setupConsole();
-              console.log("Welcome to Viliop");
+              console.log("Welcome to Viliop...");
             })
           }
           else {

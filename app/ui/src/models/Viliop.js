@@ -156,9 +156,9 @@ export default class Viliop {
         };
         await PythonShell.run(toolPath, scanOpts, (error, result) => {
           if(error){
+            console.error(error)
             rejected(error);
           }
-          console.log(result);
           fulfilled(result);
         })
       }

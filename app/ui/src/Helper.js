@@ -114,8 +114,56 @@ export function setupConsole() {
 
     console.log = (msg) => {
       console.vlog(msg);
-      $('#cTab').append('<h6 class="text-danger">'+msg+'</h6>');
+      let time = new Date().toLocaleTimeString();
+      let label = 'msg';
+      $('#cTab').append(
+        '<h6>'
+        +'<span class="logTime">'+time+'</span>'
+        +'<span class="logLabel">&nbsp;['+label+']&nbsp;:&nbsp;</span>'
+        +'<span class="logMsg">'+escapeHtml(msg)+'</span>'+
+        '</h6>'
+      );
     }
+
+    console.error = (msg) => {
+      console.vlog(msg);
+      let time = new Date().toLocaleTimeString();
+      let label = 'error';
+      $('#cTab').append(
+        '<h6>'
+        +'<span class="logTime">'+time+'</span>'
+        +'<span class="logLabel">&nbsp;['+label+']&nbsp;:&nbsp;</span>'
+        +'<span class="logMsg text-danger">'+escapeHtml(msg)+'</span>'+
+        '</h6>'
+      );
+    }
+
+    console.info = (msg) => {
+      console.vlog(msg);
+      let time = new Date().toLocaleTimeString();
+      let label = 'info';
+      $('#cTab').append(
+        '<h6>'
+        +'<span class="logTime">'+time+'</span>'
+        +'<span class="logLabel">&nbsp;['+label+']&nbsp;:&nbsp;</span>'
+        +'<span class="logMsg text-info">'+escapeHtml(msg)+'</span>'+
+        '</h6>'
+      );
+    }
+
+    console.debug = (msg) => {
+      console.vlog(msg);
+      let time = new Date().toLocaleTimeString();
+      let label = 'debug';
+      $('#cTab').append(
+        '<h6>'
+        +'<span class="logTime">'+time+'</span>'
+        +'<span class="logLabel">&nbsp;['+label+']&nbsp;:&nbsp;</span>'
+        +'<span class="logMsg text-success">'+escapeHtml(msg)+'</span>'+
+        '</h6>'
+      );
+    }
+    $('#cTab').scrollTop($('#cTab')[0].scrollHeight);
   }
 }
 
@@ -155,3 +203,13 @@ export function processScanResult(result) {
   return output;
 
 }
+
+function escapeHtml(unsafe)
+{
+  return unsafe
+     .replace(/&/g, "&amp;")
+     .replace(/</g, "&lt;")
+     .replace(/>/g, "&gt;")
+     .replace(/"/g, "&quot;")
+     .replace(/'/g, "&#039;");
+ }

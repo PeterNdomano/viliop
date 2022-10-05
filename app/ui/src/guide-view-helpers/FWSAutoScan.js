@@ -26,9 +26,8 @@ export default function FWSAutoScan(props) {
         tellUser('Scan was finished', 'success');
       }, (error) => {
         //handle error
-        tellUser("Scan Failed");
+        tellUser("Scan Failed, check log for more details");
         setLoading(false);
-        logData(error);
       })
     }
     else {

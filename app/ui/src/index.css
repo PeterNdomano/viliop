@@ -70,7 +70,7 @@ html {
   color: var(--secondaryColor);
   background: var(--darkColor);
   line-height: var(--defaultLineHeight);
-  font-family: "OpenSansLight";
+  font-family: "OpenSansRegular";
 }
 
 #root {
@@ -78,6 +78,41 @@ html {
   margin: 0px;
   padding: 0px;
 }
+
+/* SECTION: Utilities */
+.logTime {
+  color: var(--accentColor) !important;
+}
+
+.logLabel {
+  color: var(--accentColor) !important;
+}
+
+.logMsg {
+  color: gray;
+}
+
+/* ------------- croll Bar ----------------*/
+/* width */
+::-webkit-scrollbar {
+ width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+ background: var(--faintDark);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+ background: var(--secondaryColor);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+ background: var(--accentColor);
+}
+/*--------- end of scrollbar game ---------*/
 
 /* SECTION: MAIN APP WINDOW STYLING */
 
@@ -176,12 +211,23 @@ html {
   background: var(--faintDark);
   box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  overflow: auto;
+  overflow-y: auto;
   word-wrap: break-word;
 }
 
 .App .CTab pre {
+  padding-top: 15px;
+  padding-bottom: 30px;
   font-family: "MonoReg" !important;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: justify;
+}
+
+.App .CTab pre > h6 {
+  line-height: 16px;
+  font-size: 12px !important;
+  word-wrap: break-word;
 }
 
 /* WTab styling */
@@ -235,6 +281,10 @@ textarea:focus {
   padding: 5px !important;
   margin-top: 5px !important;
   border-radius: 5px;
+  font-family: "MonoReg" !important;
+  margin-left: 10px;
+  margin-right: 10px;
+  white-space: nowrap;
 }
 
 .wsId {
@@ -252,7 +302,11 @@ textarea:focus {
   background: var(--darkColor) !important;
   padding: 5px !important;
   margin-top: 5px !important;
+  margin-left: 10px;
+  margin-right: 10px;
+  white-space: nowrap;
   border-radius: 5px;
+  font-family: "MonoReg" !important;
 }
 
 button[data-name="fullscreen"] {
@@ -416,7 +470,7 @@ button[data-name="fullscreen"] {
 
 /* modal */
 .modal {
-
+  z-index: 9999999;
 }
 
 .modal-content {
