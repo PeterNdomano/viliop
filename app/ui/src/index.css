@@ -23,6 +23,45 @@
 }
 
 
+/* Fonts */
+@font-face {
+  font-family: "OpenSansRegular";
+  src: local("OpenSansRegular"), url("./fonts/Open_Sans/regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "OpenSansBold";
+  src: local("OpenSansBold"), url("./fonts/Open_Sans/bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "OpenSansLight";
+  src: local("OpenSansLight"), url("./fonts/Open_Sans/light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "MonoReg";
+  src: local("MonoReg"), url("./fonts/Mono/regular.ttf") format("truetype");
+}
+
+.font-bold{
+  font-family: "OpenSansBold" !important;
+}
+
+.font-regular{
+  font-family: "OpenSansRegular" !important;
+}
+
+.font-light{
+  font-family: "OpenSansLight" !important;
+}
+
+.font-mono{
+  font-family: "MonoReg" !important;
+}
+
+/*--------------- font end here -----------------*/
+
 body,
 html {
   width: 100%;
@@ -31,6 +70,7 @@ html {
   color: var(--secondaryColor);
   background: var(--darkColor);
   line-height: var(--defaultLineHeight);
+  font-family: "OpenSansLight";
 }
 
 #root {
@@ -58,6 +98,7 @@ html {
   background: var(--faintDark);
   overflow: hidden;
   line-height: 25px;
+  font-family: "MonoReg" !important;
 }
 
 .App .TTab .menuItem {
@@ -134,6 +175,13 @@ html {
   bottom: 0;
   background: var(--faintDark);
   box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+.App .CTab pre {
+  font-family: "MonoReg" !important;
 }
 
 /* WTab styling */

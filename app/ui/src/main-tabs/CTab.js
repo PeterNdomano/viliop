@@ -7,8 +7,9 @@ export default class CTab extends Component {
 
   render() {
     return (
-      <div className="CTab" id="cTab">
-
+      <div className="CTab">
+        <pre id="cTab">
+        </pre>
       </div>
     )
   }
