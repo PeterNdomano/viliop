@@ -8,7 +8,7 @@ export default class CTab extends Component {
   render() {
     return (
       <div className="CTab" id="cTab">
-      
+
       </div>
     )
   }

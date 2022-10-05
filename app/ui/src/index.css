@@ -10,7 +10,7 @@
 
   /* Tab Dimensions */
   --tTabHeight: 80px;
-  --cTabHeight: 200px;
+  --cTabHeight: 33vh;
   --pTabWidth: 350px;
 
   /* Z index */
@@ -129,10 +129,11 @@ html {
   width: calc(100% - var(--pTabWidth));
   height: var(--cTabHeight);
   border: 1px solid var(--faintDark);
-  z-index: var(--midLevelZindex);
+  z-index: var(--highestLevelZindex);
   left: var(--pTabWidth);
   bottom: 0;
   background: var(--faintDark);
+  box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* WTab styling */
@@ -258,26 +259,27 @@ button[data-name="fullscreen"] {
 /* RPanel Styling */
 .RPanel{
   z-index: var(--highLevelZindex);
-  width: 100vw;
-  height: 100vh;
-  padding-bottom: var(--tTabHeight);
+  width: calc(100% - var(--pTabWidth));
+  height: calc(100vh - var(--tTabHeight) - var(--cTabHeight));
   position: fixed;
   top: var(--tTabHeight);
   left: 100vw;
-  bottom: 0;
+  bottom: var(--cTabHeight);
   background: var(--faintDark);
   transition: left 0.4s ease;
   overflow: hidden;
+  padding: 0;
 }
 
 .RPanel > .container {
   overflow-x: hidden;
   word-wrap: break-word;
   overflow-y: auto;
-  height: calc(100% - 40px);
-  margin-top: 20px;
-  padding-top: calc(var(--tTabHeight) * 0.5);
-  padding-bottom: var(--tTabHeight);
+  height: 100%;
+  margin: 0;
+  padding: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .RPanel .panelTitle {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getRPanelView } from '../ViewsResolver';
+import $ from 'jquery';
 
 export default class RPanel extends Component {
   constructor(props) {
@@ -21,6 +22,11 @@ export default class RPanel extends Component {
   handleDisplay = (props) => {
     if(props.navItem === "project" && props.navSubItem === "current_project") {
       document.getElementById('rPanel').style.left = "100vw"
+      try {
+        $('#guideMenu').fadeIn('slow');
+      } catch (e) {
+        //guideMenu not available yet
+      }
     }
     else {
       //get view
@@ -30,8 +36,13 @@ export default class RPanel extends Component {
           viewChange: !prevState.viewChange, //just to cause re-render
         }
       }, () => {
-        document.getElementById('rPanel').style.left = "0";
+        document.getElementById('rPanel').style.left = "var(--pTabWidth)";
         document.getElementById('rPanel').children[0].focus();
+        try {
+          $('#guideMenu').fadeOut('slow');
+        } catch (e) {
+          //guideMenu not available yet
+        }
       })
 
     }
