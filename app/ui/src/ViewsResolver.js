@@ -11,6 +11,7 @@ import EHTesting from './guide-views/EHTesting';
 import WCTesting from './guide-views/WCTesting';
 import BLTesting from './guide-views/BLTesting';
 import CSTesting from './guide-views/CSTesting';
+import APITesting from './guide-views/APITesting';
 
 
 export function getRPanelView (props) {
@@ -105,6 +106,13 @@ export function getWorkspaceView(props) {
   else if(props.workspaceViewId === "clientside_testing"){
     return (
       <CSTesting
+        params={props}
+      />
+    )
+  }
+  else if(props.workspaceViewId === "api_testing"){
+    return (
+      <APITesting
         params={props}
       />
     )
