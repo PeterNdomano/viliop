@@ -167,4 +167,29 @@ export default class Viliop {
       }
     })
   }
+
+  metaScrap = (url) => {
+    return new Promise( async (fulfilled, rejected) => {
+      try {
+        let toolPath = path.join(this.toolsFolder, "Meta-Scrapper/main.py");
+        let scanOpts = {
+          mode: 'text',
+          pythonPath: this.pythonPath,
+          pythonOptions: ['-u'], // get print results in real-time
+          //scriptPath: toolPath,
+          args: ['-u http://'+url],
+        };
+        await PythonShell.run(toolPath, scanOpts, (error, result) => {
+          if(error){
+            console.error(error)
+            rejected(error);
+          }
+          fulfilled(result);
+        })
+      }
+      catch (e) {
+        rejected(e)
+      }
+    })
+  }
 }

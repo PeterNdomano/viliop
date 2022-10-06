@@ -114,6 +114,7 @@ export function setupConsole() {
 
     console.log = (msg) => {
       console.vlog(msg);
+      msg = (typeof msg === 'object') ? JSON.stringify(msg, null, 2) : msg;
       let time = new Date().toLocaleTimeString();
       let label = 'msg';
       $('#cTab').append(
@@ -127,6 +128,7 @@ export function setupConsole() {
 
     console.error = (msg) => {
       console.vlog(msg);
+      msg = (typeof msg === 'object') ? JSON.stringify(msg, null, 2) : msg;
       let time = new Date().toLocaleTimeString();
       let label = 'error';
       $('#cTab').append(
@@ -140,6 +142,7 @@ export function setupConsole() {
 
     console.info = (msg) => {
       console.vlog(msg);
+      msg = (typeof msg === 'object') ? JSON.stringify(msg, null, 2) : msg;
       let time = new Date().toLocaleTimeString();
       let label = 'info';
       $('#cTab').append(
@@ -153,6 +156,7 @@ export function setupConsole() {
 
     console.debug = (msg) => {
       console.vlog(msg);
+      msg = (typeof msg === 'object') ? JSON.stringify(msg, null, 2) : msg;
       let time = new Date().toLocaleTimeString();
       let label = 'debug';
       $('#cTab').append(
@@ -204,12 +208,16 @@ export function processScanResult(result) {
 
 }
 
-function escapeHtml(unsafe)
-{
-  return unsafe
-     .replace(/&/g, "&amp;")
-     .replace(/</g, "&lt;")
-     .replace(/>/g, "&gt;")
-     .replace(/"/g, "&quot;")
-     .replace(/'/g, "&#039;");
- }
+function escapeHtml(unsafe){
+  if(typeof unsafe === 'string') {
+    return unsafe
+       .replace(/&/g, "&amp;")
+       .replace(/</g, "&lt;")
+       .replace(/>/g, "&gt;")
+       .replace(/"/g, "&quot;")
+       .replace(/'/g, "&#039;");
+  }
+  else {
+    return unsafe;
+  }
+}

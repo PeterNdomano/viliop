@@ -11,6 +11,7 @@ import IAEPGuidesHelp from '../guide-view-helpers/IAEPGuidesHelp';
 import MEPGuidesHelp from '../guide-view-helpers/MEPGuidesHelp';
 import FWAFGuidesHelp from '../guide-view-helpers/FWAFGuidesHelp';
 import MAAGuidesHelp from '../guide-view-helpers/MAAGuidesHelp';
+import MetaScrapper from '../guide-view-helpers/MetaScrapper';
 
 
 export default class InfoGathering extends Component {
@@ -137,10 +138,24 @@ export default class InfoGathering extends Component {
                 <h5 className="mSubTitle">Review Webserver Metafiles for Information Leakage</h5>
                 <span className="wsId">WSTG-INFO-03</span><hr/>
                 <h6>
-                  Test various metadata files for information leakage of the web application’s path(s), or
+                  Review various metadata files for information leakage of the web application’s hidden & sensitive path(s), or
                   functionality.
                 </h6>
                 <div className="text-right mBtnHolder">
+
+                  <button
+                    className="btn btn-sm btn-success text-dark"
+                    onClick={() => {
+                      this.props.params.modalCallback(
+                        true,
+                        "Automated Metadata & Metafiles Scrapping Tool",
+                        <MetaScrapper
+                          viliop={this.props.params.viliop}
+                      />);
+                    }}
+                  >
+                    AUTOMATED METADATA  & METAFILES SCRAPPER
+                  </button>
 
                   <button
                     className="btn btn-sm btn-success text-dark"
