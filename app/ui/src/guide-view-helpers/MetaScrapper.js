@@ -14,7 +14,7 @@ export default function MetaScrapper(props) {
   const startTool = async () => {
     if(!loading){
       setLoading(true);
-      await viliop.fwsScan(project.config.targetUrl).then((result) => {
+      await viliop.metaScrap(project.config.targetUrl).then((result) => {
         if(result !== false) {
           let output = processScanResult(result);
           let view = output.scanData.map((item, i) => {
@@ -24,7 +24,7 @@ export default function MetaScrapper(props) {
           });
           setScanOutput(view)
           setLoading(false);
-          //tellUser('Scan was finished', 'success');
+          tellUser('Completed, check results..', 'success');
         }
         else {
           //handle error
@@ -44,7 +44,7 @@ export default function MetaScrapper(props) {
       <div className="row">
         <div className="col-md-12">
           <p>
-            Use Viliop's Built-in Metadata & Metafile Scrapper to collect metadata and metafiles of
+            Use Viliop's Built-in Metadata & Metafile Scrapper (Meta-Scrapper) to collect metadata and metafiles of
             <span className="linkText"> {project.config.targetUrl}</span>
           </p>
           <hr/>

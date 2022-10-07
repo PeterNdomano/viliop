@@ -24,7 +24,7 @@ export default function FWSAutoScan(props) {
           });
           setScanOutput(view)
           setLoading(false);
-          //tellUser('Scan was finished', 'success');
+          tellUser('Completed check results..', 'success');
         }
         else {
           //handle error
