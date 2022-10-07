@@ -109,10 +109,19 @@ export default class Viliop {
         title,
       } = options;
       //create project folder
-      await fs.mkdirSync(location);
+      if(!fs.existsSync(location)) {
+        fs.mkdirSync(location);
+      }
+
 
       //create sub folders
-      await fs.mkdirSync( path.join( location, 'reports' ) ); //reports dir
+      if(!fs.existsSync(path.join( location, 'reports' ))) {
+          fs.mkdirSync( path.join( location, 'reports' ) ); //reports dir
+      }
+
+      if(!fs.existsSync(path.join( location, 'scans-output' ))) {
+        fs.mkdirSync( path.join( location, 'scans-output' ) ); //scan-output dir
+      }
 
 
       //create project config.json
@@ -125,7 +134,7 @@ export default class Viliop {
       let configFile = path.join(location, 'config.json');
 
       //write config file
-      await fs.writeFileSync(configFile, JSON.stringify( config, null, "\t" ));
+      fs.writeFileSync(configFile, JSON.stringify( config, null, "\t" ));
 
       //create project instance
       let project = new Project(configFile);
@@ -143,8 +152,21 @@ export default class Viliop {
     }
   }
 
+  checkScansOutputFolder = () => {
+    return new Promise( async resolve => {
+      if(fs.existsSync(this.currentProject.scansOutputDir)) {
+        resolve(true);
+      }
+      else {
+        //create scans folder then resolve
+        fs.mkdirSync( this.currentProject.scansOutputDir );
+        resolve(true);
+      }
+    })
+  }
+
   fwsScan = (url) => {
-    return new Promise( async (fulfilled, rejected) => {
+    return new Promise( async (resolve) => {
       try {
         let toolPath = path.join(this.toolsFolder, "FWS-Scanner/main.py");
         let scanOpts = {
@@ -157,39 +179,53 @@ export default class Viliop {
         await PythonShell.run(toolPath, scanOpts, (error, result) => {
           if(error){
             console.error(error)
-            rejected(error);
+            resolve(false);
           }
-          fulfilled(result);
+          resolve(result);
         })
       }
       catch (e) {
-        rejected(e)
+        console.error(e.message);
+        resolve(false);
       }
     })
   }
 
   metaScrap = (url) => {
-    return new Promise( async (fulfilled, rejected) => {
-      try {
-        let toolPath = path.join(this.toolsFolder, "Meta-Scrapper/main.py");
-        let scanOpts = {
-          mode: 'text',
-          pythonPath: this.pythonPath,
-          pythonOptions: ['-u'], // get print results in real-time
-          //scriptPath: toolPath,
-          args: ['-u http://'+url],
-        };
-        await PythonShell.run(toolPath, scanOpts, (error, result) => {
-          if(error){
-            console.error(error)
-            rejected(error);
+    return new Promise( async (resolve) => {
+      await this.checkScansOutputFolder().then( async (status) => {
+        if(status) {
+          let outputDir = path.join(this.currentProject.scansOutputDir, 'meta-scrapper');
+          if(!fs.existsSync(outputDir)) {
+            fs.mkdirSync(outputDir);
           }
-          fulfilled(result);
-        })
-      }
-      catch (e) {
-        rejected(e)
-      }
+          try {
+            let toolPath = path.join(this.toolsFolder, "Meta-Scrapper/main.py");
+            let scanOpts = {
+              mode: 'text',
+              pythonPath: this.pythonPath,
+              pythonOptions: ['-u'], // get print results in real-time
+              //scriptPath: toolPath,
+              args: ['-u http://'+url, '-d '+outputDir],
+            };
+            await PythonShell.run(toolPath, scanOpts, (error, result) => {
+              if(error){
+                console.error(error)
+                resolve(false);
+              }
+              resolve(result);
+            })
+          }
+          catch (e) {
+            console.error(e.message);
+            resolve(false);
+          }
+        }
+        else {
+          console.error("Scan could not begin due to file system error, make you have permission to read and write the project's folder");
+          resolve(false);
+        }
+      })
     })
   }
 }

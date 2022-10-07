@@ -9,6 +9,7 @@ export default class Project {
     this.configFile = configFile;
     this.projectDir = path.dirname( configFile );
     this.reportsDir = path.join( this.projectDir, 'reports' );
+    this.scansOutputDir = path.join( this.projectDir, 'scans-output' );
     this.config = JSON.parse(fs.readFileSync(configFile, {encoding:'utf8', flag:'r'}));
   }
 

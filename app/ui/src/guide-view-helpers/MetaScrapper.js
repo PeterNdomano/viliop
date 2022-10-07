@@ -11,8 +11,32 @@ export default function MetaScrapper(props) {
   const [loading, setLoading] = useState(false);
   const [scanOutput, setScanOutput] = useState("");
 
-  const startTool = () => {
+  const startTool = async () => {
+    if(!loading){
+      setLoading(true);
+      await viliop.fwsScan(project.config.targetUrl).then((result) => {
+        if(result !== false) {
+          let output = processScanResult(result);
+          let view = output.scanData.map((item, i) => {
+            return (
+              <h6 className="scanOutput" key={i}>{item}</h6>
+            )
+          });
+          setScanOutput(view)
+          setLoading(false);
+          //tellUser('Scan was finished', 'success');
+        }
+        else {
+          //handle error
+          tellUser("Scan Failed, make sure you are connected to the internet. Check log for more details");
+          setLoading(false);
+        }
 
+      })
+    }
+    else {
+      tellUser('Meta Scrapper is in progress, please wait..');
+    }
   }
 
   return (
@@ -28,7 +52,7 @@ export default function MetaScrapper(props) {
             {
               (scanOutput !== "")?
               <div>
-                <h6 className="text-warning"><i>FWS Scan Results:</i></h6>
+                <h6 className="text-warning"><i>Meta Scrapper Results:</i></h6>
                 {scanOutput}
               </div>
               :
@@ -42,7 +66,7 @@ export default function MetaScrapper(props) {
               onClick={startTool}
             >
               {
-                (loading) ? getInlineLoader() : "Launch Meta Scrapper"
+                (loading) ? getInlineLoader() : "Start Meta Scrapper"
               }
             </button>
           </div>

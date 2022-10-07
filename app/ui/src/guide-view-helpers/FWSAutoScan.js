@@ -15,19 +15,23 @@ export default function FWSAutoScan(props) {
     if(!loading){
       setLoading(true);
       await viliop.fwsScan(project.config.targetUrl).then((result) => {
-        let output = processScanResult(result);
-        let view = output.scanData.map((item, i) => {
-          return (
-            <h6 className="scanOutput" key={i}>{item}</h6>
-          )
-        });
-        setScanOutput(view)
-        setLoading(false);
-        //tellUser('Scan was finished', 'success');
-      }, (error) => {
-        //handle error
-        tellUser("Scan Failed, make sure you are connected to the internet. Check log for more details");
-        setLoading(false);
+        if(result !== false) {
+          let output = processScanResult(result);
+          let view = output.scanData.map((item, i) => {
+            return (
+              <h6 className="scanOutput" key={i}>{item}</h6>
+            )
+          });
+          setScanOutput(view)
+          setLoading(false);
+          //tellUser('Scan was finished', 'success');
+        }
+        else {
+          //handle error
+          tellUser("Scan Failed, make sure you are connected to the internet. Check log for more details");
+          setLoading(false);
+        }
+
       })
     }
     else {
