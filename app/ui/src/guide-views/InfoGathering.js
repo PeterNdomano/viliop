@@ -355,7 +355,7 @@ export default class InfoGathering extends Component {
 
             <div className="col-md-12">
               <div className="GuideSubItem">
-                <h5 className="mSubTitle">Fingerprint Web Application and It's Framework</h5>
+                <h5 className="mSubTitle">Fingerprint Web Application Framework</h5>
                 <span className="wsId">WSTG-INFO-08</span><hr/>
                 <h6>
                   Discover the framework and technologies powering the target web app
