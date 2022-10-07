@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { getProjectMenuOptions, getToolsMenuOptions } from '../Helper';
+import { getProjectMenuOptions, getToolsMenuOptions, getReportingMenuOptions } from '../Helper';
 
 export default class ToolbarMenu extends Component {
   constructor(props) {
@@ -32,6 +32,9 @@ export default class ToolbarMenu extends Component {
         break;
       case 'tools':
         this.menuOptions = getToolsMenuOptions();
+        break;
+      case 'reporting':
+        this.menuOptions = getReportingMenuOptions();
         break;
       default:
         this.menuOptions = [];

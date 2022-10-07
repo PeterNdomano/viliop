@@ -84,6 +84,29 @@ export function getToolsMenuOptions() {
   ])
 }
 
+export function getReportingMenuOptions() {
+  return ([
+    {
+      id: 'view',
+      title: 'View Report',
+      parent: 'reporting',
+    },
+    {
+      id: 'edit',
+      title: 'Edit Report',
+      parent: 'reporting',
+    },
+    {
+      id: 'export',
+      title: 'Export Report',
+      parent: 'reporting',
+    },
+
+  ])
+}
+
+
+
 export function sanitizePathString (string) {
   return string;
 }
