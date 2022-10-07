@@ -23,10 +23,10 @@ export default function FWSAutoScan(props) {
         });
         setScanOutput(view)
         setLoading(false);
-        tellUser('Scan was finished', 'success');
+        //tellUser('Scan was finished', 'success');
       }, (error) => {
         //handle error
-        tellUser("Scan Failed, check log for more details");
+        tellUser("Scan Failed, make sure you are connected to the internet. Check log for more details");
         setLoading(false);
       })
     }
