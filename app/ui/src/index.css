@@ -406,6 +406,18 @@ button[data-name="fullscreen"] {
   padding-bottom: 30px;
 }
 
+.RPanel > .container {
+  overflow-x: hidden;
+  word-wrap: break-word;
+  overflow-y: auto;
+  height: 100%;
+  margin: 0;
+  padding: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+
 .RPanel .panelTitle {
   font-size: 50px;
 }

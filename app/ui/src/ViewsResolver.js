@@ -13,7 +13,7 @@ import BLTesting from './guide-views/BLTesting';
 import CSTesting from './guide-views/CSTesting';
 import APITesting from './guide-views/APITesting';
 import ViewReport from './views/ViewReport';
-
+import EditReport from './views/EditReport';
 
 export function getRPanelView (props) {
   if(props.navItem === "project" && props.navSubItem === "new_project"){
@@ -36,6 +36,14 @@ export function getRPanelView (props) {
     return (
       <ViewReport
         toExport={true}
+        viliop={props.viliop}
+        navCallback={props.navCallback}
+      />
+    )
+  }
+  else if(props.navItem === "reporting" && props.navSubItem === "edit"){
+    return (
+      <EditReport
         viliop={props.viliop}
         navCallback={props.navCallback}
       />
