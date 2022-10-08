@@ -80,6 +80,12 @@ html {
 }
 
 /* SECTION: Utilities */
+@media print {
+  /* Hide buttons during print */
+  button {
+    display: none;
+  }
+}
 .logTime {
   color: var(--accentColor) !important;
 }
@@ -389,7 +395,7 @@ button[data-name="fullscreen"] {
   padding: 0;
 }
 
-.RPanel > .container {
+.RPanel > .container-fluid {
   overflow-x: hidden;
   word-wrap: break-word;
   overflow-y: auto;
