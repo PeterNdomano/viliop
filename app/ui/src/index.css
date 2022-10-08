@@ -93,7 +93,16 @@ html {
 }
 
 .reportBlock {
-  
+
+}
+
+pre {
+  background: var(--darkColor);
+  padding-left: 10px;
+}
+
+code {
+  color: gray !important;
 }
 
 /* ------------- croll Bar ----------------*/
@@ -220,12 +229,15 @@ html {
 }
 
 .App .CTab pre {
+  padding-left: 0px !important;
   padding-top: 15px;
   padding-bottom: 30px;
   font-family: "MonoReg" !important;
   white-space: pre-wrap;
   word-wrap: break-word;
   text-align: justify;
+  color: inherit !important;
+  background: inherit !important;
 }
 
 .App .CTab pre > h6 {
