@@ -49,6 +49,7 @@ export default class ViewReport extends Component {
           if(props.toExport) {
             //call print
             this.print();
+
           }
         })
       }
@@ -57,7 +58,7 @@ export default class ViewReport extends Component {
 
   print = () => {
     //handle report printing here
-    $('#_repPrinter').click();
+    //$('#_repPrinter').click(); buggy!
   }
   UNSAFE_componentWillReceiveProps(props) {
     this.init(props);

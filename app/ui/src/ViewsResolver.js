@@ -32,6 +32,15 @@ export function getRPanelView (props) {
       />
     )
   }
+  else if(props.navItem === "reporting" && props.navSubItem === "export"){
+    return (
+      <ViewReport
+        toExport={true}
+        viliop={props.viliop}
+        navCallback={props.navCallback}
+      />
+    )
+  }
   else{
     return (
       <div className="container">

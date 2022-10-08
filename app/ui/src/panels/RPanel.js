@@ -29,6 +29,7 @@ export default class RPanel extends Component {
       }
     }
     else {
+      
       //get view
       this.view = getRPanelView( props );
       this.setState((prevState) => {
