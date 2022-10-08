@@ -28,14 +28,19 @@ export default class Project {
     }
   }
 
-  getReport = async ( ID ) => {
+  getReport = async ( ID, forGeneralReport = false ) => {
     let status = this.checkReport(ID);
     if( status === true ) {
       let reportFile = path.join( this.reportsDir, ID+".md" );
       let content = fs.readFileSync(reportFile, {encoding:'utf8', flag:'r'});
       return content
     } else {
-      return "*Note your findings here..*";
+      if(forGeneralReport) {
+        return "*No report was found*";
+      }
+      else {
+        return "*Note your findings here..*";
+      }
     }
   }
 }

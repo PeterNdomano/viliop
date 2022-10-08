@@ -92,6 +92,10 @@ html {
   color: gray;
 }
 
+.reportBlock {
+  
+}
+
 /* ------------- croll Bar ----------------*/
 /* width */
 ::-webkit-scrollbar {
