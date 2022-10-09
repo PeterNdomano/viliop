@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { tellUser, getInlineLoader } from '../Helper';
+import $ from 'jquery';
 const path = window.require('path');
 const fs = window.require('fs');
 
@@ -70,6 +71,21 @@ export default class NewProject extends Component {
       }
     }
 
+  }
+
+  loadProject = async (files) => {
+    let configPath = files[0].path;
+    await this.props.viliop.loadProject({ configPath }).then((result) => {
+      if(result === true) {
+        this.props.navCallback("project", "current_project");
+        console.log("Project was loaded successfully")
+        tellUser('Project was loaded successfully', 'success');
+      }
+      else {
+        tellUser('Could not load project');
+        tellUser(result);
+      }
+    })
   }
 
   createProject = async (e) => {
@@ -169,14 +185,16 @@ export default class NewProject extends Component {
           </div>
 
           <div className="col-md-6">
-            <h3>Recent Projects</h3>
-
-            <hr/>
-            <div className="text-right">
-              <button className="btn btn-primary">
-                Open Project's Folder
-              </button>
+            <h3 style={{ marginBottom:"40px" }}>Recent Projects</h3>
+            <div className="text-left">
+              <input onChange={(e) => this.loadProject(e.target.files)} type="file" webkitdirectory="true" directory="true" hidden={true} id="_configPath"/>
+              <button onClick={() => $('#_configPath').click()} style={{ margin:"0px" }} className="btn btn-primary">
+                Re-Open or Load Project
+              </button><br/>
+              <small className="form-text text-muted">Click the button above to Select Project's Folder</small>
             </div>
+            <hr/>
+
           </div>
         </div>
       </div>

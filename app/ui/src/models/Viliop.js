@@ -182,9 +182,10 @@ export default class Viliop {
   loadProject = (options) => {
     return new Promise( async resolve => {
       let {
-        projectFolder,
+        configPath,
       } = options;
-      let configFile = path.join(projectFolder, 'config.json');
+      let pathObj = path.parse(configPath);
+      let configFile = path.join(pathObj.dir, "config.json");
 
       if(fs.existsSync(configFile)) {
         try {
