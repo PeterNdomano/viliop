@@ -20,6 +20,7 @@ export default class EditReport extends Component {
           <ViliopInfo/>
         </div>
         <div className="rightWing">
+          {getInlineLoader("var(--secondaryColor)", "50px", "50px")}
         </div>
       </div>
     )

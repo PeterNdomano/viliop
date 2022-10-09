@@ -111,12 +111,20 @@ export function sanitizePathString (string) {
   return string;
 }
 
-export function getInlineLoader() {
+export function getInlineLoader(color="var(--secondaryColor)", width="30px", height="30px") {
   return (
     <TailSpin
-      color="var(--secondaryColor)"
-      width="30px"
-      height="30px"
+      color={color}
+      width={width}
+      height={height}
+      wrapperStyle={{
+        position: "absolute",
+        width:"auto",
+        height: "auto",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+      }}
     />
   );
 }
