@@ -92,6 +92,9 @@ html {
 
 button {
   font-family: "OpenSansBold";
+  position: relative;
+  min-height: 40px;
+  min-width: 40px;
 }
 
 .logLabel {

@@ -141,7 +141,7 @@ export default class ConfigSetting extends Component {
 
           <div className="col-md-12 text-right" style={{ paddingBottom:"40px" }}>
             <button onClick={this.saveConfigs} className="btn btn-warning text-dark font-bold">
-              {(this.state.loading) ? getInlineLoader() : "SAVE CONFIGURATIONS"}
+              {(this.state.loading) ? getInlineLoader("var(--darkColor)") : "SAVE CONFIGURATIONS"}
             </button>
           </div>
 

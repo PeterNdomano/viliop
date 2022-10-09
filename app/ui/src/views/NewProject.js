@@ -99,7 +99,7 @@ export default class NewProject extends Component {
         if(title.trim().length > 0) {
           if(!fs.existsSync(location)) {
             this.setState({ loading: true })
-            await this.props.viliop.createNewProject({ title, targetUrl, location, type }).then((result) => {
+            await this.props.viliop.createNewProject({ title, targetUrl, location, type, pentesterName:this.props.viliop.userName, pentesterEmail:this.props.viliop.userEmail, }).then((result) => {
               if(result === true) {
                 this.setState({
                   projectTitle: "Untitled",

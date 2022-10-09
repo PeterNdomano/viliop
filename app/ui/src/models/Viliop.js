@@ -66,23 +66,29 @@ export default class Viliop {
   }
 
   handleConfig = (config) => {
-    //toolsFolder = "C:/xampp/htdocs/github_projects/viliop-tools";
-    //setting python path
-    //pythonPath = "C:/Users/Ndomano/AppData/Local/Programs/Python/Python310/python.exe";
+    //saves configurations assuming they're already checked and valid
+    return new Promise(async resolve => {
+      let userConfigFile = path.join(this.configFolder, 'user.json');
+      let viliopConfigFile = path.join(this.configFolder, 'viliop.json');
 
+      fs.writeFileSync(userConfigFile, JSON.stringify( config.user, null, "\t" ));
+      fs.writeFileSync(viliopConfigFile, JSON.stringify( config.viliop, null, "\t" ));
+
+      resolve(1);
+    })
   }
 
   toolsTest = (path) => {
     return new Promise(async resolve => {
       // TODO: handle tools testing here
-      resolve(0);
+      resolve(1);
     })
   }
 
   pythonTest = (path) => {
     return new Promise(async resolve => {
       // TODO: handle python testing here
-      resolve(0);
+      resolve(1);
     })
   }
 

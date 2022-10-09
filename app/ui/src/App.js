@@ -39,6 +39,8 @@ export default class App extends Component {
 
   componentDidMount() {
     this.init();
+
+    //disable on reload
   }
 
   init = async () => {
@@ -48,7 +50,7 @@ export default class App extends Component {
           viliopReady: true,
           viliopStatus: 1,
         }, () => {
-          //..
+          console.log('Welcome to Viliop!');
         })
       }
       else if(viliopStatus === 2) {
@@ -146,8 +148,17 @@ export default class App extends Component {
       return (
         <div className="App">
           {this.modal}
+
           <ToastContainer
             theme="dark"
+          />
+          <CTab
+            viliop={this.viliop}
+            navItem={this.state.navItem}
+            navSubItem={this.state.navSubItem}
+            toolbarMenuCallback={this.toolbarMenuCallback}
+            contextMenuCallback={this.contextMenuCallback}
+            navCallback={this.navCallback}
           />
           <ToolbarMenu
             navCallback={this.navCallback}
@@ -198,14 +209,7 @@ export default class App extends Component {
             workspaceViewCallback={this.workspaceViewCallback}
             modalCallback={this.modalCallback}
           />
-          <CTab
-            viliop={this.viliop}
-            navItem={this.state.navItem}
-            navSubItem={this.state.navSubItem}
-            toolbarMenuCallback={this.toolbarMenuCallback}
-            contextMenuCallback={this.contextMenuCallback}
-            navCallback={this.navCallback}
-          />
+
         </div>
       )
     }
@@ -249,6 +253,7 @@ export default class App extends Component {
               navCallback={this.navCallback}
             />
             <StartupConfig
+              restartApp={this.restartApp}
               viliop={this.viliop}
             />
 
