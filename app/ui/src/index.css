@@ -70,7 +70,7 @@ html {
   color: var(--secondaryColor);
   background: var(--darkColor);
   line-height: var(--defaultLineHeight);
-  font-family: "OpenSansRegular";
+  font-family: "OpenSansLight";
 }
 
 #root {
@@ -281,6 +281,9 @@ textarea:focus {
   color: var(--accentColor) !important;
 }
 
+btn {
+  font-family: "OpenSansRegular";
+}
 .btn-primary {
   background: var(--primaryColor) !important;
 }
@@ -420,6 +423,7 @@ button[data-name="fullscreen"] {
 
 .RPanel .panelTitle {
   font-size: 50px;
+  font-family: "OpenSansLight" !important;
 }
 
 /* ContextMenu Styling */

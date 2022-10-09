@@ -43,22 +43,22 @@ export function getProjectMenuOptions() {
   return ([
     {
       id: 'current_project',
-      title: 'Project',
+      title: 'Current Project',
       parent: 'project',
     },
     {
       id: 'new_project',
-      title: 'New Project',
+      title: 'New or Reopen Project',
       parent: 'project',
     },
     {
-      id: 'save_project',
-      title: 'Save Project',
+      id: 'new_window',
+      title: 'New Window',
       parent: 'project',
     },
     {
-      id: 'save_project_as',
-      title: 'Save Project As...',
+      id: 'export_project',
+      title: 'Export Project',
       parent: 'project',
     },
   ])

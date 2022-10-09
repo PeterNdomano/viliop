@@ -75,6 +75,8 @@ export default class App extends Component {
     if(this.viliop.currentProject === null){
       item = "project";
       subItem = "new_project";
+      console.log('Create or Open a project first');
+      tellUser('Create or Open a project first');
     }
     this.toolbarMenuCallback(false);
     this.setState({
