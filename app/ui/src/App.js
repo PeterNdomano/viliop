@@ -11,6 +11,9 @@ import ToolbarMenu from './components/ToolbarMenu';
 import Viliop from './models/Viliop';
 import Modal from './components/Modal';
 import StartupLoading from './views/StartupLoading';
+import StartupError from './views/StartupError';
+import StartupConfig from './views/StartupConfig';
+
 
 export default class App extends Component {
   constructor(props){
@@ -214,6 +217,9 @@ export default class App extends Component {
               contextMenuCallback={this.contextMenuCallback}
               navCallback={this.navCallback}
             />
+            <StartupLoading
+              viliop={this.viliop}
+            />
           </div>
         )
       }
@@ -233,10 +239,10 @@ export default class App extends Component {
               contextMenuCallback={this.contextMenuCallback}
               navCallback={this.navCallback}
             />
-            <StartupLoading
+            <StartupConfig
               viliop={this.viliop}
             />
-            
+
           </div>
         )
       }
@@ -255,6 +261,9 @@ export default class App extends Component {
               toolbarMenuCallback={this.toolbarMenuCallback}
               contextMenuCallback={this.contextMenuCallback}
               navCallback={this.navCallback}
+            />
+            <StartupError
+              viliop={this.viliop}
             />
           </div>
         )

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import ViliopInfo from './ViliopInfo';
-import ConfigSetting from './ConfigSetting';
 import { tellUser, sanitizePathString, getInlineLoader, sanitizeUrl } from '../Helper';
 const path = window.require('path');
 const fs = window.require('fs');
 
 
-export default class StartupConfig extends Component {
+export default class EditReport extends Component {
   constructor(props) {
     super(props);
 
@@ -21,7 +20,7 @@ export default class StartupConfig extends Component {
           <ViliopInfo/>
         </div>
         <div className="rightWing">
-          <ConfigSetting viliop={this.props.viliop} />
+          <h5>StartUp Error occured</h5>
         </div>
       </div>
     )

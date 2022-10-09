@@ -90,6 +90,10 @@ html {
   color: var(--accentColor) !important;
 }
 
+button {
+  font-family: "OpenSansBold";
+}
+
 .logLabel {
   color: var(--accentColor) !important;
 }
@@ -173,6 +177,7 @@ code {
   top: 0;
   left: 0;
   z-index: inherit;
+  overflow: auto;
   bottom: 0;
 }
 
@@ -183,6 +188,7 @@ code {
   position: fixed;
   z-index: inherit;
   top: 0;
+  overflow: auto;
   right: 0;
   bottom: 0;
 }
