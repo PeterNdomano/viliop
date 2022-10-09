@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { tellUser, sanitizePathString, getInlineLoader, sanitizeUrl } from '../Helper';
+import { tellUser, getInlineLoader } from '../Helper';
 const path = window.require('path');
 const fs = window.require('fs');
 
@@ -17,26 +17,59 @@ export default class NewProject extends Component {
   }
 
   handleTitle = ( projectTitle ) => {
+
     projectTitle = projectTitle.trim();
-    if(projectTitle.matches(/^[-_a-zA_Z0-9]+$/)) {
-      projectTitle = sanitizePathString(projectTitle);
-      let projectLocation = path.join(this.props.viliop.projectsFolder, projectTitle);
+    if(projectTitle.length === 0) {
+      let projectLocation = path.join(this.props.viliop.projectsFolder, "Untitled");
       this.setState({
         projectTitle,
         projectLocation,
       })
     }
     else {
-      tellUser('Invalid project title. Only Alphanumeric characters, dashes and underscores are allowed');
+      let regex = new RegExp("^[A-Za-z0-9?_-]+$");
+      if(regex.test(projectTitle)) {
+        let projectLocation = path.join(this.props.viliop.projectsFolder, projectTitle);
+        this.setState({
+          projectTitle,
+          projectLocation,
+        })
+      }
+      else {
+        console.log('Invalid project title. Only Alphanumeric characters, dashes and underscores are allowed');
+        tellUser('Invalid project title. Only Alphanumeric characters, dashes and underscores are allowed');
+      }
     }
 
   }
 
   handleUrl = ( url ) => {
-    url = sanitizeUrl( url );
-    this.setState({
-      targetUrl: url,
-    })
+    url = url.trim();
+    if(url.length === 0) {
+      this.setState({
+        targetUrl: url,
+      })
+    }
+    else {
+      if(url.indexOf('http://') === -1 && url.indexOf('https://') === -1 && url.indexOf('www.') === -1) {
+        let regex = new RegExp("^[A-Za-z0-9?.:]+$");
+        if(regex.test(url)) {
+          this.setState({
+            targetUrl: url,
+          })
+        }
+        else {
+          tellUser('Invalid domain name');
+          console.log('Invalod domain name');
+        }
+
+      }
+      else {
+        console.log('Domain name should not contain http://, https://,  www or other prefixes');
+        tellUser('Domain name should not contain http://, https://,  www or other prefixes');
+      }
+    }
+
   }
 
   createProject = async (e) => {
@@ -46,32 +79,37 @@ export default class NewProject extends Component {
       let targetUrl = this.state.targetUrl;
       let location = this.state.projectLocation;
       let type = ( document.getElementById('webPentest').checked === true ) ? "webPentest" : "mobilePentest";
-      if(title.trim().length > 0) {
-        if(!fs.existsSync(location)) {
-          this.setState({ loading: true })
-          await this.props.viliop.createNewProject({ title, targetUrl, location, type }).then((result) => {
-            if(result === true) {
-              this.setState({
-                projectTitle: "Untitled",
-                targetUrl: "",
-                projectLocation: path.join(this.props.viliop.projectsFolder, "Untitled"),
-                loading: false,
-              })
-              this.props.navCallback("project", "current_project");
-              tellUser('New Project - '+title+' was created', "success");
-            }
-            else {
-              tellUser('Could not create project');
-              tellUser(result);
-            }
-          })
+      if(targetUrl.trim().length > 0) {
+        if(title.trim().length > 0) {
+          if(!fs.existsSync(location)) {
+            this.setState({ loading: true })
+            await this.props.viliop.createNewProject({ title, targetUrl, location, type }).then((result) => {
+              if(result === true) {
+                this.setState({
+                  projectTitle: "Untitled",
+                  targetUrl: "",
+                  projectLocation: path.join(this.props.viliop.projectsFolder, "Untitled"),
+                  loading: false,
+                })
+                this.props.navCallback("project", "current_project");
+                tellUser('New Project - '+title+' was created', "success");
+              }
+              else {
+                tellUser('Could not create project');
+                tellUser(result);
+              }
+            })
+          }
+          else {
+            tellUser("Project location already exists, try different project title")
+          }
         }
         else {
-          tellUser("Project location already exists, try different project title")
+          tellUser("Invalid project title");
         }
       }
       else {
-        tellUser("Invalid project title");
+        tellUser('Invalid domain name');
       }
     }
   }
@@ -104,9 +142,9 @@ export default class NewProject extends Component {
                     <small className="text-muted form-text">Only Alphanumeric characters, dashes and underscores</small>
                   </div>
                   <div className="form-group">
-                    <label>Target Domain or Sub-Domain</label>
+                    <label>Target Domain, Sub-Domain or IP Address</label>
                     <input onChange={(e) => { this.handleUrl(e.target.value) }} value={this.state.targetUrl} id="targetUrl" className="form-control" />
-                    <small className="text-muted form-text">Eg <span className="font-mono text-accent"><i>sitename.com</i></span>, no www or http prefixes</small>
+                    <small className="text-muted form-text">Eg <span className="font-mono text-accent"><i>sitename.com or subdomain.sitename.com</i></span>, no www, http://, or other prefixes</small>
                   </div>
                   <div className="form-group">
                     <label>Project's Folder Location</label>
