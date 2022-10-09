@@ -244,6 +244,7 @@ code {
   text-align: justify;
   color: inherit !important;
   background: inherit !important;
+  z-index: inherit;
 }
 
 .App .CTab pre > h6 {

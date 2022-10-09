@@ -1,6 +1,7 @@
 import Project from './Project';
 import WebPentestGuide from './WebPentestGuide';
 import MobileAppPentestGuide from './MobileAppPentestGuide';
+import { setupConsole } from '../Helper';
 const os = window.require('os');
 const fs = window.require('fs');
 const path = window.require('path');
@@ -14,6 +15,10 @@ export default class Viliop {
     //this initializes viliop and checks all configs
     return new Promise( async (resolve) => {
       this.currentProject = null;
+      if(!console.vlog) {
+        setupConsole();
+      }
+      console.log('Viliop is initializing, please wait....');
       try {
         await this.createMainFolder().then(async (mainFolder) => {
           if(mainFolder) {
@@ -131,12 +136,12 @@ export default class Viliop {
           }
         }
         else {
-          console.log('Configure your Viliop Integrated Pentesting Environment Software');
+          console.log('Configure your Viliop Integrated Pentesting Environment');
           resolve(2);
         }
       }
       else {
-        console.log('Configure your Viliop Integrated Pentesting Environment Software');
+        console.log('Configure your Viliop Integrated Pentesting Environment');
         resolve(2);
       }
     })

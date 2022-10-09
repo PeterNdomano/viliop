@@ -10,7 +10,7 @@ import ContextMenu from './components/ContextMenu';
 import ToolbarMenu from './components/ToolbarMenu';
 import Viliop from './models/Viliop';
 import Modal from './components/Modal';
-
+import StartupLoading from './views/StartupLoading';
 
 export default class App extends Component {
   constructor(props){
@@ -18,6 +18,7 @@ export default class App extends Component {
 
     this.state = {
       viliopReady: false,
+      viliopStatus: -1,
       contextMenuShow: false,
       contextMenuLeft: 0,
       contextMenuTop: 0,
@@ -37,18 +38,32 @@ export default class App extends Component {
     (
       async () => {
         await this.viliop.init().then((viliopStatus) => {
-          if(viliopStatus === true) {
+          if(viliopStatus === 1) {
             this.setState({
-              viliopReady: true
+              viliopReady: true,
+              viliopStatus: 1,
             }, () => {
-              setupConsole();
-              console.log("Welcome to Viliop...");
+              //..
+            })
+          }
+          else if(viliopStatus === 2) {
+            //show configuration view, app needs some cofig
+            this.setState({
+              viliopReady: false,
+              viliopStatus: 2,
+            }, () => {
+              //...
             })
           }
           else {
-            //viliop could not start
-            //show error
-            console.log(viliopStatus);
+            //viliop failed to start
+            //show startup page error
+            this.setState({
+              viliopReady: false,
+              viliopStatus: 0,
+            }, () => {
+              //...
+            })
           }
         })
       }
@@ -183,12 +198,67 @@ export default class App extends Component {
       )
     }
     else {
-      return (
-        <div>
-          <h1>Please wait.....</h1>
-          <h3>Viliop is starting.............</h3>
-        </div>
-      )
+      if(this.state.viliopStatus === -1) {
+        //loading
+        return (
+          <div className="App">
+            {this.modal}
+            <ToastContainer
+              theme="dark"
+            />
+            <CTab
+              viliop={this.viliop}
+              navItem={this.state.navItem}
+              navSubItem={this.state.navSubItem}
+              toolbarMenuCallback={this.toolbarMenuCallback}
+              contextMenuCallback={this.contextMenuCallback}
+              navCallback={this.navCallback}
+            />
+          </div>
+        )
+      }
+      else if(this.state.viliopStatus === 2) {
+        //config screen
+        return (
+          <div className="App">
+            {this.modal}
+            <ToastContainer
+              theme="dark"
+            />
+            <CTab
+              viliop={this.viliop}
+              navItem={this.state.navItem}
+              navSubItem={this.state.navSubItem}
+              toolbarMenuCallback={this.toolbarMenuCallback}
+              contextMenuCallback={this.contextMenuCallback}
+              navCallback={this.navCallback}
+            />
+            <StartupLoading
+              viliop={this.viliop}
+            />
+            
+          </div>
+        )
+      }
+      else {
+        //error occurred
+        return (
+          <div className="App">
+            {this.modal}
+            <ToastContainer
+              theme="dark"
+            />
+            <CTab
+              viliop={this.viliop}
+              navItem={this.state.navItem}
+              navSubItem={this.state.navSubItem}
+              toolbarMenuCallback={this.toolbarMenuCallback}
+              contextMenuCallback={this.contextMenuCallback}
+              navCallback={this.navCallback}
+            />
+          </div>
+        )
+      }
     }
 
   }
