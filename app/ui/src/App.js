@@ -38,39 +38,48 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    (
-      async () => {
-        await this.viliop.init().then((viliopStatus) => {
-          if(viliopStatus === 1) {
-            this.setState({
-              viliopReady: true,
-              viliopStatus: 1,
-            }, () => {
-              //..
-            })
-          }
-          else if(viliopStatus === 2) {
-            //show configuration view, app needs some cofig
-            this.setState({
-              viliopReady: false,
-              viliopStatus: 2,
-            }, () => {
-              //...
-            })
-          }
-          else {
-            //viliop failed to start
-            //show startup page error
-            this.setState({
-              viliopReady: false,
-              viliopStatus: 0,
-            }, () => {
-              //...
-            })
-          }
+    this.init();
+  }
+
+  init = async () => {
+    await this.viliop.init().then((viliopStatus) => {
+      if(viliopStatus === 1) {
+        this.setState({
+          viliopReady: true,
+          viliopStatus: 1,
+        }, () => {
+          //..
         })
       }
-    )();
+      else if(viliopStatus === 2) {
+        //show configuration view, app needs some cofig
+        this.setState({
+          viliopReady: false,
+          viliopStatus: 2,
+        }, () => {
+          //...
+        })
+      }
+      else {
+        //viliop failed to start
+        //show startup page error
+        this.setState({
+          viliopReady: false,
+          viliopStatus: 0,
+        }, () => {
+          //...
+        })
+      }
+    })
+  }
+
+  restartApp = () => {
+    this.setState({
+      viliopReady: false,
+      viliopStatus: -1,
+    }, () => {
+      this.init();
+    });
   }
 
   contextMenuCallback = (show, top = 0, left = 0) => {

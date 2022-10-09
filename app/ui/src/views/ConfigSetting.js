@@ -11,6 +11,7 @@ export default class ConfigSetting extends Component {
     super(props);
     this.state = {
       configDefaults: null,
+      loading: false,
     }
   }
 
@@ -34,67 +35,75 @@ export default class ConfigSetting extends Component {
   }
 
   saveConfigs = async () => {
-    let email = $('#_userEmail').val().trim();
-    let name = $('#_userName').val().trim();
-    let pythonPath = $('#_pythonPath').val().trim();
-    let toolsFolder = $('#_toolsFolder').val().trim();
+    if(!this.state.loading) {
+      let email = $('#_userEmail').val().trim();
+      let name = $('#_userName').val().trim();
+      let pythonPath = $('#_pythonPath').val().trim();
+      let toolsFolder = $('#_toolsFolder').val().trim();
 
-    if(email.length > 0) {
-      if(name.length > 0) {
-        if(pythonPath.length > 0) {
-          if(toolsFolder.length > 0) {
-            //validate python path
-            await this.props.viliop.pythonTest(pythonPath).then(async status => {
-              if(status === 1) {
-                await this.props.viliop.toolsTest(toolsFolder).then(async status => {
-                  if(status === 1) {
-                    await this.props.viliop.handleConfig({
-                      user: {
-                        name, email,
-                      },
-                      viliop: {
-                        pythonPath,
-                        toolsFolder,
-                        viliopVersion: this.state.configDefaults.viliop.viliopVersion
-                      }
-                    }).then(async status => {
-                      if(status === 1) {
-                        tellUser('Configurations were saved', 'success');
-                        //restart viliop
-                        this.props.restartApp();
-                      }
-                      else {
-                        tellUser('Could not save configurations, check log for more');
-                      }
-                    })
-                  }
-                  else {
-                    tellUser('Viliop tools were not found in the given path');
-                    console.log('Viliop tools were not found in the given path. These tools are scanners, spiders and other utilities you will probably need');
-                  }
-                })
-              }
-              else {
-                tellUser('Python3 was not found in the given path, please check your python path');
-                console.log('Python3 was not found in the given path, please check your python path');
-              }
-            })
+      if(email.length > 0) {
+        if(name.length > 0) {
+          if(pythonPath.length > 0) {
+            if(toolsFolder.length > 0) {
+              //validate python path
+              this.setState({ loading: true });
+              await this.props.viliop.pythonTest(pythonPath).then(async status => {
+                if(status === 1) {
+                  await this.props.viliop.toolsTest(toolsFolder).then(async status => {
+                    if(status === 1) {
+                      await this.props.viliop.handleConfig({
+                        user: {
+                          name, email,
+                        },
+                        viliop: {
+                          pythonPath,
+                          toolsFolder,
+                          viliopVersion: this.state.configDefaults.viliop.viliopVersion
+                        }
+                      }).then(async status => {
+                        if(status === 1) {
+                          tellUser('Configurations were saved', 'success');
+                          //restart viliop
+                          this.props.restartApp();
+                        }
+                        else {
+                          this.setState({ loading: false });
+                          tellUser('Could not save configurations, check log for more');
+                        }
+                      })
+                    }
+                    else {
+                      this.setState({ loading: false });
+                      tellUser('Viliop tools were not found in the given path');
+                      console.log('Viliop tools were not found in the given path. These tools are scanners, spiders and other utilities you will probably need');
+                    }
+                  })
+                }
+                else {
+                  this.setState({ loading: false });
+                  tellUser('Python3 was not found in the given path, please check your python path');
+                  console.log('Python3 was not found in the given path, please check your python path');
+                }
+              })
+
+            }
+            else {
+              tellUser('Invalid tools folder');
+            }
           }
           else {
-            tellUser('Invalid tools folder');
+            tellUser('Invalid python path');
           }
         }
         else {
-          tellUser('Invalid python path');
+          tellUser('Invalid name');
         }
       }
       else {
-        tellUser('Invalid name');
+        tellUser('Invalid email address');
       }
     }
-    else {
-      tellUser('Invalid email address');
-    }
+
   }
 
   render() {
@@ -131,7 +140,9 @@ export default class ConfigSetting extends Component {
           </div>
 
           <div className="col-md-12 text-right" style={{ paddingBottom:"40px" }}>
-            <button className="btn btn-warning text-dark font-bold">SAVE CONFIGURATIONS</button>
+            <button onClick={this.saveConfigs} className="btn btn-warning text-dark font-bold">
+              {(this.state.loading) ? getInlineLoader() : "SAVE CONFIGURATIONS"}
+            </button>
           </div>
 
         </div>

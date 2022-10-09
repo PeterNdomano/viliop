@@ -21,7 +21,7 @@ export default class StartupConfig extends Component {
           <ViliopInfo/>
         </div>
         <div className="rightWing">
-          <ConfigSetting viliop={this.props.viliop} />
+          <ConfigSetting restartApp={this.props.restartApp} viliop={this.props.viliop} />
         </div>
       </div>
     )
