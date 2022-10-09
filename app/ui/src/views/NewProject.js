@@ -92,6 +92,7 @@ export default class NewProject extends Component {
                   loading: false,
                 })
                 this.props.navCallback("project", "current_project");
+                console.log('New Project - '+title+' was created')
                 tellUser('New Project - '+title+' was created', "success");
               }
               else {

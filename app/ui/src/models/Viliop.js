@@ -8,6 +8,7 @@ const { PythonShell } = window.require('python-shell');
 
 
 export default class Viliop {
+  viliopVersion = '0.0.1';
 
   init = () => {
     //setting tools folder
@@ -101,55 +102,118 @@ export default class Viliop {
   }
 
   createNewProject = async (options) => {
-    try {
+    return new Promise(resolve => {
+      try {
+        let {
+          type,
+          targetUrl,
+          location,
+          title,
+          pentesterEmail,
+          pentesterName,
+        } = options;
+        //create project folder
+        if(!fs.existsSync(location)) {
+          fs.mkdirSync(location);
+        }
+
+
+        //create sub folders
+        if(!fs.existsSync(path.join( location, 'reports' ))) {
+            fs.mkdirSync( path.join( location, 'reports' ) ); //reports dir
+        }
+
+        if(!fs.existsSync(path.join( location, 'scans-output' ))) {
+          fs.mkdirSync( path.join( location, 'scans-output' ) ); //scan-output dir
+        }
+
+
+        //create project config.json
+        let config = {
+          type,
+          title,
+          targetUrl,
+          viliopVersion: this.viliopVersion,
+          pentesterEmail,
+          pentesterName,
+        }
+        let configFile = path.join(location, 'config.json');
+
+        //write config file
+        fs.writeFileSync(configFile, JSON.stringify( config, null, "\t" ));
+
+        //create project instance
+        let project = new Project(configFile);
+        this.currentProject = project;
+
+        //create specific guide for this project
+        let guide = (type === "webPentest") ? new WebPentestGuide(project) : new MobileAppPentestGuide(project);
+        this.guide = guide;
+
+        //finish off
+        resolve(true);
+      }
+      catch ( err ) {
+        resolve(err.message);
+      }
+    })
+  }
+
+  checkProjectConfig = (content) => {
+    //checks if necessary fields are defined
+    return new Promise(resolve => {
+      content = JSON.parse(content);
+      if(
+        content.viliopVersion &&
+        content.type &&
+        content.title &&
+        content.targetUrl &&
+        content.pentesterName &&
+        content.pentesterEmail
+      ){
+        resolve(true);
+      }
+      else {
+        resolve("Invalid/Corrupt configuration file")
+      }
+    });
+  }
+
+  loadProject = (options) => {
+    return new Promise( async resolve => {
       let {
-        type,
-        targetUrl,
-        location,
-        title,
+        projectFolder,
       } = options;
-      //create project folder
-      if(!fs.existsSync(location)) {
-        fs.mkdirSync(location);
+      let configFile = path.join(projectFolder, 'config.json');
+
+      if(fs.existsSync(configFile)) {
+        try {
+          let configContent = fs.readFileSync(configFile, {encoding:'utf8', flag:'r'});
+          await this.checkProjectConfig(configContent).then(status => {
+            if(status === true) {
+              //create project instance
+              let project = new Project(configFile);
+              this.currentProject = project;
+
+              //create specific guide for this project
+              let guide = (project.config.type === "webPentest") ? new WebPentestGuide(project) : new MobileAppPentestGuide(project);
+              this.guide = guide;
+
+              //finish off
+              resolve(true);
+            }
+            else {
+              resolve(status);
+            }
+          })
+        } catch (e) {
+          resolve(e.message);
+        }
       }
-
-
-      //create sub folders
-      if(!fs.existsSync(path.join( location, 'reports' ))) {
-          fs.mkdirSync( path.join( location, 'reports' ) ); //reports dir
+      else {
+        resolve("Could not find project configuration file");
       }
-
-      if(!fs.existsSync(path.join( location, 'scans-output' ))) {
-        fs.mkdirSync( path.join( location, 'scans-output' ) ); //scan-output dir
-      }
-
-
-      //create project config.json
-      let config = {
-        type,
-        title,
-        targetUrl,
-        viliopVersion:"0.0.1",
-      }
-      let configFile = path.join(location, 'config.json');
-
-      //write config file
-      fs.writeFileSync(configFile, JSON.stringify( config, null, "\t" ));
-
-      //create project instance
-      let project = new Project(configFile);
-      this.currentProject = project;
-
-      //create specific guide for this project
-      let guide = (type === "webPentest") ? new WebPentestGuide(project) : new MobileAppPentestGuide(project);
-      this.guide = guide;
-
-      //finish off
-      return true;
-    }
-    catch ( err ) {
-      return err.message;
-    }
+    })
   }
 
   checkScansOutputFolder = () => {
