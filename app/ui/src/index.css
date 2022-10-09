@@ -473,7 +473,9 @@ button[data-name="fullscreen"] {
 
 
 .RPanel .panelTitle {
-  font-size: 50px;
+  font-family: "OpenSansLight";
+  margin-top: calc(0.5 * var(--tTabHeight));
+  margin-bottom: calc(0.5 * var(--tTabHeight));
 }
 
 /* ContextMenu Styling */

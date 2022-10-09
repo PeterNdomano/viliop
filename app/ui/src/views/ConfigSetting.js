@@ -19,7 +19,7 @@ export default class ConfigSetting extends Component {
         <h1 className="font-light" style={{ marginTop:"calc(var(--tTabHeight) * 0.5)", marginBottom:"calc(var(--tTabHeight) * 0.5)" }}>Viliop Configuration</h1>
         <div className="row">
           <div className="col-md-6">
-            <h3 className="text-success font-light">Environment Settings</h3>
+            <h3 className="text-success font-light">Environment <br/>Settings</h3>
             <div className="form-group">
               <label>Viliop Tools Folder</label>
               <input className="form-control" />
@@ -33,7 +33,7 @@ export default class ConfigSetting extends Component {
           </div>
 
           <div className="col-md-6">
-            <h3 className="text-success font-light">User Settings</h3>
+            <h3 className="text-success font-light">User <br/>Settings</h3>
             <div className="form-group">
               <label>Your name</label>
               <input className="form-control" />
@@ -46,7 +46,7 @@ export default class ConfigSetting extends Component {
             </div>
           </div>
 
-          <div className="col-md-12 text-right">
+          <div className="col-md-12 text-right" style={{ paddingBottom:"40px" }}>
             <button className="btn btn-warning text-dark font-bold">SAVE CONFIGURATIONS</button>
           </div>
 
