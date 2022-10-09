@@ -86,6 +86,62 @@ export default class Viliop {
     })
   }
 
+  getConfigDefaults = () => {
+    return new Promise(async resolve => {
+      let userConfigFile = path.join(this.configFolder, 'user.json');
+      let viliopConfigFile = path.join(this.configFolder, 'viliop.json');
+      let user = {
+        name: "", //default
+        email: "", //default
+      }
+
+      //setting default paths according to os
+      let loc1 = "" //for pythonPath
+      let loc2 = "" //for toolsFolder
+
+      if(process.platform === "win32") {
+        //its windows
+        loc1 = 'AppData/Local/Programs/Python/Python310/python.exe';
+        loc2 = 'C:/xampp/htdocs/github_projects/viliop-tools';
+      }
+      else if(process.platform === "linux") {
+        //its linux
+        // TODO: handle for linux and mac
+      }
+      else if(process.platform === "darwin") {
+        //its mac
+        // TODO: handle for linux and mac
+      }
+
+      let viliop = {
+        pythonPath: path.join(os.homedir(), loc1), //default
+        toolsFolder: path.join(path.parse(loc2).dir, 'viliop-tools'), //default
+        viliopVersion: "0.0.1", //default
+      }
+
+      if(fs.existsSync(userConfigFile)) {
+        //fill the details
+        let content = JSON.parse(fs.readFileSync(userConfigFile, {encoding:'utf8', flag:'r'}));
+        user.email = (content.email) ? content.email : user.email;
+        user.name = (content.name) ? content.name : user.name;
+      }
+
+      if(fs.existsSync(viliopConfigFile)) {
+        //fill the details
+        let content = JSON.parse(fs.readFileSync(viliopConfigFile, {encoding:'utf8', flag:'r'}));
+        viliop.pythonPath = (content.pythonPath) ? content.pythonPath : viliop.pythonPath;
+        viliop.toolsFolder = (content.toolsFolder) ? content.toolsFolder : viliop.toolsFolder;
+      }
+
+      resolve({
+        user,
+        viliop,
+      })
+
+    })
+  }
+
+
   checkMainConfigs = () => {
     //this checks and tests all config and environmental setups
     return new Promise( async resolve => {
