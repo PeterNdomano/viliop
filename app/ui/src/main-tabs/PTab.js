@@ -23,12 +23,14 @@ export default class PTab extends Component {
         <div className="PTab" id="pTab">
           <div className="container">
             <div style={{ borderBottom:"1px solid var(--faintDark)", width:"100%" }}>
-              <h6 className="vilMinTitle">Project Title</h6>
-              <p className="vilMinHeading">{this.props.viliop.currentProject.config.title}</p>
-              <h6 className="vilMinTitle">Project Location</h6>
-              <p className="vilMinHeading">{this.props.viliop.currentProject.configFile}</p>
-              <h6 className="vilMinTitle">Project Type</h6>
-              <p className="vilMinHeading">
+              <h6 className="vilMinTitle" style={{ marginBottom:"-5px" }}>Target Domain</h6>
+              <p className="vilMinHeading text-muted">{this.props.viliop.currentProject.config.targetUrl}</p>
+              <h6 className="vilMinTitle" style={{ marginBottom:"-5px" }}>Project Title</h6>
+              <p className="vilMinHeading text-muted">{this.props.viliop.currentProject.config.title}</p>
+              <h6 className="vilMinTitle" style={{ marginBottom:"-5px" }}>Project Folder Location</h6>
+              <p className="vilMinHeading text-muted">{this.props.viliop.currentProject.projectDir}</p>
+              <h6 className="vilMinTitle" style={{ marginBottom:"-5px" }}>Project Type</h6>
+              <p className="vilMinHeading text-muted">
                 {(this.props.viliop.currentProject.config.type === "webPentest") ? "Website Pentesting" : "Mobile App Pentesting"}
               </p>
             </div>

@@ -8,94 +8,198 @@ const { PythonShell } = window.require('python-shell');
 
 
 export default class Viliop {
-  viliopVersion = '0.0.1';
+
 
   init = () => {
-    //setting tools folder
-    this.toolsFolder = "C:/xampp/htdocs/github_projects/viliop-tools";
-    //setting python path
-    this.pythonPath = "C:/Users/Ndomano/AppData/Local/Programs/Python/Python310/python.exe";
-
-    //this initializes Viliop main processes and project
-    this.currentProject = null;
-    return new Promise( async (fulfilled, rejected) => {
+    //this initializes viliop and checks all configs
+    return new Promise( async (resolve) => {
+      this.currentProject = null;
       try {
         await this.createMainFolder().then(async (mainFolder) => {
-          this.mainFolder = mainFolder;
-          await this.createProjectsFolder().then( async (projectsFolder) => {
-            this.projectsFolder = projectsFolder;
-            await this.createConfigFolder().then( async (configFolder) => {
-              this.configFolder = configFolder;
-              fulfilled(true); //can add more inits but call this after all inits are done
-            })
-          });
+          if(mainFolder) {
+            this.mainFolder = mainFolder;
+            await this.createProjectsFolder().then( async (projectsFolder) => {
+              if(projectsFolder) {
+                this.projectsFolder = projectsFolder;
+                await this.createConfigFolder().then( async (configFolder) => {
+                  if(configFolder) {
+                    this.configFolder = configFolder;
+                    //check and test config settings
+                    await this.checkMainConfigs().then(  async (status) => {
+                      //0 means error occured
+                      //1 means everything is okay
+                      //2 means some config options are missing so do manual config, (especially for 1st time use)
+                      if(status === 1) {
+
+                      }
+                      resolve(status);
+                    })
+                  }
+                  else {
+                    resolve(0);
+                    console.error("Viliop encountered file/folder related problems when handling Config Folder. Check for file permissions inside your Home directory");
+                  }
+                })
+              }
+              else {
+                resolve(0);
+                console.error("Viliop encountered file/folder related problems when handling Projects Folder. Check for file permissions inside your Home directory");
+              }
+            });
+          }
+          else {
+            resolve(0);
+            console.error("Viliop encountered file/folder related problems when handling main Folder. Check for file permissions inside your Home directory");
+          }
         });
       }
       catch (err) {
-        rejected(err);
+        resolve(0);
+        console.log(err.msg);
       }
     })
+  }
+
+  handleConfig = (config) => {
+    //toolsFolder = "C:/xampp/htdocs/github_projects/viliop-tools";
+    //setting python path
+    //pythonPath = "C:/Users/Ndomano/AppData/Local/Programs/Python/Python310/python.exe";
 
   }
 
+  toolsTest = (path) => {
+    return new Promise(async resolve => {
+      // TODO: handle tools testing here
+      resolve(0);
+    })
+  }
+
+  pythonTest = (path) => {
+    return new Promise(async resolve => {
+      // TODO: handle python testing here
+      resolve(0);
+    })
+  }
+
+  checkMainConfigs = () => {
+    //this checks and tests all config and environmental setups
+    return new Promise( async resolve => {
+      let userConfigFile = path.join(this.configFolder, 'user.json');
+      let viliopConfigFile = path.join(this.configFolder, 'viliop.json');
+
+      if(fs.existsSync(userConfigFile)) {
+        if(fs.existsSync(viliopConfigFile)) {
+          //check if config file content are valid
+          let userConfig = JSON.parse(fs.readFileSync(userConfigFile, {encoding:'utf8', flag:'r'}));
+          let viliopConfig = JSON.parse(fs.readFileSync(viliopConfigFile, {encoding:'utf8', flag:'r'}));
+
+          if( userConfig.email && userConfig.name ) {
+            if( viliopConfig.toolsFolder && viliopConfig.viliopVersion && viliopConfig.pythonPath ) {
+              await this.toolsTest(viliopConfig.toolsFolder).then(async status => {
+                if(status === 1) {
+                  await this.pythonTest(viliopConfig.pythonPath).then(async status => {
+                    if(status === 1) {
+                      //all is well
+                      this.viliopVersion = viliopConfig.viliopVersion;
+                      this.toolsFolder = viliopConfig.toolsFolder;
+                      this.pythonPath = viliopConfig.pythonPath;
+
+                      this.userEmail = userConfig.email;
+                      this.userName = userConfig.name;
+                      resolve(1);
+                    }
+                    else {
+                      console.error('There is a problem with your Python 3 path, please specify the right path for Python 3 executable (python.exe)');
+                      resolve(2);
+                    }
+                  });
+                }
+                else {
+                  console.error('There is a problem with your Viliop Tools folder, please specify the right path to Viliop Tools folder.');
+                  resolve(2);
+                }
+              });
+            }
+            else {
+              console.log('Some configuration information is missing...');
+              resolve(2);
+            }
+          }
+          else {
+            console.log('Some configuration information is missing...');
+            resolve(2);
+          }
+        }
+        else {
+          console.log('Configure your Viliop Integrated Pentesting Environment Software');
+          resolve(2);
+        }
+      }
+      else {
+        console.log('Configure your Viliop Integrated Pentesting Environment Software');
+        resolve(2);
+      }
+    })
+  }
+
   createMainFolder = () => {
-    return new Promise( async (fulfilled, rejected) => {
+    return new Promise( async (resolve) => {
       let mainFolder = path.join(os.homedir(), 'Viliop');
       if(fs.existsSync(mainFolder)) {
         //return folder name
-        fulfilled(mainFolder);
+        resolve(mainFolder);
       }
       else {
         //create main folder
         try {
           await fs.mkdirSync(mainFolder);
-          fulfilled(mainFolder);
+          resolve(mainFolder);
         }
         catch (err) {
-          rejected(err)
-          // TODO: Add to error log
+          resolve(false)
+          console.log(err.message);
         }
       }
     })
   }
 
   createProjectsFolder = () => {
-    return new Promise( async (fulfilled, rejected) => {
+    return new Promise( async (resolve) => {
       let projectsFolder = path.join(this.mainFolder, 'projects');
       if(fs.existsSync(projectsFolder)) {
         //return folder name
-        fulfilled(projectsFolder);
+        resolve(projectsFolder);
       }
       else {
         //create folder
         try {
           await fs.mkdirSync(projectsFolder);
-          fulfilled(projectsFolder);
+          resolve(projectsFolder);
         }
         catch (err) {
-          rejected(err)
-          // TODO: Add to error log
+          resolve(false);
+          console.log(err.message);
         }
       }
     })
   }
 
   createConfigFolder = () => {
-    return new Promise( async (fulfilled, rejected) => {
+    return new Promise( async (resolve) => {
       let configFolder = path.join(this.mainFolder, 'config');
       if(fs.existsSync(configFolder)) {
         //return folder name
-        fulfilled(configFolder);
+        resolve(configFolder);
       }
       else {
         //create folder
         try {
           await fs.mkdirSync(configFolder);
-          fulfilled(configFolder);
+          resolve(configFolder);
         }
         catch (err) {
-          rejected(err)
-          // TODO: Add to error log
+          resolve(false)
+          console.log(err.msg);
         }
       }
     })
