@@ -15,7 +15,10 @@ export default class EditReport extends Component {
   render() {
     return (
       <div className="Main">
-        
+        <div className="leftWing">
+        </div>
+        <div className="rightWing">
+        </div>
       </div>
     )
   }
