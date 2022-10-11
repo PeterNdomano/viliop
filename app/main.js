@@ -1,29 +1,43 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const { exec } = require('child_process');
 
+const appUrl = "http://localhost:3000/";
 
-const createMainWindow = () => {
+const createAppWindow = () => {
 
-  const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+  //get current window if available
+  let currentWindow = BrowserWindow.getFocusedWindow();
+  let x, y;
+
+  if(currentWindow) {
+    const [currentWindowX, currentWindowY] = currentWindow.getPosition();
+    x = currentWindowX + 24;
+    y = currentWindowY + 24;
+  }
+  const appWindow = new BrowserWindow({
+    width: 1200,
+    height: 800,
+    x,
+    y,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
     }
   });
-
-  mainWindow.loadURL("http://localhost:3000/");
+  appWindow.loadURL(appUrl);
+  return appWindow;
 }
 
 app.whenReady().then(() => {
-  createMainWindow();
-  app.on('activate', () => {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) createMainWindow()
-  })
+  ipcMain.on('open-new-window', createAppWindow);
+  createAppWindow();
 });
+
+app.on('activate', () => {
+  // On macOS it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if (BrowserWindow.getAllWindows().length === 0) createAppWindow()
+})
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit()

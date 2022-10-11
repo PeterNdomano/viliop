@@ -13,7 +13,7 @@ import Modal from './components/Modal';
 import StartupLoading from './views/StartupLoading';
 import StartupError from './views/StartupError';
 import StartupConfig from './views/StartupConfig';
-
+const { ipcRenderer } = window.require('electron');
 
 export default class App extends Component {
   constructor(props){
@@ -38,9 +38,12 @@ export default class App extends Component {
   }
 
   componentDidMount() {
+    //set electron bridge
+    window.electronAPI = {
+      openNewWindow: () => ipcRenderer.send('open-new-window'),
+    }
+    //then init
     this.init();
-
-    //disable on reload
   }
 
   init = async () => {
@@ -122,6 +125,22 @@ export default class App extends Component {
       console.log('Create or Open a project first');
       tellUser('Create or Open a project first');
     }
+
+    //check if it's new window request
+    if(item === 'project' && subItem === 'new_window') {
+      //open new window from main process
+      window.electronAPI.openNewWindow();
+      if(this.viliop.currentProject === null) {
+        item = "project";
+        subItem = "new_project";
+
+      }
+      else {
+        item = 'project';
+        subItem = 'current_project';
+      }
+    }
+
     this.toolbarMenuCallback(false);
     this.setState({
       navItem: item,

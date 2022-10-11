@@ -321,12 +321,9 @@ export default class Viliop {
         let guide = (type === "webPentest") ? new WebPentestGuide(project) : new MobileAppPentestGuide(project);
         this.guide = guide;
 
-        if(!this.currentProject) {
-          this.currentProject = project;
-        }
-        else {
-          //open new project on the new window
-        }
+        //assign current project
+        this.currentProject = project;
+
         //finish off
         resolve(true);
       }

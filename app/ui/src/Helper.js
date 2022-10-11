@@ -46,14 +46,14 @@ export function getProjectMenuOptions() {
       title: 'Current Project',
       parent: 'project',
     },
-    {
-      id: 'new_project',
-      title: 'New or Reopen Project',
-      parent: 'project',
-    },
+    // {
+    //   id: 'new_project',
+    //   title: 'New or Reopen Project',
+    //   parent: 'project',
+    // },
     {
       id: 'new_window',
-      title: 'New Window',
+      title: 'New Window / Project',
       parent: 'project',
     },
     {
