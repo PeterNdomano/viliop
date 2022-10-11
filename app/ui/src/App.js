@@ -101,7 +101,22 @@ export default class App extends Component {
   }
 
   navCallback = (item, subItem) => {
-    if(this.viliop.currentProject === null){
+    //for nav items that require a project set
+    let projectDepItems = [
+      'project',
+      'reporting',
+    ];
+
+    //for nav subitems that require a project set
+    let projectDepSubitems = [
+      'current_project',
+      'export_project',
+      'view',
+      'edit',
+      'export',
+    ];
+
+    if(this.viliop.currentProject === null && (projectDepItems.indexOf(item) > -1 && projectDepSubitems.indexOf(subItem) > -1)){
       item = "project";
       subItem = "new_project";
       console.log('Create or Open a project first');

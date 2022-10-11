@@ -144,8 +144,19 @@ export function getWorkspaceView(props) {
     )
   }
   else{
-    return (
-      <h3>Select item</h3>
-    )
+    if(props.navItem === 'project' && props.navSubItem === 'current_project') {
+      return (
+        <InfoGathering
+          params={props}
+        />
+      )
+    }
+    else {
+      return (
+        <div className="container">
+          <h4 style={{ marginTop:"30px" }}>Please select an item from side panel</h4>
+        </div>
+      )
+    }
   }
 }
