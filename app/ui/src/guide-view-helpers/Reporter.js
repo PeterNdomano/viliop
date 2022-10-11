@@ -12,14 +12,18 @@ export default function Reporter( props ) {
   //console.log(props.viliop.currentProject);
 
   //const ID = "WSTG-INFO-02";
-  let project = props.viliop.currentProject;
   let viliop = props.viliop;
+  const [ project, setProject ] = useState(props.viliop.currentProject)
   const [ markdown, setMarkdown ] = useState("");
   const [ ID, setID ] = useState(props.ID);
 
   useEffect(() => {
     initialize(props.ID);
   }, [props.ID]);
+
+  useEffect(() => {
+    setProject(props.viliop.currentProject);
+  }, [ props.viliop.currentProject ])
 
   const initialize = async (ID) => {
     setID(ID)

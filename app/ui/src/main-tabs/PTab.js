@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GuideMenu from '../components/GuideMenu';
+import ViliopInfo from '../views/ViliopInfo';
 
 export default class PTab extends Component {
   constructor(props) {
@@ -47,7 +48,7 @@ export default class PTab extends Component {
     else{
       return (
         <div className="PTab" id="pTab">
-          <h2>Welcome To Viliop</h2>
+          <ViliopInfo/>
         </div>
       )
     }
