@@ -67,22 +67,59 @@ export function getProjectMenuOptions() {
 export function getToolsMenuOptions() {
   return ([
     {
-      id: 'metasploit',
-      title: 'Metasploit',
+      id: 'all_tools',
+      title: 'All Tools',
       parent: 'tools',
     },
     {
-      id: 'nmap',
-      title: 'NMAP',
+      id: 'install_tools',
+      title: 'Install New Tools',
       parent: 'tools',
     },
     {
-      id: 'sql_dump',
-      title: 'SQL Dump',
+      id: 'update_tools',
+      title: 'Update Current Tools',
       parent: 'tools',
     },
   ])
 }
+
+export function getSettingsMenuOptions() {
+  return ([
+    {
+      id: 'project_settings',
+      title: 'Project Settings',
+      parent: 'settings',
+    },
+    {
+      id: 'viliop_settings',
+      title: 'Viliop Settings',
+      parent: 'settings',
+    },
+    {
+      id: 'user_settings',
+      title: 'User Settings',
+      parent: 'settings',
+    },
+  ])
+}
+
+export function getMoreMenuOptions() {
+  return ([
+    {
+      id: 'support_viliop',
+      title: 'Support Viliop',
+      parent: 'more',
+    },
+    {
+      id: 'about_viliop',
+      title: 'About Viliop',
+      parent: 'more',
+    },
+
+  ])
+}
+
 
 export function getReportingMenuOptions() {
   return ([
