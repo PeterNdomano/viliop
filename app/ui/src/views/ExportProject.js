@@ -11,25 +11,18 @@ export default class EditReport extends Component {
 
   }
 
-  export = (input) => {
-    //get chosen directory path
-    let selectedPath = input.files[0].path;
-    let exportDir = path.parse(selectedPath).dir;
-    console.log(exportDir);
-
-    //resetting input field at last
-    input.value = '';
-    input.files = null;
-  }
-
   render() {
     return (
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <h5 className="font-light">Project folder will be zipped and exported, click the button below to continue</h5>
-            <input id="_exportFolder" onChange={(e) => this.export(e.target)} type="file" webkitdirectory="true" directory="true" hidden={true}/>
-            <button style={{ marginLeft:"0px" }} className="btn btn-primary" onClick={() => $('#_exportFolder').click() }>Export..</button>
+            <h5 className="font-light">
+              Your Project is located at:
+            </h5>
+            <h6 className="font-light">
+              <i>{this.props.viliop.currentProject.projectDir}</i>
+            </h6>
+            <h5 style={{ marginTop:"30px" }}>You can compress it and share it via email or other services</h5>
           </div>
         </div>
       </div>
