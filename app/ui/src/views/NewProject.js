@@ -73,7 +73,8 @@ export default class NewProject extends Component {
 
   }
 
-  loadProject = async (files) => {
+  loadProject = async (input) => {
+    let files = input.files;
     let configPath = files[0].path;
     await this.props.viliop.loadProject({ configPath }).then((result) => {
       if(result === true) {
@@ -86,6 +87,10 @@ export default class NewProject extends Component {
         tellUser(result);
       }
     })
+
+    //resetting input field at last
+    input.value = '';
+    input.files = null;
   }
 
   createProject = async (e) => {
@@ -187,11 +192,11 @@ export default class NewProject extends Component {
           <div className="col-md-6">
             <h3 style={{ marginBottom:"40px" }}>Recent Projects</h3>
             <div className="text-left">
-              <input onChange={(e) => this.loadProject(e.target.files)} type="file" webkitdirectory="true" directory="true" hidden={true} id="_configPath"/>
+              <input onChange={(e) => this.loadProject(e.target)} type="file" webkitdirectory="true" directory="true" hidden={true} id="_configPath"/>
               <button onClick={() => $('#_configPath').click()} style={{ margin:"0px" }} className="btn btn-primary">
                 Re-Open or Load Project
               </button><br/>
-              <small className="form-text text-muted">Click the button above to Select Project's Folder</small>
+              <small className="form-text text-muted">Click the button above to Select Project's Folder. If project was compressed please extract it first</small>
             </div>
             <hr/>
 

@@ -136,8 +136,8 @@ export default class App extends Component {
 
       }
       else {
-        item = 'project';
-        subItem = 'current_project';
+        item = this.state.navItem;
+        subItem = this.state.navSubItem;
       }
     }
 
