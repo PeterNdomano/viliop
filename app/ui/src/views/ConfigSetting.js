@@ -39,57 +39,42 @@ export default class ConfigSetting extends Component {
       let email = $('#_userEmail').val().trim();
       let name = $('#_userName').val().trim();
       let pythonPath = $('#_pythonPath').val().trim();
-      let toolsFolder = $('#_toolsFolder').val().trim();
 
       if(email.length > 0) {
         if(name.length > 0) {
           if(pythonPath.length > 0) {
-            if(toolsFolder.length > 0) {
-              //validate python path
-              this.setState({ loading: true });
-              await this.props.viliop.pythonTest(pythonPath).then(async status => {
-                if(status === 1) {
-                  await this.props.viliop.toolsTest(toolsFolder).then(async status => {
-                    if(status === 1) {
-                      await this.props.viliop.handleConfig({
-                        user: {
-                          name, email,
-                        },
-                        viliop: {
-                          pythonPath,
-                          toolsFolder,
-                          viliopVersion: this.state.configDefaults.viliop.viliopVersion
-                        }
-                      }).then(async status => {
-                        if(status === 1) {
-                          tellUser('Configurations were saved', 'success');
-                          //restart viliop
-                          this.props.restartApp();
-                        }
-                        else {
-                          this.setState({ loading: false });
-                          tellUser('Could not save configurations, check log for more');
-                        }
-                      })
-                    }
-                    else {
-                      this.setState({ loading: false });
-                      tellUser('Viliop tools were not found in the given path');
-                      console.log('Viliop tools were not found in the given path. These tools are scanners, spiders and other utilities you will probably need');
-                    }
-                  })
-                }
-                else {
-                  this.setState({ loading: false });
-                  tellUser('Python3 was not found in the given path, please check your python path');
-                  console.log('Python3 was not found in the given path, please check your python path');
-                }
-              })
+            //validate python path
+            this.setState({ loading: true });
+            await this.props.viliop.pythonTest(pythonPath).then(async status => {
+              if(status === 1) {
+                await this.props.viliop.handleConfig({
+                  user: {
+                    name, email,
+                  },
+                  viliop: {
+                    pythonPath,
+                    toolsFolder: this.state.configDefaults.viliop.toolsFolder,
+                    viliopVersion: this.state.configDefaults.viliop.viliopVersion
+                  }
+                }).then(async status => {
+                  if(status === 1) {
+                    tellUser('Configurations were saved', 'success');
+                    //restart viliop
+                    this.props.restartApp();
+                  }
+                  else {
+                    this.setState({ loading: false });
+                    tellUser('Could not save configurations, check log for more');
+                  }
+                })
+              }
+              else {
+                this.setState({ loading: false });
+                tellUser('Python3 was not found in the given path, please check your python path');
+                console.log('Python3 was not found in the given path, please check your python path');
+              }
+            })
 
-            }
-            else {
-              tellUser('Invalid tools folder');
-            }
           }
           else {
             tellUser('Invalid python path');
@@ -113,11 +98,6 @@ export default class ConfigSetting extends Component {
         <div className="row">
           <div className="col-md-6">
             <h3 className="text-success font-light">Environment <br/>Settings</h3>
-            <div className="form-group">
-              <label>Viliop Tools Folder</label>
-              <input type="text" id="_toolsFolder" readOnly value={(this.state.configDefaults) ? this.state.configDefaults.viliop.toolsFolder : ""} className="form-control" />
-              <small className="text-muted form-text">Location to Viliop Tools (Do  not edit)</small>
-            </div>
             <div className="form-group">
               <label>Python 3 Executable Path</label>
               <input type="text" id="_pythonPath" defaultValue={(this.state.configDefaults) ? this.state.configDefaults.viliop.pythonPath : ""} className="form-control" />
