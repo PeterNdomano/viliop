@@ -1,11 +1,13 @@
 import Project from './Project';
 import WebPentestGuide from './WebPentestGuide';
 import MobileAppPentestGuide from './MobileAppPentestGuide';
-import { setupConsole } from '../Helper';
+import { setupConsole, tellUser } from '../Helper';
 const os = window.require('os');
 const fs = window.require('fs');
 const path = window.require('path');
 const { PythonShell } = window.require('python-shell');
+const { ipcRenderer } = window.require('electron');
+
 
 
 export default class Viliop {
@@ -29,15 +31,24 @@ export default class Viliop {
                 await this.createConfigFolder().then( async (configFolder) => {
                   if(configFolder) {
                     this.configFolder = configFolder;
-                    //check and test config settings
-                    await this.checkMainConfigs().then(  async (status) => {
-                      //0 means error occured
-                      //1 means everything is okay
-                      //2 means some config options are missing so do manual config, (especially for 1st time use)
+                    //check health of tools folder
+                    await this.checkToolsFolder().then(async status => {
                       if(status === 1) {
+                        //check and test config settings
+                        await this.checkMainConfigs().then(  async (status) => {
+                          //0 means error occured
+                          //1 means everything is okay
+                          //2 means some config options are missing so do manual config, (especially for 1st time use)
+                          if(status === 1) {
 
+                          }
+                          resolve(status);
+                        })
                       }
-                      resolve(status);
+                      else {
+                        resolve(0);
+                        console.error("Viliop Tools folder was tempered or not available, please check our FAQ on how to solve this issue");
+                      }
                     })
                   }
                   else {
@@ -61,6 +72,39 @@ export default class Viliop {
       catch (err) {
         resolve(0);
         console.log(err.msg);
+      }
+    })
+  }
+
+  checkToolsFolder = () => {
+    //this checks health of tools folder
+    return new Promise(async resolve => {
+      //check folder availability
+      let toolsFolder = await ipcRenderer.invoke('get-tools-path');
+      this.toolsFolder = toolsFolder; //setting global toolsFolder
+      let toolsIndexPath = path.join(toolsFolder, 'tools.json');
+      if(fs.existsSync(toolsIndexPath)) {
+        //generate installed.json
+        let installedTools = [];
+        let allTools = JSON.parse(fs.readFileSync(toolsIndexPath,  {encoding:'utf8', flag:'r'}));
+        allTools.forEach((item, i) => {
+          let testPath = path.join(toolsFolder, item.name);
+          if(fs.existsSync(testPath)) {
+            let tool = item;
+            let toolInfo = JSON.parse(fs.readFileSync(path.join(testPath, 'info.json'), {encoding:'utf8', flag:'r'}));
+            tool.version = toolInfo.version;
+            installedTools.push(tool);
+          }
+        });
+
+        //generate installed.json
+        fs.writeFileSync(path.join(toolsFolder, 'installed.json'), JSON.stringify(installedTools, null, "\t"));
+        resolve(1);
+
+      }
+      else {
+        tellUser('Startup error occured, could not find tools folder. Check log for more info');
+        resolve(0);
       }
     })
   }

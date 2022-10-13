@@ -39,11 +39,20 @@ export default class App extends Component {
 
   componentDidMount() {
     //set electron bridge
-    window.electronAPI = {
-      openNewWindow: () => ipcRenderer.send('open-new-window'),
-    }
-    //then init
-    this.init();
+    this.setElectronAPI().then(() => {
+      //then init
+      this.init();
+    })
+  }
+
+  setElectronAPI = () => {
+    return new Promise((resolve) => {
+      window.electronAPI = {
+        openNewWindow: () => ipcRenderer.send('open-new-window'),
+        getToolsPath: () => ipcRenderer.send('get-tools-path'),
+      }
+      resolve(true);
+    })
   }
 
   init = async () => {

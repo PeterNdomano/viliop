@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { exec } = require('child_process');
+const path = require('path');
 
 const appUrl = "http://localhost:3000/";
 
@@ -28,8 +29,13 @@ const createAppWindow = () => {
   return appWindow;
 }
 
+const getToolsPath = () => {
+  return path.join(process.cwd(), 'tools');
+}
+
 app.whenReady().then(() => {
   ipcMain.on('open-new-window', createAppWindow);
+  ipcMain.handle('get-tools-path', getToolsPath);
   createAppWindow();
 });
 
