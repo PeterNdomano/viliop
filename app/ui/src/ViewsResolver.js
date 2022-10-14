@@ -15,6 +15,8 @@ import APITesting from './guide-views/APITesting';
 import ViewReport from './views/ViewReport';
 import EditReport from './views/EditReport';
 import ExportProject from './views/ExportProject';
+import InstalledTools from './views/InstalledTools';
+import AllTools from './views/AllTools';
 
 export function getRPanelView (props) {
   if(props.navItem === "project" && props.navSubItem === "new_project"){
@@ -28,6 +30,22 @@ export function getRPanelView (props) {
   else if(props.navItem === "reporting" && props.navSubItem === "view"){
     return (
       <ViewReport
+        viliop={props.viliop}
+        navCallback={props.navCallback}
+      />
+    )
+  }
+  else if(props.navItem === "tools" && props.navSubItem === "installed_tools"){
+    return (
+      <InstalledTools
+        viliop={props.viliop}
+        navCallback={props.navCallback}
+      />
+    )
+  }
+  else if(props.navItem === "tools" && props.navSubItem === "all_tools"){
+    return (
+      <AllTools
         viliop={props.viliop}
         navCallback={props.navCallback}
       />

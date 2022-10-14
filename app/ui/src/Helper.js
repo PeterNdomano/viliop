@@ -67,18 +67,13 @@ export function getProjectMenuOptions() {
 export function getToolsMenuOptions() {
   return ([
     {
+      id: 'installed_tools',
+      title: 'Installed Tools',
+      parent: 'tools',
+    },
+    {
       id: 'all_tools',
-      title: 'All Tools',
-      parent: 'tools',
-    },
-    {
-      id: 'install_tools',
-      title: 'Install New Tools',
-      parent: 'tools',
-    },
-    {
-      id: 'update_tools',
-      title: 'Update Current Tools',
+      title: 'All Available Tools',
       parent: 'tools',
     },
   ])
