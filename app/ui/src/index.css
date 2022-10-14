@@ -403,6 +403,12 @@ button[data-name="fullscreen"] {
 /* OneTool */
 .OneTool {
   width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid var(--gray);
+}
+
+.OneTool small {
+  line-height: 14px;
 }
 
 /* GuideMenu Styling */

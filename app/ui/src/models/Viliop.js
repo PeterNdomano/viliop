@@ -130,6 +130,26 @@ export default class Viliop {
     })
   }
 
+  isToolInstalled = (toolName) => {
+    return new Promise(async resolve => {
+      let installedTools = await this.getInstalledTools();
+      let response = {
+        status: 0,
+        installedVersion: null,
+      };
+
+      installedTools.forEach((item, i) => {
+        if(item.name === toolName) {
+          response.status = 1;
+          response.installedVersion = item.version;
+        }
+      });
+
+      resolve(response);
+
+    })
+  }
+
   getAllTools = () => {
     return new Promise(async resolve => {
       let toolsIndexPath = path.join(this.toolsFolder, 'tools.json');
