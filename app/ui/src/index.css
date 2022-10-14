@@ -97,6 +97,10 @@ button {
   min-width: 40px;
 }
 
+.btn-sm {
+  font-size: 12px !important;
+}
+
 .logLabel {
   color: var(--accentColor) !important;
 }

@@ -172,21 +172,52 @@ export default class Viliop {
     })
   }
 
-  installTool = (toolName) => {
+  checkToolsUpdability = () => {
+    return new Promise(async resolve => {
+      let installedTools = await this.getInstalledTools();
+      let allTools = await this.getAllTools();
+
+      if(allTools.length > installedTools.length) {
+        resolve(1);
+      }
+      else {
+        let status = 0;
+        allTools.forEach((tool, i) => {
+          //get installed counterpart
+          let iTool = null;
+          installedTools.forEach((item, i) => {
+            if(item.name === tool.name) {
+              iTool = item;
+            }
+          });
+
+          if(iTool) {
+            if(Number(tool.version) > Number(iTool.version)) {
+              status = 1;
+            }
+          }
+        });
+
+        resolve(status);
+      }
+    })
+  }
+
+  updateTools = () => {
     return new Promise(async resolve => {
       //update python info.
       await this.updatePythonInfo().then(async status => {
         if(status === 1) {
-
+          //install python modules to modules folder
         }
         else {
           resolve({
             status: 0,
-            msg: "Could not update python info and modules, check your connection and retry",
+            msg: "Could not update python info and modules, check your connection or file permission and retry",
           })
         }
       })
-      //install python modules to modules folder
+
       //get tool files from the server
       //create tools folder
       //write tools files
