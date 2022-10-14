@@ -122,10 +122,27 @@ export default class Viliop {
     })
   }
 
-  toolsTest = (path) => {
+  updateToolsIndex = () => {
+    //this updates tools index
+    // TODO: update tools index
+    return new Promise(resolve => {
+      resolve(0);
+    })
+  }
+
+  getAllTools = () => {
     return new Promise(async resolve => {
-      // TODO: handle tools testing here
-      resolve(1);
+      let toolsIndexPath = path.join(this.toolsFolder, 'tools.json');
+      let allTools = JSON.parse(fs.readFileSync(toolsIndexPath,  {encoding:'utf8', flag:'r'}));
+      resolve(allTools);
+    })
+  }
+
+  getInstalledTools = () => {
+    return new Promise(async resolve => {
+      let installedToolsIndexPath = path.join(this.toolsFolder, 'installed.json');
+      let installedTools = JSON.parse(fs.readFileSync(installedToolsIndexPath,  {encoding:'utf8', flag:'r'}));
+      resolve(installedTools);
     })
   }
 
@@ -206,26 +223,18 @@ export default class Viliop {
 
           if( userConfig.email && userConfig.name ) {
             if( viliopConfig.toolsFolder && viliopConfig.viliopVersion && viliopConfig.pythonPath ) {
-              await this.toolsTest(viliopConfig.toolsFolder).then(async status => {
+              await this.pythonTest(viliopConfig.pythonPath).then(async status => {
                 if(status === 1) {
-                  await this.pythonTest(viliopConfig.pythonPath).then(async status => {
-                    if(status === 1) {
-                      //all is well
-                      this.viliopVersion = viliopConfig.viliopVersion;
-                      this.pythonPath = viliopConfig.pythonPath;
+                  //all is well
+                  this.viliopVersion = viliopConfig.viliopVersion;
+                  this.pythonPath = viliopConfig.pythonPath;
 
-                      this.userEmail = userConfig.email;
-                      this.userName = userConfig.name;
-                      resolve(1);
-                    }
-                    else {
-                      console.error('There is a problem with your Python 3 path, please specify the right path for Python 3 executable (python.exe)');
-                      resolve(2);
-                    }
-                  });
+                  this.userEmail = userConfig.email;
+                  this.userName = userConfig.name;
+                  resolve(1);
                 }
                 else {
-                  console.error('There is a problem with your Viliop Tools folder, please specify the right path to Viliop Tools folder.');
+                  console.error('There is a problem with your Python 3 path, please specify the right path for Python 3 executable (python.exe)');
                   resolve(2);
                 }
               });

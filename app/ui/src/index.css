@@ -400,6 +400,10 @@ button[data-name="fullscreen"] {
 
 }
 
+/* OneTool */
+.OneTool {
+  width: 100%;
+}
 
 /* GuideMenu Styling */
 .GuideMenu {
