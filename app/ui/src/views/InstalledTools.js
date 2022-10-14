@@ -37,7 +37,7 @@ export default function InstalledTools(props) {
               {
                 (installedTools !== null && installedTools.length > 0) ?
                 installedTools.map((item, i) => {
-                  return <OneTool viliop={props.viliop} parent="installed" setLoading={setLoading} tool={item} key={i}/>
+                  return <OneTool init={init} viliop={props.viliop} parent="installed" setLoading={setLoading} tool={item} key={i}/>
                 }):
                 <h6>No tools were found</h6>
               }

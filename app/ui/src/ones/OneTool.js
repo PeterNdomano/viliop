@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { tellUser } from '../Helper';
 
 export default function OneTool(props) {
   const [ tool, setTool ] = useState(props.tool);
@@ -19,6 +19,22 @@ export default function OneTool(props) {
     })
   }
 
+  const install = async () => {
+    props.setLoading(true);
+    await props.viliop.installTool(tool.name).then(response => {
+      if(response.status === 1) {
+        tellUser(tool.name+' was installed successfully', 'success');
+        console.log(tool.name+' was installed successfully');
+        props.init();
+      }
+      else {
+        props.setLoading(false);
+        tellUser(response.msg)
+        console.error(response.msg);
+      }
+    })
+  }
+
   useEffect(() => {
     init();
   }, []);
@@ -34,7 +50,7 @@ export default function OneTool(props) {
   return (
     <div className="OneTool">
       <h4>{tool.name}</h4>
-      <small className="text-muted form-text">Latest Version: {tool.version}</small>
+      {(props.parent === 'all') ? <small className="text-muted form-text">Latest Version: {tool.version}</small> : ""}
       {(isInstalled) ? <small className="text-muted form-text">Installed Version: {installedVersion}</small> : ""}
 
       <h6 style={{ marginTop:"20px", marginBottom:"10px", fontSize:"14px !important" }} className="font-light">{tool.description}</h6>
@@ -42,7 +58,7 @@ export default function OneTool(props) {
       <div className="text-right">
         {
           (props.parent === "all" && !isInstalled) ?
-          <button className="btn btn-sm btn-dark">Install</button>:
+          <button onClick={install} className="btn btn-sm btn-dark">Install</button>:
           ""
         }
 
@@ -57,7 +73,7 @@ export default function OneTool(props) {
           <button className="btn btn-sm btn-dark">Uninstall</button>:
           ""
         }
-        
+
       </div>
     </div>
   )

@@ -2,6 +2,7 @@ import { toast } from 'react-toastify';
 import { TailSpin } from 'react-loader-spinner';
 import $ from 'jquery';
 
+export const BASE_API_URL = "/github_projects/viliop-tools/api/"; //dev
 export function tellUser(msg, id = "warning"){
   if(id === "success"){
     toast.success(msg, {

@@ -1,7 +1,8 @@
 import Project from './Project';
 import WebPentestGuide from './WebPentestGuide';
 import MobileAppPentestGuide from './MobileAppPentestGuide';
-import { setupConsole, tellUser } from '../Helper';
+import { setupConsole, tellUser, BASE_API_URL } from '../Helper';
+import $ from 'jquery';
 const os = window.require('os');
 const fs = window.require('fs');
 const path = window.require('path');
@@ -12,7 +13,22 @@ const { ipcRenderer } = window.require('electron');
 
 export default class Viliop {
 
-
+  callApi = (url, params) => {
+    return new Promise(async resolve => {
+      await $.post(BASE_API_URL+url, params, async (data, status) => {
+        if(status === 'success') {
+          let response = JSON.parse(data);
+          resolve(response);
+        }
+        else {
+          resolve({
+            status: 0,
+            msg: "Unknown error, likely network connection problem",
+          })
+        }
+      })
+    })
+  }
   init = () => {
     //this initializes viliop and checks all configs
     return new Promise( async (resolve) => {
@@ -124,10 +140,57 @@ export default class Viliop {
 
   updateToolsIndex = () => {
     //this updates tools index
-    // TODO: update tools index
-    return new Promise(resolve => {
-      resolve(0);
+    return new Promise( async resolve => {
+      await this.callApi('update_tools_index.php', {}).then(async response => {
+        if(response.status === 1) {
+          let toolsJSONPath = path.join(this.toolsFolder, 'tools.json');
+          fs.writeFileSync(toolsJSONPath, response.toolsJSON);
+          resolve(1);
+        }
+        else {
+          console.error(response.msg);
+          resolve(0);
+        }
+      })
     })
+  }
+
+  updatePythonInfo = () => {
+    //this updates tools index
+    return new Promise( async resolve => {
+      await this.callApi('update_python_info.php', {}).then(async response => {
+        if(response.status === 1) {
+          let pythonJSONPath = path.join(this.toolsFolder, 'python.json');
+          fs.writeFileSync(pythonJSONPath, response.pythonJSON);
+          resolve(1);
+        }
+        else {
+          console.error(response.msg);
+          resolve(0);
+        }
+      })
+    })
+  }
+
+  installTool = (toolName) => {
+    return new Promise(async resolve => {
+      //update python info.
+      await this.updatePythonInfo().then(async status => {
+        if(status === 1) {
+
+        }
+        else {
+          resolve({
+            status: 0,
+            msg: "Could not update python info and modules, check your connection and retry",
+          })
+        }
+      })
+      //install python modules to modules folder
+      //get tool files from the server
+      //create tools folder
+      //write tools files
+    });
   }
 
   isToolInstalled = (toolName) => {
