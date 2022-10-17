@@ -1,7 +1,7 @@
 import Project from './Project';
 import WebPentestGuide from './WebPentestGuide';
 import MobileAppPentestGuide from './MobileAppPentestGuide';
-import { setupConsole, tellUser, BASE_API_URL } from '../Helper';
+import { setupConsole, tellUser, BASE_SERVER_URL } from '../Helper';
 import $ from 'jquery';
 const os = window.require('os');
 const fs = window.require('fs');
@@ -13,22 +13,7 @@ const { ipcRenderer } = window.require('electron');
 
 export default class Viliop {
 
-  callApi = (url, params) => {
-    return new Promise(async resolve => {
-      await $.post(BASE_API_URL+url, params, async (data, status) => {
-        if(status === 'success') {
-          let response = JSON.parse(data);
-          resolve(response);
-        }
-        else {
-          resolve({
-            status: 0,
-            msg: "Unknown error, likely network connection problem",
-          })
-        }
-      })
-    })
-  }
+
   init = () => {
     //this initializes viliop and checks all configs
     return new Promise( async (resolve) => {
@@ -141,14 +126,34 @@ export default class Viliop {
   updateToolsIndex = () => {
     //this updates tools index
     return new Promise( async resolve => {
-      await this.callApi('update_tools_index.php', {}).then(async response => {
-        if(response.status === 1) {
-          let toolsJSONPath = path.join(this.toolsFolder, 'tools.json');
-          fs.writeFileSync(toolsJSONPath, response.toolsJSON);
-          resolve(1);
+      //update pythonInfo first
+      await this.updatePythonInfo().then(async status => {
+        if(status === 1) {
+          //download file
+          await fetch(BASE_SERVER_URL+"tools.json", {
+            method: "get",
+            mode: "cors",
+            referrerPolicy: "no-referrer",
+          }).then(response => {
+            if(response.ok) {
+              return response.text();
+            }
+            else {
+              console.error("Could not update tools index due to connection error");
+              resolve(0);
+            }
+          }).then(responseText => {
+            //write file
+            let toolsJSONPath = path.join(this.toolsFolder, 'tools.json');
+            fs.writeFileSync(toolsJSONPath, responseText);
+            resolve(1);
+          }).catch( error => {
+            console.error(error);
+            resolve(0);
+          })
+
         }
         else {
-          console.error(response.msg);
           resolve(0);
         }
       })
@@ -158,16 +163,27 @@ export default class Viliop {
   updatePythonInfo = () => {
     //this updates tools index
     return new Promise( async resolve => {
-      await this.callApi('update_python_info.php', {}).then(async response => {
-        if(response.status === 1) {
-          let pythonJSONPath = path.join(this.toolsFolder, 'python.json');
-          fs.writeFileSync(pythonJSONPath, response.pythonJSON);
-          resolve(1);
+      //download file
+      await fetch(BASE_SERVER_URL+"python.json", {
+        method: "get",
+        mode: "cors",
+        referrerPolicy: "no-referrer",
+      }).then(response => {
+        if(response.ok) {
+          return response.text();
         }
         else {
-          console.error(response.msg);
+          console.error("Could not update python info due to connection error");
           resolve(0);
         }
+      }).then(responseText => {
+        //write file
+        let pythonJSONPath = path.join(this.toolsFolder, 'python.json');
+        fs.writeFileSync(pythonJSONPath, responseText);
+        resolve(1);
+      }).catch( error => {
+        console.error(error);
+        resolve(0);
       })
     })
   }
@@ -205,22 +221,41 @@ export default class Viliop {
 
   updateTools = () => {
     return new Promise(async resolve => {
-      //update python info.
-      await this.updatePythonInfo().then(async status => {
-        if(status === 1) {
-          //install python modules to modules folder
+      //download tools zipped archive
+      let filePath = path.join(this.toolsFolder, 'python.json');
+      let pythonInfo = JSON.parse(fs.readFileSync(filePath,  {encoding:'utf8', flag:'r'}));
+      let url = BASE_SERVER_URL+'viliop-tools.zip';
+      await fetch(url, {
+        method: "get",
+        mode: "cors",
+        referrerPolicy: "no-referrer",
+      }).then(response => {
+        if(response.ok) {
+          return response.blob();
         }
         else {
           resolve({
             status: 0,
-            msg: "Could not update python info and modules, check your connection or file permission and retry",
+            msg: "Unknown error occurred, could not update tools. Make sure you have internet connection before retrying",
           })
         }
       })
+      .then(async responseBlob => {
+        console.log(responseBlob);
+        fs.writeFileSync(path.join(this.toolsFolder, 'viliop.zip'), responseBlob);
+        //extract downloaded zip
+        //copy files to tools folder
+        //check tools folder (call this fn from above)
+        //resolve
+      })
+      .catch(error => {
+        console.log(error);
+        resolve({
+          status: 0,
+          msg: "Unknown error occurred, could not update tools. Make sure you have internet connection before retrying",
+        })
+      })
 
-      //get tool files from the server
-      //create tools folder
-      //write tools files
     });
   }
 

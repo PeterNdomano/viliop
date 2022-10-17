@@ -25,8 +25,20 @@ export default function AllTools(props) {
     })
   }
 
-  const updateTools = () => {
-
+  const updateTools = async () => {
+    setLoading(true)
+    await props.viliop.updateTools().then(response => {
+      setLoading(false);
+      if(response.status === 1) {
+        tellUser('Your tool pack was updated successfully', 'success');
+        setToolsUpdability(0);
+        init();
+      }
+      else {
+        tellUser(response.msg);
+        console.error(response.msg);
+      }
+    })
   }
 
   useEffect(() => {
@@ -64,7 +76,9 @@ export default function AllTools(props) {
                   <h6 className="text-muted">Your tools pack needs to be updated. By updating your tools you'll have latest versions of all the tools listed below</h6>
                   <button onClick={updateTools} className="btn btn-warning btn-sm text-dark">Update Tools Pack</button>
                 </div> :
-                <></>
+                <div className="text-left">
+                  <h6 className="text-muted">Tools Pack is up-to-date</h6>
+                </div>
               }
             </div>
             <div className="col-md-12">
