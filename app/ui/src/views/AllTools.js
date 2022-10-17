@@ -27,12 +27,21 @@ export default function AllTools(props) {
 
   const updateTools = async () => {
     setLoading(true)
-    await props.viliop.updateTools().then(response => {
+    await props.viliop.updateTools().then(async response => {
       setLoading(false);
       if(response.status === 1) {
-        tellUser('Your tool pack was updated successfully', 'success');
-        setToolsUpdability(0);
-        init();
+
+        await props.viliop.checkToolsFolder().then((status) => {
+          if(status === 1) {
+            tellUser('Viliop Tools were updated successfully', 'success');
+            setToolsUpdability(0);
+            init();
+          }
+          else {
+            tellUser('Could not complete Viliop Tools installation');
+            init();
+          }
+        })
       }
       else {
         tellUser(response.msg);
@@ -44,6 +53,10 @@ export default function AllTools(props) {
   useEffect(() => {
     init();
   }, [])
+
+  useEffect(() => {
+    init();
+  }, [ toolsUpdability, updateStatus ]);
 
   return (
     <div className="container">
@@ -73,8 +86,8 @@ export default function AllTools(props) {
               {
                 (updateStatus === 1 && toolsUpdability === 1) ?
                 <div className="text-left">
-                  <h6 className="text-muted">Your tools pack needs to be updated. By updating your tools you'll have latest versions of all the tools listed below</h6>
-                  <button onClick={updateTools} className="btn btn-warning btn-sm text-dark">Update Tools Pack</button>
+                  <h6 className="text-muted text-danger">New release of Viliop Tools (Scanners, spiders, proxy etc...) is available, please click button below to update to latest release. By updating your tools you'll have latest versions of all the tools listed below</h6>
+                  <button onClick={updateTools} className="btn btn-warning btn-sm text-dark">Update Viliop Tools</button>
                 </div> :
                 (updateStatus === 1) ?
                 <div className="text-left">

@@ -6,6 +6,7 @@ import $ from 'jquery';
 const os = window.require('os');
 const fs = window.require('fs');
 const path = window.require('path');
+const JSZip = window.require('JSZip');
 const { PythonShell } = window.require('python-shell');
 const { ipcRenderer } = window.require('electron');
 
@@ -225,6 +226,7 @@ export default class Viliop {
       let filePath = path.join(this.toolsFolder, 'python.json');
       let pythonInfo = JSON.parse(fs.readFileSync(filePath,  {encoding:'utf8', flag:'r'}));
       let url = `https://github.com/PeterNdomano/viliop-tools/releases/download/${pythonInfo.latestRelease}/viliop-tools.zip`;
+      console.log('Downloading Viliop Tools release '+pythonInfo.latestRelease);
       await fetch(url, {
         method: "get",
         mode: "cors",
@@ -241,12 +243,61 @@ export default class Viliop {
         }
       })
       .then(async responseBlob => {
-        console.log(responseBlob);
-        fs.writeFileSync(path.join(this.toolsFolder, 'viliop.zip'), responseBlob);
-        //extract downloaded zip
-        //copy files to tools folder
-        //check tools folder (call this fn from above)
-        //resolve
+        await responseBlob.arrayBuffer().then( async arrayBuffer => {
+          let zipBuffer = Buffer.from(arrayBuffer, 'binary');
+          let zipPath = path.join(this.toolsFolder, 'viliop-tools.zip');
+          fs.writeFileSync(zipPath, zipBuffer);
+
+          await new JSZip.external.Promise(async resolve => {
+            fs.readFile(zipPath, async (err, zipFile) => {
+              if(err) {
+                console.log(err);
+                resolve({
+                  status: 0,
+                  msg: "Unknown error occurred, could not update tools. Make sure you have internet connection before retrying. Check Log for more details",
+                })
+              }
+              else {
+                resolve(zipFile);
+              }
+            });
+          }).then(async zipFile => {
+            let zip = new JSZip();
+            await JSZip.loadAsync(zipFile).then( async contents => {
+              //console.log(contents);
+              let extractedFiles = Object.keys(contents.files);
+              extractedFiles.forEach( async (filename, i) => {
+
+                //creating folder if not exist
+                let folderPath = path.parse(path.join(this.toolsFolder, filename)).dir;
+                if(!fs.existsSync(folderPath)) {
+                  fs.mkdirSync(folderPath);
+                }
+
+                //copy files to tools folder
+                if(!contents.files[filename].dir) {
+                  await contents.files[filename].async('string').then( async content => {
+                    console.log("Extracting "+filename);
+
+                    let dest = path.join(this.toolsFolder, filename);
+                    fs.writeFileSync(dest, content);
+                  })
+                }
+
+                if(i + 1 === extractedFiles.length) {
+                  resolve({
+                    status: 1,
+                    msg: "Viliop Tools were installed successfully",
+                  })
+                }
+              });
+            })
+
+          });
+
+
+        })
+
       })
       .catch(error => {
         console.log(error);
