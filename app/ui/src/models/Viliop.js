@@ -130,7 +130,7 @@ export default class Viliop {
       await this.updatePythonInfo().then(async status => {
         if(status === 1) {
           //download file
-          await fetch(BASE_SERVER_URL+"tools.json", {
+          await fetch("https://raw.githubusercontent.com/PeterNdomano/viliop-tools/main/tools.json", {
             method: "get",
             mode: "cors",
             referrerPolicy: "no-referrer",
@@ -164,7 +164,7 @@ export default class Viliop {
     //this updates tools index
     return new Promise( async resolve => {
       //download file
-      await fetch(BASE_SERVER_URL+"python.json", {
+      await fetch("https://raw.githubusercontent.com/PeterNdomano/viliop-tools/main/python.json", {
         method: "get",
         mode: "cors",
         referrerPolicy: "no-referrer",
@@ -224,7 +224,7 @@ export default class Viliop {
       //download tools zipped archive
       let filePath = path.join(this.toolsFolder, 'python.json');
       let pythonInfo = JSON.parse(fs.readFileSync(filePath,  {encoding:'utf8', flag:'r'}));
-      let url = BASE_SERVER_URL+'viliop-tools.zip';
+      let url = `https://github.com/PeterNdomano/viliop-tools/releases/download/${pythonInfo.latestRelease}/viliop-tools.zip`;
       await fetch(url, {
         method: "get",
         mode: "cors",

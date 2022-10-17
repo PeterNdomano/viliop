@@ -76,8 +76,12 @@ export default function AllTools(props) {
                   <h6 className="text-muted">Your tools pack needs to be updated. By updating your tools you'll have latest versions of all the tools listed below</h6>
                   <button onClick={updateTools} className="btn btn-warning btn-sm text-dark">Update Tools Pack</button>
                 </div> :
+                (updateStatus === 1) ?
                 <div className="text-left">
                   <h6 className="text-muted">Tools Pack is up-to-date</h6>
+                </div> :
+                <div className="text-left">
+                  <h6 className="text-muted">Connection error, Update index first to see if Tool Pack is up-to-date or outdated</h6>
                 </div>
               }
             </div>

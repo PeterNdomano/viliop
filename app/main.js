@@ -25,6 +25,41 @@ const createAppWindow = () => {
       contextIsolation: false,
     }
   });
+
+
+  //rewriting headers to bypass cors
+  function UpsertKeyValue(obj, keyToChange, value) {
+    const keyToChangeLower = keyToChange.toLowerCase();
+    for (const key of Object.keys(obj)) {
+      if (key.toLowerCase() === keyToChangeLower) {
+        // Reassign old key
+        obj[key] = value;
+        // Done
+        return;
+      }
+    }
+    // Insert at end instead
+    obj[keyToChange] = value;
+  }
+
+  appWindow.webContents.session.webRequest.onBeforeSendHeaders(
+    (details, callback) => {
+      const { requestHeaders } = details;
+      UpsertKeyValue(requestHeaders, 'Access-Control-Allow-Origin', ['*']);
+      callback({ requestHeaders });
+    },
+  );
+
+  appWindow.webContents.session.webRequest.onHeadersReceived((details, callback) => {
+    const { responseHeaders } = details;
+    UpsertKeyValue(responseHeaders, 'Access-Control-Allow-Origin', ['*']);
+    UpsertKeyValue(responseHeaders, 'Access-Control-Allow-Headers', ['*']);
+    callback({
+      responseHeaders,
+    });
+  });
+  //..
+
   appWindow.loadURL(appUrl);
   return appWindow;
 }
