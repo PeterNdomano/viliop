@@ -80,6 +80,36 @@ export function getToolsMenuOptions() {
   ])
 }
 
+export function getProxyMenuOptions() {
+  return ([
+    {
+      id: 'proxy_settings',
+      title: 'Proxy Settings',
+      parent: 'proxy',
+    },
+    {
+      id: 'open_browser',
+      title: 'Viliop Internet Browser (Chromium Based)',
+      parent: 'proxy',
+    },
+    {
+      id: 'proxied_requests',
+      title: 'Proxied Requests',
+      parent: 'proxy',
+    },
+    {
+      id: 'repeater',
+      title: 'Viliop Repeater',
+      parent: 'proxy',
+    },
+    {
+      id: 'intruder',
+      title: 'Viliop Intruder',
+      parent: 'proxy',
+    },
+  ])
+}
+
 export function getSettingsMenuOptions() {
   return ([
     {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { IoIosGlobe } from 'react-icons/io';
 import { MdPerson, MdOutlineFolderOpen, MdOutlineDashboard, MdNotes, MdOutlineSettings, MdOutlineMoreVert } from 'react-icons/md';
 export default class TTab extends Component {
   constructor(props) {
@@ -65,6 +66,11 @@ export default class TTab extends Component {
               className={(this.state.navItem === "tools") ? "menuItem align-self-center text-center z-depth-1-half menuItemSelected" : "menuItem align-self-center text-center"}>
               <MdOutlineDashboard className="mIcon"/>
               <p className="mTitle">Tools</p>
+            </div>
+            <div name="proxy" onMouseOver={() => this.toolbarMenuHover('proxy')} onClick={(e) => this.openToolbarMenu('proxy')}
+              className={(this.state.navItem === "proxy") ? "menuItem align-self-center text-center z-depth-1-half menuItemSelected" : "menuItem align-self-center text-center"}>
+              <IoIosGlobe className="mIcon"/>
+              <p className="mTitle">Proxy</p>
             </div>
             <div name="reporting" onMouseOver={() => this.toolbarMenuHover('reporting')} onClick={(e) => this.openToolbarMenu('reporting')}
               className={(this.state.navItem === "reporting") ? "menuItem align-self-center text-center z-depth-1-half menuItemSelected" : "menuItem align-self-center text-center"}>

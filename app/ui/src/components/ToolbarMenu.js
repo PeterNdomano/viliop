@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { getProjectMenuOptions, getToolsMenuOptions, getReportingMenuOptions, getMoreMenuOptions, getSettingsMenuOptions } from '../Helper';
+import { getProxyMenuOptions, getProjectMenuOptions, getToolsMenuOptions, getReportingMenuOptions, getMoreMenuOptions, getSettingsMenuOptions } from '../Helper';
 
 export default class ToolbarMenu extends Component {
   constructor(props) {
@@ -41,6 +41,9 @@ export default class ToolbarMenu extends Component {
         break;
       case 'more':
         this.menuOptions = getMoreMenuOptions();
+        break;
+      case 'proxy':
+        this.menuOptions = getProxyMenuOptions();
         break;
       default:
         this.menuOptions = [];
