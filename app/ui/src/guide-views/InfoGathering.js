@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import SEDReport from '../guide-view-helpers/SEDReport';
 import Reporter from '../guide-view-helpers/Reporter';
 import SEDGuidesHelp from '../guide-view-helpers/SEDGuidesHelp';
-import FWSAutoScan from '../guide-view-helpers/FWSAutoScan';
 import FWSGuidesHelp from '../guide-view-helpers/FWSGuidesHelp';
 import RWMGuidesHelp from '../guide-view-helpers/RWMGuidesHelp';
 import EAWGuidesHelp from '../guide-view-helpers/EAWGuidesHelp';
@@ -11,7 +10,6 @@ import IAEPGuidesHelp from '../guide-view-helpers/IAEPGuidesHelp';
 import MEPGuidesHelp from '../guide-view-helpers/MEPGuidesHelp';
 import FWAFGuidesHelp from '../guide-view-helpers/FWAFGuidesHelp';
 import MAAGuidesHelp from '../guide-view-helpers/MAAGuidesHelp';
-import MetaScrapper from '../guide-view-helpers/MetaScrapper';
 import ToolsResolver from '../ToolsResolver';
 
 
@@ -47,7 +45,10 @@ export default class InfoGathering extends Component {
                   Use search engines to discover sensitive information indexed and/or leaked from {this.project.config.targetUrl}.
                 </h6>
                 <div className="text-right mBtnHolder">
-                  <ToolsResolver params={this.props.params} viliop={this.props.params.viliop} wstgId="WSTG-INFO-01" />
+                  <ToolsResolver
+                    params={this.props.params}
+                    viliop={this.props.params.viliop}
+                    wstgId="WSTG-INFO-01" />
                   <button
                     className="btn btn-sm btn-success text-dark"
                     onClick={() => {
@@ -89,20 +90,11 @@ export default class InfoGathering extends Component {
                   is running on. This is necessary because there are known vulnerabilities for various Webserver software and versions
                 </h6>
                 <div className="text-right mBtnHolder">
-                  <ToolsResolver params={this.props.params} viliop={this.props.params.viliop} wstgId="WSTG-INFO-02" />
-                  <button
-                    className="btn btn-sm btn-success text-dark"
-                    onClick={() => {
-                      this.props.params.modalCallback(
-                        true,
-                        "Automated Webserver Fingerprinting",
-                        <FWSAutoScan
-                          viliop={this.props.params.viliop}
-                      />);
-                    }}
-                  >
-                    Automated Scan
-                  </button>
+                  <ToolsResolver
+                    params={this.props.params}
+                    viliop={this.props.params.viliop}
+                    wstgId="WSTG-INFO-02" />
+
 
                   <button
                     className="btn btn-sm btn-success text-dark"
@@ -145,20 +137,11 @@ export default class InfoGathering extends Component {
                   functionality.
                 </h6>
                 <div className="text-right mBtnHolder">
-                  <ToolsResolver params={this.props.params} viliop={this.props.params.viliop} wstgId="WSTG-INFO-03" />
-                  <button
-                    className="btn btn-sm btn-success text-dark"
-                    onClick={() => {
-                      this.props.params.modalCallback(
-                        true,
-                        "Automated Metadata & Metafiles Scrapping Tool",
-                        <MetaScrapper
-                          viliop={this.props.params.viliop}
-                      />);
-                    }}
-                  >
-                    AUTOMATED METADATA  & METAFILES SCRAPPER
-                  </button>
+
+                  <ToolsResolver
+                    params={this.props.params}
+                    viliop={this.props.params.viliop}
+                    wstgId="WSTG-INFO-03" />
 
                   <button
                     className="btn btn-sm btn-success text-dark"

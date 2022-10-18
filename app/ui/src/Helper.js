@@ -258,7 +258,7 @@ export function processToolOutput(result) {
     scanData = result.slice(scanOutputLine + 1);
   }
   else{
-    scanData = ["Scanner Could not complete this task, check the log for more details"]
+    scanData = ["Task could not be completed, check the log for more details"]
   }
 
   let output = {
