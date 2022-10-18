@@ -243,7 +243,7 @@ export function sanitizeMarkdown( markdown ){
   return markdown;
 }
 
-export function processScanResult(result) {
+export function processToolOutput(result) {
   //result is array
   let scanOutputLine = -1;
   let scanData = null;

@@ -3,7 +3,7 @@
   */
 
 import React, { useState } from 'react';
-import { getInlineLoader, tellUser, processScanResult } from '../Helper';
+import { getInlineLoader, tellUser, processToolOutput } from '../Helper';
 
 export default function MetaScrapper(props) {
   let viliop = props.viliop;
@@ -16,7 +16,7 @@ export default function MetaScrapper(props) {
       setLoading(true);
       await viliop.metaScrap(project.config.targetUrl).then((result) => {
         if(result !== false) {
-          let output = processScanResult(result);
+          let output = processToolOutput(result);
           let view = output.scanData.map((item, i) => {
             return (
               <h6 className="scanOutput" key={i}>{item}</h6>

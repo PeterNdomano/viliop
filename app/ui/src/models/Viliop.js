@@ -656,6 +656,38 @@ export default class Viliop {
     })
   }
 
+  runTool = ( tool, params ) => {
+    return new Promise( async (resolve) => {
+      try {
+        let toolPath = path.join(this.toolsFolder, tool.name, "main.py");
+
+        //format args
+        let args = params.map((item, i) => {
+          return ('-u '+item.value);
+        });
+
+        let scanOpts = {
+          mode: 'text',
+          pythonPath: this.pythonPath,
+          pythonOptions: ['-u'], // get print results in real-time
+          //scriptPath: toolPath,
+          args,
+        };
+        await PythonShell.run(toolPath, scanOpts, (error, result) => {
+          if(error){
+            console.error(error)
+            resolve(false);
+          }
+          resolve(result);
+        })
+      }
+      catch (e) {
+        console.error(e.message);
+        resolve(false);
+      }
+    })
+  }
+
   fwsScan = (url) => {
     return new Promise( async (resolve) => {
       try {

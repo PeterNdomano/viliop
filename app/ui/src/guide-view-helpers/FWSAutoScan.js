@@ -3,7 +3,7 @@
   */
 
 import React, { useState } from 'react';
-import { getInlineLoader, tellUser, logData, processScanResult } from '../Helper';
+import { getInlineLoader, tellUser, logData, processToolOutput } from '../Helper';
 
 export default function FWSAutoScan(props) {
   let viliop = props.viliop;
@@ -16,7 +16,7 @@ export default function FWSAutoScan(props) {
       setLoading(true);
       await viliop.fwsScan(project.config.targetUrl).then((result) => {
         if(result !== false) {
-          let output = processScanResult(result);
+          let output = processToolOutput(result);
           let view = output.scanData.map((item, i) => {
             return (
               <h6 className="scanOutput" key={i}>{item}</h6>
