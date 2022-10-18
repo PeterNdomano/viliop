@@ -49,7 +49,21 @@ export default class App extends Component {
     return new Promise((resolve) => {
       window.electronAPI = {
         openNewWindow: () => ipcRenderer.send('open-new-window'),
-        getToolsPath: () => ipcRenderer.send('get-tools-path'),
+        startInternetBrowser: () => ipcRenderer.send('start-internet-browser'),
+        getToolsPath: () => {
+          return new Promise(async resolve => {
+            await ipcRenderer.invoke('get-tools-path').then(response => {
+              resolve(response)
+            })
+          })
+        },
+        getBrowserWindows: () => {
+          return new Promise(async resolve => {
+            await ipcRenderer.invoke('get-browser-windows').then(response => {
+              resolve(response)
+            })
+          })
+        },
       }
       resolve(true);
     })
@@ -139,6 +153,21 @@ export default class App extends Component {
     if(item === 'project' && subItem === 'new_window') {
       //open new window from main process
       window.electronAPI.openNewWindow();
+      if(this.viliop.currentProject === null) {
+        item = "project";
+        subItem = "new_project";
+
+      }
+      else {
+        item = this.state.navItem;
+        subItem = this.state.navSubItem;
+      }
+    }
+
+    //check if it's new browser window request
+    if(item === 'proxy' && subItem === 'open_browser') {
+      //open new browser window from main process
+      window.electronAPI.startInternetBrowser();
       if(this.viliop.currentProject === null) {
         item = "project";
         subItem = "new_project";

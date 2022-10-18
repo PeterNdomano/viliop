@@ -3,6 +3,7 @@ const { exec } = require('child_process');
 const path = require('path');
 
 const appUrl = "http://localhost:3000/";
+const browserWindows = [];
 
 const createAppWindow = () => {
 
@@ -64,13 +65,53 @@ const createAppWindow = () => {
   return appWindow;
 }
 
+
+const createBrowserWindow = () => {
+
+  //get current window if available
+  let currentWindow = BrowserWindow.getFocusedWindow();
+  let x, y;
+
+  if(currentWindow) {
+    const [currentWindowX, currentWindowY] = currentWindow.getPosition();
+    x = currentWindowX + 24;
+    y = currentWindowY + 24;
+  }
+  const browserWindow = new BrowserWindow({
+    width: 1200,
+    height: 800,
+    x,
+    y,
+    webPreferences: {
+      contextIsolation: true,
+    }
+  });
+
+
+
+
+  browserWindow.loadURL("https://google.com");
+  return browserWindow;
+}
+
 const getToolsPath = () => {
   return path.join(process.cwd(), 'tools');
 }
 
+const getBrowserWindows = () => {
+  return browserWindows;
+}
+
+const startInternetBrowser = () => {
+  let browser = createBrowserWindow();
+  browserWindows.push(browser);
+}
+
 app.whenReady().then(() => {
   ipcMain.on('open-new-window', createAppWindow);
+  ipcMain.on('start-internet-browser', startInternetBrowser);
   ipcMain.handle('get-tools-path', getToolsPath);
+  ipcMain.handle('get-browser-windows', getBrowserWindows);
   createAppWindow();
 });
 
