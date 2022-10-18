@@ -145,7 +145,7 @@ export default class InfoGathering extends Component {
                   functionality.
                 </h6>
                 <div className="text-right mBtnHolder">
-
+                  <ToolsResolver params={this.props.params} viliop={this.props.params.viliop} wstgId="WSTG-INFO-03" />
                   <button
                     className="btn btn-sm btn-success text-dark"
                     onClick={() => {
