@@ -12,6 +12,7 @@ import MEPGuidesHelp from '../guide-view-helpers/MEPGuidesHelp';
 import FWAFGuidesHelp from '../guide-view-helpers/FWAFGuidesHelp';
 import MAAGuidesHelp from '../guide-view-helpers/MAAGuidesHelp';
 import MetaScrapper from '../guide-view-helpers/MetaScrapper';
+import ToolsResolver from '../ToolsResolver';
 
 
 export default class InfoGathering extends Component {
@@ -46,6 +47,7 @@ export default class InfoGathering extends Component {
                   Use search engines to discover sensitive information indexed and/or leaked from {this.project.config.targetUrl}.
                 </h6>
                 <div className="text-right mBtnHolder">
+                  <ToolsResolver params={this.props.params} viliop={this.props.params.viliop} wstgId="WSTG-INFO-01" />
                   <button
                     className="btn btn-sm btn-success text-dark"
                     onClick={() => {
@@ -87,6 +89,7 @@ export default class InfoGathering extends Component {
                   is running on. This is necessary because there are known vulnerabilities for various Webserver software and versions
                 </h6>
                 <div className="text-right mBtnHolder">
+                  <ToolsResolver params={this.props.params} viliop={this.props.params.viliop} wstgId="WSTG-INFO-02" />
                   <button
                     className="btn btn-sm btn-success text-dark"
                     onClick={() => {
