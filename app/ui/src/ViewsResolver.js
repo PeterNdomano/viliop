@@ -38,6 +38,7 @@ export function getRPanelView (props) {
   else if(props.navItem === "tools" && props.navSubItem === "installed_tools"){
     return (
       <InstalledTools
+        params={props}
         viliop={props.viliop}
         navCallback={props.navCallback}
       />
@@ -46,6 +47,7 @@ export function getRPanelView (props) {
   else if(props.navItem === "tools" && props.navSubItem === "all_tools"){
     return (
       <AllTools
+        params={props}
         viliop={props.viliop}
         navCallback={props.navCallback}
       />

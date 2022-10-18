@@ -38,7 +38,7 @@ export default function ToolsResolver(props) {
       return (
         <button
           key={i}
-          className="btn btn-sm btn-success text-dark"
+          className="btn btn-sm btn-primary text-light font-regular"
           onClick={() => {
             props.params.modalCallback(
               true,

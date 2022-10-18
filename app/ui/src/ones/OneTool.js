@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ToolOpView from '../views/ToolOpView';
 import { tellUser } from '../Helper';
 
 export default function OneTool(props) {
@@ -40,8 +41,26 @@ export default function OneTool(props) {
       {(isInstalled) ? <small className="text-muted form-text">Installed Version: {installedVersion}</small> : <small className="text-danger form-text">Not Installed</small>}
 
       <h6 style={{ marginTop:"20px", marginBottom:"10px", fontSize:"14px !important" }} className="font-light">{tool.description}</h6>
-
-
+      {
+        (isInstalled) ?
+        <div className="text-right">
+          <button
+            className="btn btn-sm btn-primary text-light font-regular"
+            onClick={() => {
+              props.params.modalCallback(
+                true,
+                tool.name,
+                <ToolOpView
+                  viliop={props.viliop}
+                  tool={tool}
+              />);
+            }}
+          >
+            Launch
+          </button>
+        </div> :
+        ""
+      }
     </div>
   )
 }

@@ -183,7 +183,10 @@ export default class InfoGathering extends Component {
                   Discover other applications and services running on Web Server
                 </h6>
                 <div className="text-right mBtnHolder">
-
+                  <ToolsResolver
+                    params={this.props.params}
+                    viliop={this.props.params.viliop}
+                    wstgId="WSTG-INFO-04" />
                   <button
                     className="btn btn-sm btn-success text-dark"
                     onClick={() => {
@@ -224,7 +227,10 @@ export default class InfoGathering extends Component {
                   Discover sensitive information from Webpage content
                 </h6>
                 <div className="text-right mBtnHolder">
-
+                  <ToolsResolver
+                    params={this.props.params}
+                    viliop={this.props.params.viliop}
+                    wstgId="WSTG-INFO-05" />
                   <button
                     className="btn btn-sm btn-success text-dark"
                     onClick={() => {
@@ -265,6 +271,10 @@ export default class InfoGathering extends Component {
                   Discover various entry points to the target web app
                 </h6>
                 <div className="text-right mBtnHolder">
+                  <ToolsResolver
+                    params={this.props.params}
+                    viliop={this.props.params.viliop}
+                    wstgId="WSTG-INFO-06" />
 
                   <button
                     className="btn btn-sm btn-success text-dark"
@@ -307,6 +317,11 @@ export default class InfoGathering extends Component {
                 </h6>
                 <div className="text-right mBtnHolder">
 
+                  <ToolsResolver
+                    params={this.props.params}
+                    viliop={this.props.params.viliop}
+                    wstgId="WSTG-INFO-07" />
+
                   <button
                     className="btn btn-sm btn-success text-dark"
                     onClick={() => {
@@ -347,6 +362,10 @@ export default class InfoGathering extends Component {
                   Discover the framework and technologies powering the target web app
                 </h6>
                 <div className="text-right mBtnHolder">
+                  <ToolsResolver
+                    params={this.props.params}
+                    viliop={this.props.params.viliop}
+                    wstgId="WSTG-INFO-08" />
 
                   <button
                     className="btn btn-sm btn-success text-dark"
@@ -388,6 +407,10 @@ export default class InfoGathering extends Component {
                   Generate a map of the application at hand based on the research conducted
                 </h6>
                 <div className="text-right mBtnHolder">
+                  <ToolsResolver
+                    params={this.props.params}
+                    viliop={this.props.params.viliop}
+                    wstgId="WSTG-INFO-10" />
 
                   <button
                     className="btn btn-sm btn-success text-dark"

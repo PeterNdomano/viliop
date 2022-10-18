@@ -102,7 +102,7 @@ export default function AllTools(props) {
               {
                 (allTools !== null && allTools.length > 0) ?
                 allTools.map((item, i) => {
-                  return <OneTool init={init} viliop={props.viliop} parent="all" setLoading={setLoading} tool={item} key={i}/>
+                  return <OneTool params={props.params} init={init} viliop={props.viliop} parent="all" setLoading={setLoading} tool={item} key={i}/>
                 }):
                 <h6>No tools were found</h6>
               }
