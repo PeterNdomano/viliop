@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, BrowserView } = require('electron');
 const { exec } = require('child_process');
 const path = require('path');
 
@@ -88,9 +88,18 @@ const createBrowserWindow = () => {
   });
 
 
-
-
-  browserWindow.loadURL("https://google.com");
+  const view = new BrowserView();
+  browserWindow.setBrowserView(view);
+  view.setBounds({
+    x: 0,
+    y: 100,
+    width: 1200,
+    height: 700,
+  });
+  view.setAutoResize({ width: true, height: true });
+  browserWindow.loadFile(path.join(__dirname, "browser", "browser.html"));
+  view.webContents.loadURL("https://www.google.com");
+  view.webContents.openDevTools();
   return browserWindow;
 }
 
@@ -112,7 +121,8 @@ app.whenReady().then(() => {
   ipcMain.on('start-internet-browser', startInternetBrowser);
   ipcMain.handle('get-tools-path', getToolsPath);
   ipcMain.handle('get-browser-windows', getBrowserWindows);
-  createAppWindow();
+  //createAppWindow();
+  createBrowserWindow();
 });
 
 app.on('activate', () => {
@@ -124,3 +134,17 @@ app.on('activate', () => {
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit()
 })
+
+
+//solving ssl errors
+app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
+  event.preventDefault()
+  callback(true)
+})
+
+app.on('select-client-certificate', (event, webContents, url, list, callback) => {
+  event.preventDefault()
+  callback(list[0])
+})
+
+//..
