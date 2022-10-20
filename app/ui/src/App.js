@@ -43,21 +43,11 @@ export default class App extends Component {
     //set electron bridge
     this.setElectronAPI().then(() => {
       //then init
-      this.proxyScheduler();
       this.init();
     })
   }
 
-  proxyScheduler = () => {
-    setInterval(async () => {
-      window.electronAPI.getProxiedRequests().then(reqs => {
-        console.log(reqs);
-        this.setState({
-          proxiedRequests: reqs,
-        })
-      })
-    }, 1000)
-  }
+
 
   setElectronAPI = () => {
     return new Promise((resolve) => {
@@ -70,13 +60,7 @@ export default class App extends Component {
             })
           })
         },
-        getProxiedRequests: () => {
-          return new Promise(async resolve => {
-            await ipcRenderer.invoke('get-proxied-requests').then(response => {
-              resolve(response)
-            })
-          })
-        },
+
       }
       resolve(true);
     })
