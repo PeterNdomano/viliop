@@ -21,6 +21,8 @@ export default class App extends Component {
 
     this.state = {
       viliopReady: false,
+      runProxy: true,
+      proxiedRequests: {},
       viliopStatus: -1,
       contextMenuShow: false,
       contextMenuLeft: 0,
@@ -41,8 +43,20 @@ export default class App extends Component {
     //set electron bridge
     this.setElectronAPI().then(() => {
       //then init
+      this.proxyScheduler();
       this.init();
     })
+  }
+
+  proxyScheduler = () => {
+    setInterval(async () => {
+      window.electronAPI.getProxiedRequests().then(reqs => {
+        console.log(reqs);
+        this.setState({
+          proxiedRequests: reqs,
+        })
+      })
+    }, 1000)
   }
 
   setElectronAPI = () => {
@@ -52,6 +66,13 @@ export default class App extends Component {
         getToolsPath: () => {
           return new Promise(async resolve => {
             await ipcRenderer.invoke('get-tools-path').then(response => {
+              resolve(response)
+            })
+          })
+        },
+        getProxiedRequests: () => {
+          return new Promise(async resolve => {
+            await ipcRenderer.invoke('get-proxied-requests').then(response => {
               resolve(response)
             })
           })
@@ -156,20 +177,7 @@ export default class App extends Component {
       }
     }
 
-    //check if it's new browser window request
-    if(item === 'proxy' && subItem === 'open_browser') {
-      //open new browser window from main process
-      window.electronAPI.startInternetBrowser();
-      if(this.viliop.currentProject === null) {
-        item = "project";
-        subItem = "new_project";
 
-      }
-      else {
-        item = this.state.navItem;
-        subItem = this.state.navSubItem;
-      }
-    }
 
     this.toolbarMenuCallback(false);
     this.setState({

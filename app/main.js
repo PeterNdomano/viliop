@@ -1,8 +1,10 @@
 const { app, BrowserWindow, ipcMain, BrowserView } = require('electron');
 const { exec } = require('child_process');
 const path = require('path');
+const { ViliopProxy } = require('./ViliopProxy');
 
 const isDev = process.env.DEV_MODE ? (process.env.DEV_MODE.trim() === "true") : false;
+const proxy = new ViliopProxy(app);
 
 const createAppWindow = () => {
 
@@ -16,7 +18,7 @@ const createAppWindow = () => {
     y = currentWindowY + 24;
   }
   const appWindow = new BrowserWindow({
-    width: 1200,
+    width: 1080,
     height: 800,
     x,
     y,
@@ -60,7 +62,7 @@ const createAppWindow = () => {
   });
   //..
 
-  appWindow.loadURL(appUrl);
+
   if(isDev) {
     appWindow.loadURL("http://localhost:3000/");
   }
@@ -87,6 +89,7 @@ app.whenReady().then(() => {
   ipcMain.on('open-new-window', createAppWindow);
   ipcMain.handle('get-tools-path', getToolsPath);
   createAppWindow();
+  proxy.init();
 });
 
 app.on('activate', () => {
