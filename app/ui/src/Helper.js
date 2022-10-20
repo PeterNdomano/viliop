@@ -88,11 +88,6 @@ export function getProxyMenuOptions() {
       parent: 'proxy',
     },
     {
-      id: 'open_browser',
-      title: 'Viliop Internet Browser (Chromium Based)',
-      parent: 'proxy',
-    },
-    {
       id: 'proxied_requests',
       title: 'Proxied Requests',
       parent: 'proxy',

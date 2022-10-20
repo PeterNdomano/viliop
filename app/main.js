@@ -2,8 +2,7 @@ const { app, BrowserWindow, ipcMain, BrowserView } = require('electron');
 const { exec } = require('child_process');
 const path = require('path');
 
-const appUrl = "http://localhost:3000/";
-const browserWindows = [];
+const isDev = process.env.DEV_MODE ? (process.env.DEV_MODE.trim() === "true") : false;
 
 const createAppWindow = () => {
 
@@ -62,54 +61,22 @@ const createAppWindow = () => {
   //..
 
   appWindow.loadURL(appUrl);
+  if(isDev) {
+    appWindow.loadURL("http://localhost:3000/");
+  }
+  else {
+    appWindow.loadURL("http://localhost:3000/");
+  }
   return appWindow;
 }
 
 
-const createBrowserWindow = () => {
-
-  //get current window if available
-  let currentWindow = BrowserWindow.getFocusedWindow();
-  let x, y;
-
-  if(currentWindow) {
-    const [currentWindowX, currentWindowY] = currentWindow.getPosition();
-    x = currentWindowX + 24;
-    y = currentWindowY + 24;
-  }
-  const browserWindow = new BrowserWindow({
-    width: 1200,
-    height: 800,
-    x,
-    y,
-    webPreferences: {
-      contextIsolation: true,
-    }
-  });
-
-
-  const view = new BrowserView();
-  browserWindow.setBrowserView(view);
-  view.setBounds({
-    x: 0,
-    y: 100,
-    width: 1200,
-    height: 700,
-  });
-  view.setAutoResize({ width: true, height: true });
-  browserWindow.loadFile(path.join(__dirname, "browser", "browser.html"));
-  view.webContents.loadURL("https://www.google.com");
-  view.webContents.openDevTools();
-  return browserWindow;
-}
 
 const getToolsPath = () => {
   return path.join(process.cwd(), 'tools');
 }
 
-const getBrowserWindows = () => {
-  return browserWindows;
-}
+
 
 const startInternetBrowser = () => {
   let browser = createBrowserWindow();
@@ -118,11 +85,8 @@ const startInternetBrowser = () => {
 
 app.whenReady().then(() => {
   ipcMain.on('open-new-window', createAppWindow);
-  ipcMain.on('start-internet-browser', startInternetBrowser);
   ipcMain.handle('get-tools-path', getToolsPath);
-  ipcMain.handle('get-browser-windows', getBrowserWindows);
-  //createAppWindow();
-  createBrowserWindow();
+  createAppWindow();
 });
 
 app.on('activate', () => {

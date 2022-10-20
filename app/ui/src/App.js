@@ -49,17 +49,9 @@ export default class App extends Component {
     return new Promise((resolve) => {
       window.electronAPI = {
         openNewWindow: () => ipcRenderer.send('open-new-window'),
-        startInternetBrowser: () => ipcRenderer.send('start-internet-browser'),
         getToolsPath: () => {
           return new Promise(async resolve => {
             await ipcRenderer.invoke('get-tools-path').then(response => {
-              resolve(response)
-            })
-          })
-        },
-        getBrowserWindows: () => {
-          return new Promise(async resolve => {
-            await ipcRenderer.invoke('get-browser-windows').then(response => {
               resolve(response)
             })
           })
