@@ -361,7 +361,7 @@ textarea:focus {
 .codeText {
   color: var(--accentColor) !important;
   background: var(--darkColor) !important;
-  padding: 2px !important;
+  padding: 0px !important;
   margin-top: 5px !important;
   border-radius: 5px;
   font-family: "MonoReg" !important;
@@ -381,9 +381,9 @@ textarea:focus {
 }
 
 .linkText {
-  color: blue !important;
+  color: var(--info) !important;
   background: var(--darkColor) !important;
-  padding: 2px !important;
+  padding: 0px !important;
   margin-top: 5px !important;
   margin-left: 10px;
   margin-right: 10px;
@@ -545,12 +545,14 @@ button[data-name="fullscreen"] {
 }
 
 .GuideView .mTitle {
-  font-size: 30px;
+  font-size: 45px;
   color: var(--accentColor);
+  font-family: "OpenSansLight";
 }
 
 .GuideView .mIntro {
-  color: var(--dangerColor);
+  color: var(--success);
+  margin-bottom: 40px;
 }
 
 /* GuideSubItem */
@@ -558,17 +560,22 @@ button[data-name="fullscreen"] {
   width: 100%;
   padding: 10px;
   border: 1px solid var(--faintDark);
-  margin-bottom: 10px;
+  margin-bottom: 40px;
+  font-family: "OpenSansLight" !important;
 }
 
 .GuideSubItem > .mSubTitle {
   width: 100%;
   border-bottom: 1px solid var(--faintDark);
   padding-bottom: 10px;
+  font-size: 20px;
+  color: var(--info);
+  font-family: "OpenSansBold";
 }
 
 .GuideSubItem h6 {
-  font-size: 12px;
+  font-size: 14px;
+  font-family: "OpenSansLight" !important;
 }
 
 .GuideSubItem > .mBtnHolder {

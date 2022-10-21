@@ -42,7 +42,7 @@ export default class InfoGathering extends Component {
                 <h5 className="mSubTitle">Search Engine Discovery</h5>
                 <span className="wsId">WSTG-INFO-01</span><hr/>
                 <h6>
-                  Use search engines to discover sensitive information indexed and/or leaked from {this.project.config.targetUrl}.
+                  Use search engines to discover sensitive information indexed and/or leaked from <span className="linkText">{this.project.config.targetUrl}</span>.
                 </h6>
                 <div className="text-right mBtnHolder">
                   <ToolsResolver
