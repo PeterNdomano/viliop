@@ -148,11 +148,11 @@ export default class NewProject extends Component {
               <div className="form-group row" style={{ padding:"15px" }}>
                 <div className="col-6 form-check">
                   <input onChange={(e) => this.setState({ projectType: e.target.value })} value="webPentest" className="form-check-input" type="radio" name="projectType" id="webPentest" checked={(this.state.projectType === 'webPentest') ? true : false}/>
-                  <label className="form-check-label" htmlFor="webPentest" >Website Pentesting</label>
+                  <label style={{ cursor:"pointer", fontFamily:"OpenSansBold", fontSize:"15px", marginTop:"0px", lineHeight:"16px" }} className="form-check-label" htmlFor="webPentest" >Website Pentesting</label>
                 </div>
                 <div className="col-6 form-check">
                   <input onChange={(e) => this.setState({ projectType: e.target.value })} value="mobilePentest" className="form-check-input" type="radio" name="projectType" id="mobilePentest" checked={(this.state.projectType === 'mobilePentest') ? true : false}/>
-                  <label className="form-check-label" htmlFor="mobilePentest" >Mobile App Pentesting</label>
+                  <label style={{ cursor:"pointer", fontFamily:"OpenSansBold", fontSize:"15px", marginTop:"0px", lineHeight:"16px" }} className="form-check-label" htmlFor="mobilePentest" >Mobile App Pentesting</label>
                 </div>
               </div>
               {
@@ -181,7 +181,8 @@ export default class NewProject extends Component {
                 </>:
                 <>
                   <div className="form-group">
-                    <h3>Mobile App Pentesting will be supported soon. Subscribe to our newsletter for more updates</h3>
+                    <h6 className="text-muted">Mobile App Pentesting will be supported in our future versions. Subscribe to our newsletter for more updates</h6>
+                    <small className="text-info">https://peterndomano.dev/viliop</small>
                   </div>
                 </>
               }
