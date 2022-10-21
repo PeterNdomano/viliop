@@ -128,7 +128,11 @@ export function getMoreMenuOptions() {
       title: 'About Viliop',
       parent: 'more',
     },
-
+    {
+      id: 'licence',
+      title: 'Licence',
+      parent: 'more',
+    },
   ])
 }
 

@@ -19,6 +19,9 @@ import InstalledTools from './views/InstalledTools';
 import AllTools from './views/AllTools';
 import ProxyExp from './views/ProxyExp';
 import ConfigSetting from './views/ConfigSetting';
+import AboutViliop from './views/AboutViliop';
+import SupportViliop from './views/SupportViliop';
+import ViliopLicence from './views/ViliopLicence';
 
 export function getRPanelView (props) {
   if(props.navItem === "project" && props.navSubItem === "new_project"){
@@ -83,6 +86,30 @@ export function getRPanelView (props) {
   else if(props.navItem === "settings" && props.navSubItem === "viliop_config"){
     return (
       <ConfigSetting
+        viliop={props.viliop}
+        navCallback={props.navCallback}
+      />
+    )
+  }
+  else if(props.navItem === "more" && props.navSubItem === "about_viliop"){
+    return (
+      <AboutViliop
+        viliop={props.viliop}
+        navCallback={props.navCallback}
+      />
+    )
+  }
+  else if(props.navItem === "more" && props.navSubItem === "support_viliop"){
+    return (
+      <SupportViliop
+        viliop={props.viliop}
+        navCallback={props.navCallback}
+      />
+    )
+  }
+  else if(props.navItem === "more" && props.navSubItem === "licence"){
+    return (
+      <ViliopLicence
         viliop={props.viliop}
         navCallback={props.navCallback}
       />
