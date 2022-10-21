@@ -78,10 +78,37 @@ const getToolsPath = () => {
   return path.join(process.cwd(), 'tools');
 }
 
+const minimizeWindow = () => {
+  let currentWindow = BrowserWindow.getFocusedWindow();
+  if(currentWindow) {
+    currentWindow.minimize();
+  }
+}
 
+const closeWindow = () => {
+  let currentWindow = BrowserWindow.getFocusedWindow();
+  if(currentWindow) {
+    currentWindow.close();
+  }
+}
+
+const maximizeWindow = () => {
+  let currentWindow = BrowserWindow.getFocusedWindow();
+  if(currentWindow) {
+    if(currentWindow.isMaximized()) {
+      currentWindow.unmaximize();
+    }
+    else {
+      currentWindow.maximize();
+    }
+  }
+}
 
 app.whenReady().then(() => {
   ipcMain.on('open-new-window', createAppWindow);
+  ipcMain.on('close-window', closeWindow);
+  ipcMain.on('minimize-window', minimizeWindow);
+  ipcMain.on('maximize-window', maximizeWindow);
   ipcMain.handle('get-tools-path', getToolsPath);
   createAppWindow();
 });

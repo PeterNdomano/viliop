@@ -8,6 +8,7 @@ export default class Modal extends Component {
     this.state = {
       show: false,
     }
+
     this.title = "";
     this.view = "";
   }
@@ -21,6 +22,8 @@ export default class Modal extends Component {
   }
 
   handleDisplay = (props) => {
+
+
     if(props.show === true){
       this.title = props.title;
       this.view = props.view;
@@ -28,9 +31,11 @@ export default class Modal extends Component {
         show: true,
       }, () => {
         $('#modal').modal().show();
+        $('#modal-body').scrollTop(0);
       });
     }
     else{
+      this.view = <></>;
       this.setState({
         show: false,
       })

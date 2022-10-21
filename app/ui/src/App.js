@@ -13,6 +13,7 @@ import Modal from './components/Modal';
 import StartupLoading from './views/StartupLoading';
 import StartupError from './views/StartupError';
 import StartupConfig from './views/StartupConfig';
+import $ from 'jquery';
 const { ipcRenderer } = window.require('electron');
 
 export default class App extends Component {
@@ -53,6 +54,9 @@ export default class App extends Component {
     return new Promise((resolve) => {
       window.electronAPI = {
         openNewWindow: () => ipcRenderer.send('open-new-window'),
+        closeApp: () => ipcRenderer.send('close-window'),
+        minimizeApp: () => ipcRenderer.send('minimize-window'),
+        maximizeApp: () => ipcRenderer.send('maximize-window'),
         getToolsPath: () => {
           return new Promise(async resolve => {
             await ipcRenderer.invoke('get-tools-path').then(response => {
@@ -174,6 +178,20 @@ export default class App extends Component {
   workspaceViewCallback = (viewId) => {
     this.setState({
       workspaceViewId: viewId,
+    })
+  }
+
+  clearModal = () => {
+    //this clears modal content
+    this.modal = (
+      <Modal
+        show={false}
+        title=""
+        view={<></>}
+      />
+    )
+    this.setState({
+      showModal: false,
     })
   }
 

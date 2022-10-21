@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { IoIosGlobe } from 'react-icons/io';
-import { MdPerson, MdOutlineFolderOpen, MdOutlineDashboard, MdNotes, MdOutlineSettings, MdOutlineMoreVert } from 'react-icons/md';
+import { AiOutlineClose } from 'react-icons/ai';
+import { MdFullscreen, MdMinimize, MdOutlineClose, MdPerson, MdOutlineFolderOpen, MdOutlineDashboard, MdNotes, MdOutlineSettings, MdOutlineMoreVert } from 'react-icons/md';
 export default class TTab extends Component {
   constructor(props) {
     super(props);
@@ -88,7 +89,12 @@ export default class TTab extends Component {
               <p className="mTitle">More</p>
             </div>
             <div className="headItem flex-grow-1 text-right">
-              <h3 className="appTitle">Viliop_</h3>
+              <div className="winControls">
+                <MdMinimize onClick={window.electronAPI.minimizeApp} className="mIcon"/>
+                <MdFullscreen onClick={window.electronAPI.maximizeApp} className="mIcon"/>
+                <MdOutlineClose onClick={window.electronAPI.closeApp} className="mIcon"/>
+              </div>
+              <h5 className="appTitle"></h5>
             </div>
           </div>
         </div>
