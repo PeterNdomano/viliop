@@ -214,6 +214,7 @@ code {
   overflow: hidden;
   line-height: 25px;
   font-family: "MonoReg" !important;
+  -webkit-app-region: drag;
 }
 
 .App .TTab .menuItem {
@@ -224,6 +225,7 @@ code {
   padding: 7px;
   color: var(--accentColor);
   height: calc(var(--tTabHeight) * 0.8);
+  -webkit-app-region: no-drag;
 }
 
 .App .TTab .menuItem:hover {
@@ -258,6 +260,7 @@ code {
   height: 30px;
   padding: 0px;
   margin: 0px;
+  -webkit-app-region: no-drag;
 }
 
 .winControls .mIcon {
