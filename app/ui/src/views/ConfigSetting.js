@@ -58,9 +58,27 @@ export default class ConfigSetting extends Component {
                   }
                 }).then(async status => {
                   if(status === 1) {
-                    tellUser('Configurations were saved', 'success');
+
                     //restart viliop
-                    this.props.restartApp();
+                    if(this.props.restartApp) {
+                      this.setState({ loading: false });
+                      tellUser('Configurations were saved', 'success');
+                      this.props.restartApp();
+                    }
+                    else {
+                      //no restart just reload silently
+                      await this.props.viliop.init().then(status => {
+                        if(status === 1) {
+                          this.setState({ loading: false });
+                          tellUser('Configurations were saved', 'success');
+                        }
+                        else {
+                          this.setState({ loading: false });
+                          tellUser('An Error occurred while saving configurations');
+                        }
+                      })
+                    }
+
                   }
                   else {
                     this.setState({ loading: false });
@@ -94,7 +112,7 @@ export default class ConfigSetting extends Component {
   render() {
     return (
       <div className="container">
-        <h1 className="font-light" style={{ marginTop:"calc(var(--tTabHeight) * 0.5)", marginBottom:"calc(var(--tTabHeight) * 0.5)" }}>Viliop Configuration</h1>
+        <h1 className="font-light panelTitle">Viliop Configuration</h1>
         <div className="row">
 
           <div className="col-md-6">

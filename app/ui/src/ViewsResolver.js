@@ -18,6 +18,7 @@ import ExportProject from './views/ExportProject';
 import InstalledTools from './views/InstalledTools';
 import AllTools from './views/AllTools';
 import ProxyExp from './views/ProxyExp';
+import ConfigSetting from './views/ConfigSetting';
 
 export function getRPanelView (props) {
   if(props.navItem === "project" && props.navSubItem === "new_project"){
@@ -74,6 +75,14 @@ export function getRPanelView (props) {
   else if(props.navItem === "reporting" && props.navSubItem === "edit"){
     return (
       <EditReport
+        viliop={props.viliop}
+        navCallback={props.navCallback}
+      />
+    )
+  }
+  else if(props.navItem === "settings" && props.navSubItem === "viliop_config"){
+    return (
+      <ConfigSetting
         viliop={props.viliop}
         navCallback={props.navCallback}
       />

@@ -350,30 +350,33 @@ export default class Viliop {
   pythonTest = (python) => {
     return new Promise(async resolve => {
       //handle python testing here
+      //console.log(path.parse(python));
+      if(fs.existsSync(path.join(path.parse(python).dir, path.parse(python).base))) {
+        try {
 
-      //run python cmd for getting python version
-      //check the outp
-      try {
+          //format args
+          let args = ['--version'];
 
-        //format args
-        let args = ['--version'];
-
-        let scanOpts = {
-          mode: 'text',
-          pythonPath: python,
-          pythonOptions: ['-u'], // get print results in real-time
-          //scriptPath: toolPath,
-        };
-        await PythonShell.run(path.join(this.toolsFolder, 'pythonTest.py'), scanOpts, (error, result) => {
-          if(error){
-            console.error(error)
-            resolve(0);
-          }
-          resolve(1);
-        })
+          let scanOpts = {
+            mode: 'text',
+            pythonPath: python,
+            pythonOptions: ['-u'], // get print results in real-time
+            //scriptPath: toolPath,
+          };
+          await PythonShell.run(path.join(this.toolsFolder, 'pythonTest.py'), scanOpts, (error, result) => {
+            if(error){
+              console.error(error)
+              resolve(0);
+            }
+            resolve(1);
+          })
+        }
+        catch (e) {
+          console.error(e.message);
+          resolve(0);
+        }
       }
-      catch (e) {
-        console.error(e.message);
+      else {
         resolve(0);
       }
     })

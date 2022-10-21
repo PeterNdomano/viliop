@@ -108,20 +108,11 @@ export function getProxyMenuOptions() {
 export function getSettingsMenuOptions() {
   return ([
     {
-      id: 'project_settings',
-      title: 'Project Settings',
+      id: 'viliop_config',
+      title: 'Viliop Configuration',
       parent: 'settings',
     },
-    {
-      id: 'viliop_settings',
-      title: 'Viliop Settings',
-      parent: 'settings',
-    },
-    {
-      id: 'user_settings',
-      title: 'User Settings',
-      parent: 'settings',
-    },
+
   ])
 }
 
