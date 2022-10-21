@@ -85,7 +85,8 @@ export default class Viliop {
       let toolsFolder = await ipcRenderer.invoke('get-tools-path');
       this.toolsFolder = toolsFolder; //setting global toolsFolder
       let toolsIndexPath = path.join(toolsFolder, 'tools.json');
-      if(fs.existsSync(toolsIndexPath)) {
+      let pythonTestPath = path.join(toolsFolder, 'pythonTest.py')
+      if(fs.existsSync(toolsIndexPath) && fs.existsSync(pythonTestPath)) {
         //generate installed.json
         let installedTools = [];
         let allTools = JSON.parse(fs.readFileSync(toolsIndexPath,  {encoding:'utf8', flag:'r'}));
@@ -105,7 +106,7 @@ export default class Viliop {
 
       }
       else {
-        tellUser('Startup error occured, could not find tools folder. Check log for more info');
+        tellUser('Startup error occured, tools folder is not present or it was tempered with. Check log for more info');
         resolve(0);
       }
     })
@@ -346,10 +347,35 @@ export default class Viliop {
     })
   }
 
-  pythonTest = (path) => {
+  pythonTest = (python) => {
     return new Promise(async resolve => {
-      // TODO: handle python testing here
-      resolve(1);
+      //handle python testing here
+
+      //run python cmd for getting python version
+      //check the outp
+      try {
+
+        //format args
+        let args = ['--version'];
+
+        let scanOpts = {
+          mode: 'text',
+          pythonPath: python,
+          pythonOptions: ['-u'], // get print results in real-time
+          //scriptPath: toolPath,
+        };
+        await PythonShell.run(path.join(this.toolsFolder, 'pythonTest.py'), scanOpts, (error, result) => {
+          if(error){
+            console.error(error)
+            resolve(0);
+          }
+          resolve(1);
+        })
+      }
+      catch (e) {
+        console.error(e.message);
+        resolve(0);
+      }
     })
   }
 
@@ -373,11 +399,10 @@ export default class Viliop {
       }
       else if(process.platform === "linux") {
         //its linux
-        // TODO: handle for linux and mac
+
       }
       else if(process.platform === "darwin") {
         //its mac
-        // TODO: handle for linux and mac
       }
 
       let viliop = {

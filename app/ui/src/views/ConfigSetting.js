@@ -96,17 +96,9 @@ export default class ConfigSetting extends Component {
       <div className="container">
         <h1 className="font-light" style={{ marginTop:"calc(var(--tTabHeight) * 0.5)", marginBottom:"calc(var(--tTabHeight) * 0.5)" }}>Viliop Configuration</h1>
         <div className="row">
-          <div className="col-md-6">
-            <h3 className="text-success font-light">Environment <br/>Settings</h3>
-            <div className="form-group">
-              <label>Python 3 Executable Path</label>
-              <input type="text" id="_pythonPath" defaultValue={(this.state.configDefaults) ? this.state.configDefaults.viliop.pythonPath : ""} className="form-control" />
-              <small className="text-muted form-text">Location to python 3 executable</small>
-            </div>
-          </div>
 
           <div className="col-md-6">
-            <h3 className="text-success font-light">User <br/>Settings</h3>
+            <h4 className="text-success font-light">User Settings</h4>
             <div className="form-group">
               <label>Your name</label>
               <input type="text" id="_userName" defaultValue={(this.state.configDefaults) ? this.state.configDefaults.user.name : ""} className="form-control" />
@@ -116,6 +108,15 @@ export default class ConfigSetting extends Component {
               <label>Your Email Address</label>
               <input type="text" id="_userEmail"  defaultValue={(this.state.configDefaults) ? this.state.configDefaults.user.email : ""} className="form-control" />
               <small className="text-muted form-text">This will appear on your reports</small>
+            </div>
+          </div>
+
+          <div className="col-md-6">
+            <h4 className="text-success font-light">Environment Settings</h4>
+            <div className="form-group">
+              <label>Python 3 Executable Path</label>
+              <input type="text" id="_pythonPath" defaultValue={(this.state.configDefaults) ? this.state.configDefaults.viliop.pythonPath : ""} className="form-control" />
+              <small className="text-muted form-text">Location to python 3 executable</small>
             </div>
           </div>
 
