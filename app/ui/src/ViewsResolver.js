@@ -17,6 +17,7 @@ import EditReport from './views/EditReport';
 import ExportProject from './views/ExportProject';
 import InstalledTools from './views/InstalledTools';
 import AllTools from './views/AllTools';
+import ProxyExp from './views/ProxyExp';
 
 export function getRPanelView (props) {
   if(props.navItem === "project" && props.navSubItem === "new_project"){
@@ -73,6 +74,14 @@ export function getRPanelView (props) {
   else if(props.navItem === "reporting" && props.navSubItem === "edit"){
     return (
       <EditReport
+        viliop={props.viliop}
+        navCallback={props.navCallback}
+      />
+    )
+  }
+  else if(props.navItem === "proxy" && props.navSubItem.length > 0){
+    return (
+      <ProxyExp
         viliop={props.viliop}
         navCallback={props.navCallback}
       />

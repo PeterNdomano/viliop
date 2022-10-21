@@ -17,7 +17,8 @@ const createAppWindow = () => {
   }
   const appWindow = new BrowserWindow({
     width: 1080,
-    height: 800,
+    height: 700,
+    frame: false,
     x,
     y,
     webPreferences: {
