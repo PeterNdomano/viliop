@@ -22,7 +22,11 @@ export default class EditReport extends Component {
             <h6>You need to open or import project to use this part</h6>
           </div> :
           <div className="col-md-12">
-            <h6>Instructions on how to edit report will come here</h6>
+            <h1 className="panelTitle">Edit Report</h1>
+            <h5 className="font-reg text-muted">
+              Click <span className="codeText">Project</span> on top menu then choose <span className="codeText">Current Project</span>.
+              Guide Menu will appear on the left sidebar, then you can choose a section and report on any particular subsection by clicking a 'REPORT' button on that sub-section.
+            </h5>
           </div>
         }
         </div>

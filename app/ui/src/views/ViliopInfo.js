@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { tellUser, sanitizePathString, getInlineLoader, sanitizeUrl } from '../Helper';
+import { AiOutlineGlobal } from 'react-icons/ai';
 import logo from '../assets/logo.png';
 const path = window.require('path');
 const fs = window.require('fs');
@@ -25,9 +26,7 @@ export default class ViliopInfo extends Component {
         </div>
         <div className="text-right" style={{ padding:"10px", marginTop:"20px" }}>
           <hr/>
-          <small className="text-muted form-text">https://peterndomano.dev/viliop</small>
-          <small className="text-muted form-text">viliop@peterndomano.dev</small>
-          <small className="text-muted form-text">&copy;PeterNdomano 2022</small>
+          <small className="text-info form-text"><AiOutlineGlobal size={20}/>&nbsp;peterndomano.dev/viliop</small>
         </div>
       </div>
     )

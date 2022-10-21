@@ -18,7 +18,7 @@ export default class View extends Component {
         <div className="row">
           <div className="col-md-12">
             <h1 className="panelTitle">About</h1>
-            <h5 className="font-light text-muted">
+            <h5 className="font-reg text-muted">
               Viliop is the Software Project aimed at creating an Integrated Penetration Testing Environment....
             </h5>
             <small className="text-light">-Peter Ndomano</small><br/>

@@ -16,13 +16,14 @@ export default class EditReport extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
+            <h1 className="panelTitle">Export Project</h1>
             <h5 className="font-light">
               Your Project is located at:
             </h5>
             <h6 className="font-light">
               <i>{this.props.viliop.currentProject.projectDir}</i>
             </h6>
-            <h5 style={{ marginTop:"30px" }}>You can compress it and share it via email or other services</h5>
+            <h5 style={{ marginTop:"30px" }} className="text-muted">You can compress it and share it via email or other services</h5>
           </div>
         </div>
       </div>

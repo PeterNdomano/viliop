@@ -18,7 +18,7 @@ export default class View extends Component {
         <div className="row">
           <div className="col-md-12">
             <h1 className="panelTitle">Viliop Proxy, Repeater, Intruder</h1>
-            <h5 className="font-light text-muted">Viliop Proxy, Intruder and Repeater will be supported in our future versions. Subscribe to our newsletter for more updates. Thanks</h5>
+            <h5 className="font-reg text-muted">Viliop Proxy, Intruder and Repeater will be supported in our future versions. Subscribe to our newsletter for more updates. Thanks</h5>
             <small className="text-info">https://peterndomano.dev/viliop</small>
           </div>
         </div>

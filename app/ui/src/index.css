@@ -361,7 +361,7 @@ textarea:focus {
 .codeText {
   color: var(--accentColor) !important;
   background: var(--darkColor) !important;
-  padding: 5px !important;
+  padding: 2px !important;
   margin-top: 5px !important;
   border-radius: 5px;
   font-family: "MonoReg" !important;
@@ -383,7 +383,7 @@ textarea:focus {
 .linkText {
   color: blue !important;
   background: var(--darkColor) !important;
-  padding: 5px !important;
+  padding: 2px !important;
   margin-top: 5px !important;
   margin-left: 10px;
   margin-right: 10px;

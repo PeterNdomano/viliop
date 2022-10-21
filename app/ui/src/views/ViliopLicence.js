@@ -18,7 +18,7 @@ export default class View extends Component {
         <div className="row">
           <div className="col-md-12">
             <h1 className="panelTitle">License</h1>
-            <h5 className="font-light text-muted">
+            <h5 className="font-reg text-muted">
               Licensed under Creative Commons Zero
             </h5>
 

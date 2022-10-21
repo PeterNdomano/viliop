@@ -18,7 +18,7 @@ export default class View extends Component {
         <div className="row">
           <div className="col-md-12">
             <h1 className="panelTitle">Support Viliop</h1>
-            <h5 className="font-light text-muted">
+            <h5 className="font-reg text-muted">
               We'll be glad for any support be it technical, financial or just ideas
             </h5>
             <small className="text-light">-Peter Ndomano</small><br/>
