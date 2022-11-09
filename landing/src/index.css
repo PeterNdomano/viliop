@@ -1,13 +1,213 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  /* Colors */
+  --primary-color: #0c0769; /* bluish */
+  --secondary-color: #fefefe; /* whitish */
+  --dark-color: #0f0f0f; /* blackish */
+  --accent-color: #f78b07; /* yellowish or goldish */
+  --danger-color: #d40f04; /* reddish */
+  --faint-dark: #2b2b2b; /* Grayish */
+
+  /* Dimensions */
+  --topbar-height: 80px;
+
+  /* indices */
+  --low-index: 1;
+  --medium-index: 1;
+  --high-index: 1;
+  --ultra-high-index: 1;
+
+  /* shadows */
+  --mid-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 10px 5px rgba(0, 0, 0, 0.05);
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/*---------------- Fonts -------------------*/
+@font-face {
+  font-family: "FontRegular";
+  src: local("FontRegular"), url("./fonts/Open_Sans/regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "FontBold";
+  src: local("FontBold"), url("./fonts/Open_Sans/bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "FontLight";
+  src: local("FontLight"), url("./fonts/Open_Sans/light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "FontMono";
+  src: local("FontMono"), url("./fonts/Mono/regular.ttf") format("truetype");
+}
+
+
+.font-bold{
+  font-family: "FontBold" !important;
+}
+
+.font-regular{
+  font-family: "FontRegular" !important;
+}
+
+.font-light{
+  font-family: "FontLight" !important;
+}
+
+.font-mono{
+  font-family: "FontMono" !important;
+}
+
+/*--------------- font end here -----------------*/
+
+/* Widgets and generals*/
+body,
+html {
+  color: var(--secondary-color);
+  background: var(--dark-color);
+  width: 100%;
+  margin: 0;
+  font-family: 'FontRegular';
+}
+
+.mPad {
+  padding-top: calc(0.5 * var(--topbar-height)) !important;
+  padding-bottom: calc(0.5 * var(--topbar-height)) !important;
+}
+
+.text-accent {
+  color: var(--accent-color) !important;
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.text-dark {
+  color: var(--dark-color) !important;
+}
+
+.bg-accent {
+  background: var(--accent-color) !important;
+}
+
+.bg-primary {
+  background: var(--primary-color) !important;
+}
+
+.bg-secondary {
+  background: var(--secondary-color) !important;
+}
+
+.bg-faint-white {
+  background: var(--faint-white) !important;
+}
+
+.bg-dark {
+  background: var(--dark-color) !important;
+}
+
+.btn-rounded {
+  border-radius: 30px;
+}
+
+button, a {
+  text-transform: none !important;
+}
+
+.no-shadow {
+  box-shadow: none !important;
+}
+
+.mHeaderImg {
+  width: 100%;
+  height: calc(3 * var(--topbar-height));
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.support-loading {
+  min-width: 50px;
+  min-height: 50px;
+  position: relative;
+}
+
+.smView {
+  display: none;
+  
+}
+
+.mdView {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .smView {
+    display: block;
+  }
+  
+  .mdView {
+    display: none;
+  }
+}
+
+/* Loader */
+.Loader {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  border-radius: 20px;
+  background: none;
+  border: 4px solid var(--dark-color) !important;
+  border-left: 4px solid var(--accent-color) !important;
+  top: 50%;
+  z-index: inherit;
+  left: 50%;
+  margin-left: -20px;
+  margin-top: -20px;
+  animation-name: "loading";
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  -webkit-animation-name: "loading";
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* -------MainBody-------*/
+.MainBody {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+}
+
+/*----------Banner----------*/
+.Banner {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+
+/*---------Section---------*/
+.Section {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  
 }
