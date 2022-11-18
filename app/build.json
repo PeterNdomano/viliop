@@ -1,6 +1,6 @@
 {
   "appId": "viliop",
-  
+  "asar": false,
   "files": "!ui/*",
   "win": {
     "target": "NSIS",

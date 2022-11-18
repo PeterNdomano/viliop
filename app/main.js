@@ -62,14 +62,13 @@ const createAppWindow = () => {
   //..
 
   if(!isDev) {
-    //appWindow.loadFile(path.join(__dirname, 'build/index.html'));
     appWindow.loadURL(`file://${__dirname}/vui/index.html`);
   }
   else {
     appWindow.loadURL("http://localhost:3000/");
   }
   appWindow.setMenuBarVisibility(false);
-  appWindow.webContents.openDevTools();
+  //appWindow.webContents.openDevTools();
   return appWindow;
 }
 

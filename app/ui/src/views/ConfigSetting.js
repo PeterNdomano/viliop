@@ -38,7 +38,7 @@ export default class ConfigSetting extends Component {
     if(!this.state.loading) {
       let email = $('#_userEmail').val().trim();
       let name = $('#_userName').val().trim();
-      let pythonPath = $('#_pythonPath').val().trim();
+      let pythonPath = this.state.configDefaults.viliop.pythonPath;
 
       if(email.length > 0) {
         if(name.length > 0) {
@@ -128,15 +128,6 @@ export default class ConfigSetting extends Component {
               <label>Your Email Address</label>
               <input type="text" id="_userEmail"  defaultValue={(this.state.configDefaults) ? this.state.configDefaults.user.email : ""} className="form-control" />
               <small className="text-muted form-text">This will appear on your reports</small>
-            </div>
-          </div>
-
-          <div className="col-md-6">
-            <h4 className="text-success font-light">Environment Settings</h4>
-            <div className="form-group">
-              <label>Python 3 Executable Path</label>
-              <input type="text" id="_pythonPath" defaultValue={(this.state.configDefaults) ? this.state.configDefaults.viliop.pythonPath : ""} className="form-control" />
-              <small className="text-muted form-text">Location to python 3 executable</small>
             </div>
           </div>
 

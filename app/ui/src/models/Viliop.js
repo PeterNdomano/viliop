@@ -392,24 +392,24 @@ export default class Viliop {
       }
 
       //setting default paths according to os
-      let loc1 = "" //for pythonPath
+      let loc1 = await ipcRenderer.invoke('get-python-path'); //for python path
       let loc2 = await ipcRenderer.invoke('get-tools-path'); //for toolsFolder
 
-      if(process.platform === "win32") {
-        //its windows
-        loc1 = 'AppData/Local/Programs/Python/Python310/python.exe';
+      // if(process.platform === "win32") {
+      //   //its windows
+      //   loc1 = 'AppData/Local/Programs/Python/Python310/python.exe';
 
-      }
-      else if(process.platform === "linux") {
-        //its linux
+      // }
+      // else if(process.platform === "linux") {
+      //   //its linux
 
-      }
-      else if(process.platform === "darwin") {
-        //its mac
-      }
+      // }
+      // else if(process.platform === "darwin") {
+      //   //its mac
+      // }
 
       let viliop = {
-        pythonPath: path.join(os.homedir(), loc1), //default
+        pythonPath: loc1, //default
         toolsFolder: loc2, //default viliop tools folder
         viliopVersion: "0.0.1", //default
       }
