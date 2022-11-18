@@ -112,8 +112,10 @@ export default class ConfigSetting extends Component {
   render() {
     return (
       <div className="container">
-        <h1 className="font-light panelTitle">Viliop Configuration</h1>
         <div className="row">
+          <div className="col-md-12">
+            <h1 style={{ marginTop: "60px" }} className="font-light panelTitle">Viliop Configuration</h1>
+          </div>
 
           <div className="col-md-6">
             <h4 className="text-success font-light">User Settings</h4>

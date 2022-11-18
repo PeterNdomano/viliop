@@ -6,7 +6,7 @@ import $ from 'jquery';
 const os = window.require('os');
 const fs = window.require('fs');
 const path = window.require('path');
-const JSZip = window.require('JSZip');
+const JSZip = window.require('jszip');
 const { PythonShell } = window.require('python-shell');
 const { ipcRenderer } = window.require('electron');
 

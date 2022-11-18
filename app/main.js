@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, BrowserView } = require('electron');
+const { app, BrowserWindow, ipcMain, BrowserView, protocol } = require('electron');
 const { exec } = require('child_process');
 const path = require('path');
 
@@ -61,21 +61,26 @@ const createAppWindow = () => {
   });
   //..
 
-
-  if(isDev) {
-    appWindow.loadURL("http://localhost:3000/");
+  if(!isDev) {
+    //appWindow.loadFile(path.join(__dirname, 'build/index.html'));
+    appWindow.loadURL(`file://${__dirname}/vui/index.html`);
   }
   else {
     appWindow.loadURL("http://localhost:3000/");
   }
   appWindow.setMenuBarVisibility(false);
+  appWindow.webContents.openDevTools();
   return appWindow;
 }
 
 
-
 const getToolsPath = () => {
-  return path.join(process.cwd(), 'tools');
+  return path.join(__dirname, 'tools');
+}
+
+const getPythonPath = () => {
+  // TODO: make this support linux too
+  return path.join(__dirname, 'python/python.exe');
 }
 
 const minimizeWindow = () => {
@@ -93,6 +98,7 @@ const closeWindow = () => {
 }
 
 const maximizeWindow = () => {
+
   let currentWindow = BrowserWindow.getFocusedWindow();
   if(currentWindow) {
     if(currentWindow.isMaximized()) {
@@ -110,7 +116,9 @@ app.whenReady().then(() => {
   ipcMain.on('minimize-window', minimizeWindow);
   ipcMain.on('maximize-window', maximizeWindow);
   ipcMain.handle('get-tools-path', getToolsPath);
+  ipcMain.handle('get-python-path', getPythonPath);
   createAppWindow();
+  
 });
 
 app.on('activate', () => {

@@ -1,0 +1,9 @@
+{
+  "appId": "viliop",
+  
+  "files": "!ui/*",
+  "win": {
+    "target": "NSIS",
+    "icon": "build/icon.ico"
+  }
+}
